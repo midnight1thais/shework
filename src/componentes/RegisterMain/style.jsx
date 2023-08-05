@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-import fundo from '../../assets/fundo.svg';
+import fundo from '../../assets/fundo.png';
 
 
 export const Background = styled.div`
     background-image: url(${fundo});
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    /* width: 100%; */
 
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
@@ -16,7 +16,7 @@ export const Background = styled.div`
 `
 
 export const Main = styled.main`
-    height: 90vh;
+    height: 80vh;
     width: 80vw;
 
     background-color: rgba(255, 255, 255, 0.1) /* Cor preta com 50% de transparência */;
@@ -26,29 +26,35 @@ export const Main = styled.main`
 `
 
 export const Container = styled.section`
-    height: 100vh;
-    padding: 0vh 8vw 0vh 8vw;
+    /* height: 100vh; */
+    padding: 0vh 8vw 0vh 8vw; 
 `
 
 export const ContactForm = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0vh 8vw 0vh 8vw;
+    /* padding: 0vh 8vw 0vh 8vw; */
     gap: 1rem;
 
-    height: 100vh;
+    /* height: 100vh; */
 
 `
 
-export const Div = styled.div`
-    input[type="text"],
+export const DivStyle = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 30vw;
+    flex-wrap: wrap; 
+`
+
+export const LabelStyle = styled.label`
+    /* input[type="text"],
     input[type="password"],
-    input[type="date"] {
+    input[type="date"] 
     color: #FFFFFF;
-    text-indent: 1vw;
-  }
-    label{
+    text-indent: 1vw; */
+
     align-self: flex-start;
 
     font-family: 'Poppins', sans-serif;
@@ -56,7 +62,8 @@ export const Div = styled.div`
     font-weight: 300;
     color:#FFFFFF;
     
-}
+
+
 
 `
 
@@ -77,7 +84,7 @@ export const Title = styled.h1`
 
 
 export const Input = styled.input`
-    width: 50vw;
+    width: 30vw;
     height: 5vh;
 
     font-family: 'Poppins', sans-serif;
