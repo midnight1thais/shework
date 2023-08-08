@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-import { Background, Container, Div, Main, Title, Input, Select, ContactForm, Button, LinkA, Entrar} from './style'
+import { Background, Container, Div, Main, Title, Input, Select, ContactForm, Button, LinkA, Entrar, Label, Text} from './style'
 
 
 function RegisterMain(){
@@ -26,31 +26,30 @@ function RegisterMain(){
             <Main>
                 <Container>
                 <Title>Cadastro</Title>
-                <div class="contact">
                     <ContactForm>
-                        <Div>
-                            <label>Nome</label>
+                        <Div >
+                            <Label>Nome</Label>
                             <Input type="text"/>
                         </Div>
                         <Div>
-                            <label>Data de Nascimento</label>
+                            <Label>Data de Nascimento</Label>
                             <Input type="date"/>
                         </Div>
                         <Div> 
-                            <label>E-mail</label>
+                            <Label>E-mail</Label>
                             <Input type="text"/>
                         </Div>
                         <Div>
-                            <label>Senha</label>
+                            <Label>Senha</Label>
                             <Input type="password"/>
                         </Div>
                         <Div> 
-                            <label>Confirmação da Senha</label>
+                            <Label>Confirmação da Senha</Label>
                             <Input type="password"/>
                         </Div>
-                        <Div> {/* Linha corrigida */}
+                        <Div>
                             <Div>
-                                <label htmlFor="servico">Categoria</label >
+                                <Label htmlFor="servico">Categoria</Label >
                                 <Select id="servico" value={servico} onChange={handleChange} type='text'>
                                     <option value="gerais" type='text'>Outros serviços gerais</option>
                                     <option value="ti" type='text'>Técnico TI</option>
@@ -58,7 +57,7 @@ function RegisterMain(){
 
                                 {servico === 'gerais' && (
                                     <Div>
-                                    <label htmlFor="outrosServicosInput">Descreva o serviço:</label>
+                                    <Label htmlFor="outrosServicosInput">Descreva o serviço:</Label>
                                     <Input
                                         type="text"
                                         id="outrosServicosInput"
@@ -71,18 +70,15 @@ function RegisterMain(){
                         </Div>
                         <Button value="Cadastrar" type="submit"/>
                         <Entrar>
-                            <p>Você ja tem uma conta?</p>
+                            <Text>Você ja tem uma conta?</Text>
                             <LinkA> Entrar</LinkA> 
                         </Entrar> 
                         <Entrar>
-                            <p>Quer contratar?</p>
+                            <Text>Quer contratar?</Text>
                             <LinkA> Cadastre-se </LinkA> 
                         </Entrar>      
                     </ContactForm>
-            
-                    
-                </div>
-
+        
                 </Container>
             </Main>
         </Background>

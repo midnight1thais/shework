@@ -7,7 +7,8 @@ export const Background = styled.div`
     background-image: url(${fundo});
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    color:  rgba(14, 6, 58, 0.651);
+    height: 100%;
     width: 100vw;
 
     display: flex;
@@ -16,8 +17,10 @@ export const Background = styled.div`
 `
 
 export const Main = styled.main`
-    height: 90vh;
-    width: 80vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    height: 10%;
+    width: 80%;
 
     background-color: rgba(255, 255, 255, 0.1) /* Cor preta com 50% de transparência */;
     backdrop-filter: blur(40px); /* Efeito de desfoque */
@@ -26,7 +29,7 @@ export const Main = styled.main`
 `
 
 export const Container = styled.section`
-    height: 100vh;
+    height: 100%;
     padding: 0vh 8vw 0vh 8vw;
 `
 
@@ -37,26 +40,12 @@ export const ContactForm = styled.section`
     padding: 0vh 8vw 0vh 8vw;
     gap: 1rem;
 
-    height: 100vh;
+    height: 100%;
 
 `
 
 export const Div = styled.div`
-    input[type="text"],
-    input[type="password"],
-    input[type="date"] {
-    color: #FFFFFF;
-    text-indent: 1vw;
-  }
-    label{
-    align-self: flex-start;
 
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    color:#FFFFFF;
-    
-}
 
 `
 
@@ -74,7 +63,14 @@ export const Title = styled.h1`
     
 `
 
+export const Label = styled.label`
+    align-self: flex-start;
 
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color:#FFFFFF;
+`
 
 export const Input = styled.input`
     width: 50vw;
@@ -86,6 +82,8 @@ export const Input = styled.input`
     background: rgba(0, 0, 0, 0.11);
     border-radius: 4px;
     border: none;
+    color: #FFFFFF;
+    text-indent: 1vw;
 
     ::placeholder {
        color: #800075;
@@ -124,10 +122,10 @@ export const Entrar = styled.div`
     flex-direction: row;
     flex-flow: row nowrap;
 
-    p{
-        color: rgba(255, 255, 255, 0.9);
-    }
   
+`
+export const Text = styled.p`
+    color: rgba(255, 255, 255, 0.9);
 `
 
 export const LinkA = styled.a`
