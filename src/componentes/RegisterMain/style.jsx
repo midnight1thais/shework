@@ -1,15 +1,20 @@
 import styled from 'styled-components';
 
-import fundo from '../../assets/fundo.svg';
+import fundo from '../../assets/fundo.png';
 
 
 export const Background = styled.div`
     background-image: url(${fundo});
     background-repeat: no-repeat;
     background-size: cover;
+<<<<<<< HEAD
     color:  rgba(14, 6, 58, 0.651);
     height: 100%;
     width: 100vw;
+=======
+    min-height: 100vh;
+    /* width: 100%; */
+>>>>>>> 3d63ad885631afcbd641f813fc90f3180f9aa823
 
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
@@ -17,10 +22,15 @@ export const Background = styled.div`
 `
 
 export const Main = styled.main`
+<<<<<<< HEAD
     margin-top: 5vh;
     margin-bottom: 5vh;
     height: 10%;
     width: 80%;
+=======
+    height: 80vh;
+    width: 80vw;
+>>>>>>> 3d63ad885631afcbd641f813fc90f3180f9aa823
 
     background-color: rgba(255, 255, 255, 0.1) /* Cor preta com 50% de transparência */;
     backdrop-filter: blur(40px); /* Efeito de desfoque */
@@ -29,23 +39,58 @@ export const Main = styled.main`
 `
 
 export const Container = styled.section`
+<<<<<<< HEAD
     height: 100%;
     padding: 0vh 8vw 0vh 8vw;
+=======
+    /* height: 100vh; */
+    padding: 0vh 8vw 0vh 8vw; 
+>>>>>>> 3d63ad885631afcbd641f813fc90f3180f9aa823
 `
 
 export const ContactForm = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0vh 8vw 0vh 8vw;
+    /* padding: 0vh 8vw 0vh 8vw; */
     gap: 1rem;
 
+<<<<<<< HEAD
     height: 100%;
 
 `
 
 export const Div = styled.div`
 
+=======
+    /* height: 100vh; */
+
+`
+
+export const DivStyle = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 30vw;
+    flex-wrap: wrap; 
+`
+
+export const LabelStyle = styled.label`
+    /* input[type="text"],
+    input[type="password"],
+    input[type="date"] 
+    color: #FFFFFF;
+    text-indent: 1vw; */
+
+    align-self: flex-start;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color:#FFFFFF;
+    
+
+
+>>>>>>> 3d63ad885631afcbd641f813fc90f3180f9aa823
 
 `
 
@@ -73,7 +118,7 @@ export const Label = styled.label`
 `
 
 export const Input = styled.input`
-    width: 50vw;
+    width: 30vw;
     height: 5vh;
 
     font-family: 'Poppins', sans-serif;
