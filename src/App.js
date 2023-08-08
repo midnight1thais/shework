@@ -1,13 +1,17 @@
 import React from 'react';
+// import Login from './pagina/Login/Login';
+import Register from './pagina/Register/Register';
 
 import StyledGlobal from "./styledGlobal";
-import Register from './pagina/Register/Register';
+
+
 
 function App() {
   return (
     <>
     <StyledGlobal/>
     <Register/>
+    {/* <Login/> */}
     </>
   );
 }
