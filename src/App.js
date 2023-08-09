@@ -3,15 +3,18 @@ import React from 'react';
 import Register from './pagina/Register/Register';
 
 import StyledGlobal from "./styledGlobal";
+import { ChakraProvider } from '@chakra-ui/react'
 
 
 
 function App() {
   return (
     <>
-    <StyledGlobal/>
-    <Register/>
-    {/* <Login/> */}
+      <ChakraProvider>
+        <StyledGlobal />
+        <Register />
+        {/* <Login/> */}
+      </ChakraProvider>
     </>
   );
 }
