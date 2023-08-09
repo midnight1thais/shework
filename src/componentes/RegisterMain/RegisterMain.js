@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
-
-
-<<<<<<< HEAD
-import { Background, Container, Div, Main, Title, Input, Select, ContactForm, Button, LinkA, Entrar, Label, Text} from './style'
-=======
-import { Background, Container, Main, Title, Input, Select, ContactForm, Button, LinkA, Entrar, LabelStyle, DivStyle } from './style'
->>>>>>> 3d63ad885631afcbd641f813fc90f3180f9aa823
-
+import { Grid, GridItem } from '@chakra-ui/react'
+import { Background, Container, Div, Main, Title, Input, Select, ContactForm, Button, LinkA, Entrar, Label, Text, InputCategory } from './style'
 
 function RegisterMain() {
 
@@ -24,137 +18,120 @@ function RegisterMain() {
         setOutrosServicos(event.target.value);
     };
 
-<<<<<<< HEAD
-    return(
-    <>
-        <Background>
-            <Main>
-                <Container>
-                <Title>Cadastro</Title>
-                    <ContactForm>
-                        <Div >
-                            <Label>Nome</Label>
-                            <Input type="text"/>
-                        </Div>
-                        <Div>
-                            <Label>Data de Nascimento</Label>
-                            <Input type="date"/>
-                        </Div>
-                        <Div> 
-                            <Label>E-mail</Label>
-                            <Input type="text"/>
-                        </Div>
-                        <Div>
-                            <Label>Senha</Label>
-                            <Input type="password"/>
-                        </Div>
-                        <Div> 
-                            <Label>Confirmação da Senha</Label>
-                            <Input type="password"/>
-                        </Div>
-                        <Div>
-                            <Div>
-                                <Label htmlFor="servico">Categoria</Label >
-                                <Select id="servico" value={servico} onChange={handleChange} type='text'>
-                                    <option value="gerais" type='text'>Outros serviços gerais</option>
-                                    <option value="ti" type='text'>Técnico TI</option>
-                                </Select>
 
-                                {servico === 'gerais' && (
-                                    <Div>
-                                    <Label htmlFor="outrosServicosInput">Descreva o serviço:</Label>
-                                    <Input
-                                        type="text"
-                                        id="outrosServicosInput"
-                                        value={outrosServicos}
-                                        onChange={handleOutrosServicosChange}
-                                    />
-                                    </Div>
-                                )}
-                            </Div>
-                        </Div>
-                        <Button value="Cadastrar" type="submit"/>
-                        <Entrar>
-                            <Text>Você ja tem uma conta?</Text>
-                            <LinkA> Entrar</LinkA> 
-                        </Entrar> 
-                        <Entrar>
-                            <Text>Quer contratar?</Text>
-                            <LinkA> Cadastre-se </LinkA> 
-                        </Entrar>      
-                    </ContactForm>
-        
-                </Container>
-            </Main>
-        </Background>
-=======
     return (
         <>
             <Background>
                 <Main>
                     <Container>
                         <Title>Cadastro</Title>
-                            <ContactForm>
-                                <DivStyle>
-                                    <LabelStyle>E-mail
-                                        <Input type="text" />
-                                    </LabelStyle>
+                        {/* <ContactForm> */}
+                        {/* <Div> */}
+                        <Grid templateColumns='repeat(2, 1fr)' 
+                         templateRows='repeat(3, 1fr)'
+                         h='60vh'
+                        bg={'red'}
+                        gap={0.5} >
 
-                                    <LabelStyle>Senha
-                                        <Input type="password" />
-                                    </LabelStyle>
+                            <GridItem w='35vw' colSpan={2}
+                            colStart={1} colEnd={1}
+                             rowSpan={1}
+                            h='30vh'>
 
-                                    <LabelStyle>Confirmação da Senha
-                                        <Input type="password" />
-                                    </LabelStyle>
-                              
-                                    <LabelStyle>Nome
-                                        <Input type="text" />
-                                    </LabelStyle>
+                                <Label>E-mail
+                                    <Input type="text" />
+                                </Label>
 
-                                    <LabelStyle>Data de Nascimento
-                                        <Input type="date" />
-                                    </LabelStyle>
+                                <Label>Senha
+                                    <Input type="password" />
+                                </Label>
 
-                                    <LabelStyle htmlFor="servico">Categoria
-                                        <Select id="servico" value={servico} onChange={handleChange} type='text'>
-                                            <option value="gerais" type='text'>Outros serviços gerais</option>
-                                            <option value="ti" type='text'>Técnico TI</option>
-                                        </Select>
-                                    </LabelStyle>
-    
-                                
-                                    {servico === 'gerais' && (
-                                        <LabelStyle
-                                            htmlFor="outrosServicosInput">Descreva o serviço:
-                                            <Input
-                                                type="text"
-                                                id="outrosServicosInput"
-                                                value={outrosServicos}
-                                                onChange={handleOutrosServicosChange}
-                                            />
-                                        </LabelStyle>
-                                    )}
+                                <Label>Confirmação da Senha
+                                    <Input type="password" />
+                                </Label>
+                            </GridItem>
+                            
+                            <GridItem  w='35vw' h='10vh' 
+                             colStart={2} colEnd={2}
+                             rowSpan={1}
+                            >
+                                <Label>Nome
+                                    <Input type="text" />
+                                </Label>
 
-                                </DivStyle> 
+                                <Label>Data de Nascimento
+                                    <Input type="date" />
+                                </Label>
+                                <Label htmlFor="servico">Categoria
+                                    <Select id="servico" value={servico} onChange={handleChange} type='text'>
+                                        <option value="gerais" type='text'>Outros serviços gerais</option>
+                                        <option value="ti" type='text'>Técnico TI</option>
+                                    </Select>
+                                </Label >
+                                {/* {servico === 'gerais' && (
+                                    <Label htmlFor="outrosServicosInput">Descreva o serviço:
+                                        <InputCategory
+                                            type="text"
+                                            id="outrosServicosInput"
+                                            value={outrosServicos}
+                                            onChange={handleOutrosServicosChange}
+                                        />
+                                    </Label>
 
-                                    <Button value="Cadastrar" type="submit" />
-                                    <Entrar>
-                                        <p>Você ja tem uma conta?</p>
+                                )} */}
+                            </GridItem>
+
+                            <GridItem  
+                               colStart={1} colEnd={2}
+                               rowSpan={2}
+
+                            w='35vw' h='5vh' 
+                            >
+                                {servico === 'gerais' && (
+                                    <Label htmlFor="outrosServicosInput">Descreva o serviço:
+                                        <InputCategory
+                                            type="text"
+                                            id="outrosServicosInput"
+                                            value={outrosServicos}
+                                            onChange={handleOutrosServicosChange}
+                                        />
+                                    </Label>
+
+                                )}
+                            </GridItem>
+
+                            <GridItem w='35vw' h='20vh'
+                             justifyItems="center"
+                             alignItems="center"
+                            colStart={1} colEnd={2}
+                            rowSpan={3}
+                            // colSpan={4}
+                            >
+                                <Button value="Cadastrar" type="submit">Cadastrar</Button>
+
+                                <Entrar>
+                                    <Text>Você ja tem uma conta?
                                         <LinkA> Entrar</LinkA>
-                                    </Entrar>
-                                    <Entrar>
-                                        <p>Quer contratar?</p>
+                                    </Text>
+                                </Entrar>
+
+                                <Entrar>
+                                    <Text>Quer contratar?
                                         <LinkA> Cadastre-se </LinkA>
-                                    </Entrar>
-                            </ContactForm>
+                                    </Text>
+                                </Entrar>
+                            </GridItem>
+                        </Grid>
+                        {/* </Div> */}
 
 
+
+                        {/* </ContactForm> */}
 
                     </Container>
                 </Main>
             </Background>
->>>>>>> 3d63ad885631afcbd641f813fc90f3180f9aa823
+
         </>
 
     )

@@ -6,15 +6,11 @@ import fundo from '../../assets/fundo.png';
 export const Background = styled.div`
     background-image: url(${fundo});
     background-repeat: no-repeat;
-    background-size: cover;
-<<<<<<< HEAD
+    background-size: 100%;
     color:  rgba(14, 6, 58, 0.651);
-    height: 100%;
+    height: 100vh;
     width: 100vw;
-=======
-    min-height: 100vh;
-    /* width: 100%; */
->>>>>>> 3d63ad885631afcbd641f813fc90f3180f9aa823
+
 
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
@@ -22,15 +18,9 @@ export const Background = styled.div`
 `
 
 export const Main = styled.main`
-<<<<<<< HEAD
     margin-top: 5vh;
     margin-bottom: 5vh;
-    height: 10%;
     width: 80%;
-=======
-    height: 80vh;
-    width: 80vw;
->>>>>>> 3d63ad885631afcbd641f813fc90f3180f9aa823
 
     background-color: rgba(255, 255, 255, 0.1) /* Cor preta com 50% de transparência */;
     backdrop-filter: blur(40px); /* Efeito de desfoque */
@@ -39,59 +29,24 @@ export const Main = styled.main`
 `
 
 export const Container = styled.section`
-<<<<<<< HEAD
-    height: 100%;
-    padding: 0vh 8vw 0vh 8vw;
-=======
-    /* height: 100vh; */
-    padding: 0vh 8vw 0vh 8vw; 
->>>>>>> 3d63ad885631afcbd641f813fc90f3180f9aa823
-`
+    /* height: 80vh; */
+    /* padding: 0vh 8vw 0vh 8vw; */
+` 
 
 export const ContactForm = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
     /* padding: 0vh 8vw 0vh 8vw; */
     gap: 1rem;
 
-<<<<<<< HEAD
-    height: 100%;
-
 `
+
+
 
 export const Div = styled.div`
-
-=======
-    /* height: 100vh; */
-
-`
-
-export const DivStyle = styled.div`
-    display: flex;
-    flex-direction: row;
-    width: 30vw;
-    flex-wrap: wrap; 
-`
-
-export const LabelStyle = styled.label`
-    /* input[type="text"],
-    input[type="password"],
-    input[type="date"] 
-    color: #FFFFFF;
-    text-indent: 1vw; */
-
-    align-self: flex-start;
-
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    color:#FFFFFF;
-    
-
-
->>>>>>> 3d63ad885631afcbd641f813fc90f3180f9aa823
-
+    gap: 6%;
 `
 
 
@@ -109,7 +64,9 @@ export const Title = styled.h1`
 `
 
 export const Label = styled.label`
-    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+
 
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -137,8 +94,31 @@ export const Input = styled.input`
 
 `
 
+export const InputCategory = styled.input`
+    width: 30vw;
+    height: 5vh;
+    margin-bottom: 60vh;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    background: rgba(0, 0, 0, 0.11);
+    border-radius: 4px;
+    border: none;
+    color: #FFFFFF;
+    text-indent: 1vw;
+
+    ::placeholder {
+       color: #800075;
+   }
+   
+
+`
+
+
+
 export const Select = styled.select`
-    width: 50vw;
+    width: 30vw;
     height: 4.5vh;
     margin-bottom: 2vh;
 
@@ -151,9 +131,10 @@ export const Select = styled.select`
 
 `
 
-export const Button = styled.input`
+export const Button = styled.button`
     width: 45%;
-    height: 3.5%;
+    height: 6vh;
+    margin-top: 5vh;
     
     font-family: 'Poppins', sans-serif;
     background: rgba(255, 255, 255, 0.9);
@@ -173,7 +154,7 @@ export const Text = styled.p`
     color: rgba(255, 255, 255, 0.9);
 `
 
-export const LinkA = styled.a`
+export const LinkA = styled.button`
     text-decoration: underline;
     font-family: 'Poppins', sans-serif;
     color: rgba(255, 255, 255, 0.9);
