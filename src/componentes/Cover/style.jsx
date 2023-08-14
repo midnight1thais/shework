@@ -26,10 +26,11 @@ export const TitleDiv = styled.div`
 export const Title = styled.h1`
     color: #3D548D;
     font-family: 'Roboto';
-    font-size: 120px;
+    font-size: 110px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    text-shadow: inset 0px 0px 10px rgba(0, 0, 0, 2);
 `
 
 export const Description = styled.p`
