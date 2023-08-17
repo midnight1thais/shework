@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, GridItem } from '@chakra-ui/react'
-import { Background, Container, Div, Main, Title, Input, Select, ContactForm, Button, LinkA, Entrar, Label, Text, InputCategory } from './style'
+import { Background, Container, Main, Title, Input, Select, Button, LinkA, Entrar, Label, Text, InputCategory } from './style'
 
 function RegisterMain() {
 
@@ -25,18 +25,24 @@ function RegisterMain() {
                 <Main>
                     <Container>
                         <Title>Cadastro</Title>
-                        {/* <ContactForm> */}
-                        {/* <Div> */}
-                        <Grid templateColumns='repeat(2, 1fr)' 
-                         templateRows='repeat(3, 1fr)'
-                         h='60vh'
-                        bg={'red'}
-                        gap={0.5} >
+                        <Grid 
+                            templateColumns='repeat(2, 1fr)' 
+                            templateRows='repeat(3, 1fr)'
+                            h='60vh'
+                            bg={'red'}
+                            gap={0.5}
+                            justifyContent="center"  
+                            alignItems="center" 
+                        >
 
-                            <GridItem w='35vw' colSpan={2}
-                            colStart={1} colEnd={1}
-                             rowSpan={1}
-                            h='30vh'>
+                            <GridItem 
+                            // w='35vw'
+                                colSpan={2}
+                                colStart={1} colEnd={1}
+                                rowSpan={1}
+                                bg="yellow"
+                                h='30vh'
+                            >
 
                                 <Label>E-mail
                                     <Input type="text" />
@@ -51,9 +57,11 @@ function RegisterMain() {
                                 </Label>
                             </GridItem>
                             
-                            <GridItem  w='35vw' h='10vh' 
-                             colStart={2} colEnd={2}
-                             rowSpan={1}
+                            <GridItem 
+                                bg="blue" 
+                                h='30vh' 
+                                colStart={2} colEnd={2}
+                                rowSpan={1}
                             >
                                 <Label>Nome
                                     <Input type="text" />
@@ -68,24 +76,16 @@ function RegisterMain() {
                                         <option value="ti" type='text'>Técnico TI</option>
                                     </Select>
                                 </Label >
-                                {/* {servico === 'gerais' && (
-                                    <Label htmlFor="outrosServicosInput">Descreva o serviço:
-                                        <InputCategory
-                                            type="text"
-                                            id="outrosServicosInput"
-                                            value={outrosServicos}
-                                            onChange={handleOutrosServicosChange}
-                                        />
-                                    </Label>
-
-                                )} */}
                             </GridItem>
 
-                            <GridItem  
-                               colStart={1} colEnd={2}
-                               rowSpan={2}
-
-                            w='35vw' h='5vh' 
+                            <GridItem 
+                                bg={'orange'} 
+                                colStart={1} colEnd={3}
+                                rowSpan={2}
+                                w='30vw'
+                                h='10vh' 
+                                justifySelf="center"
+                                alignItems="center"
                             >
                                 {servico === 'gerais' && (
                                     <Label htmlFor="outrosServicosInput">Descreva o serviço:
@@ -100,12 +100,13 @@ function RegisterMain() {
                                 )}
                             </GridItem>
 
-                            <GridItem w='35vw' h='20vh'
-                             justifyItems="center"
-                             alignItems="center"
-                            colStart={1} colEnd={2}
-                            rowSpan={3}
-                            // colSpan={4}
+                            <GridItem 
+                            colStart={1} colEnd={3}
+                            rowSpan={2}
+                            w='50vw'
+                            bg={'orange'}
+                            justifySelf="center"
+                            alignItems="center"
                             >
                                 <Button value="Cadastrar" type="submit">Cadastrar</Button>
 
@@ -122,11 +123,6 @@ function RegisterMain() {
                                 </Entrar>
                             </GridItem>
                         </Grid>
-                        {/* </Div> */}
-
-
-
-                        {/* </ContactForm> */}
 
                     </Container>
                 </Main>

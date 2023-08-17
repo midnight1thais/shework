@@ -5,11 +5,11 @@ import fundo from '../../assets/fundo.png';
 
 export const Background = styled.div`
     background-image: url(${fundo});
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-size: 100%;
     color:  rgba(14, 6, 58, 0.651);
-    height: 100vh;
-    width: 100vw;
+    /* height: 100%; */
+    width: 100%;
 
 
     display: flex;
@@ -97,7 +97,6 @@ export const Input = styled.input`
 export const InputCategory = styled.input`
     width: 30vw;
     height: 5vh;
-    margin-bottom: 60vh;
 
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
