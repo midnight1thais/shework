@@ -107,7 +107,7 @@ export const InputCategory = styled.input`
     color: #FFFFFF;
     text-indent: 1vw;
 
-    ::placeholder {
+    &::placeholder {
        color: #800075;
    }
    
