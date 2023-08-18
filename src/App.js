@@ -3,17 +3,16 @@ import StyledGlobal from "./styledGlobal";
 import { ChakraProvider } from '@chakra-ui/react'
 
 // import Login from './pagina/Login/Login';
-import Register from './pagina/Register/Register';
-import Header from './componentes/Header/Header';
-import Cover from './componentes/HomeCover/HomeCover'
+// import Register from './pagina/Register/Register';
+import Home from './pagina/Home/Home'
+
 
 function App() {
   return (
     <>
       <ChakraProvider>
         <StyledGlobal />
-        <Header/>
-        <Cover/>
+        <Home/>
         {/* <Register /> */}
         {/* <Login/> */}
       </ChakraProvider>
