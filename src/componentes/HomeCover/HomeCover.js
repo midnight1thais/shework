@@ -2,7 +2,7 @@ import React from 'react';
 import { Background, Description, Title, TitleDiv } from './style';
 
 
-function Cover() {
+function HomeCover() {
     return(
         <Background>
             <TitleDiv>
@@ -21,4 +21,4 @@ function Cover() {
     )
 }
 
-export default Cover
+export default HomeCover
