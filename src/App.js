@@ -3,7 +3,7 @@ import StyledGlobal from "./styledGlobal";
 import { ChakraProvider } from '@chakra-ui/react'
 
 // import Login from './pagina/Login/Login';
-// import Register from './pagina/Register/Register';
+import Register from './pagina/Register/Register';
 import Home from './pagina/Home/Home'
 
 
