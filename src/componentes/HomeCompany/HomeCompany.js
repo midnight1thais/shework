@@ -3,7 +3,8 @@ import { ContainerCarousel, ContainerCompany, ContainerPubli, Title } from "./st
 function HomeCompany(){ 
     return(
         <ContainerCompany>
-            <Title>Faça parte da nossa rede de oportunidades</Title>
+            <Title>Faça parte da nossa rede de</Title>
+            <Title>oportunidades</Title>
             <ContainerCarousel>
                 carrossel
             </ContainerCarousel>

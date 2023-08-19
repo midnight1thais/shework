@@ -6,10 +6,18 @@ export const ContainerCompany = styled.section`
     align-items: center;
     height: 100vh;
     background-color: blue;
+    margin-top: 8vh;
 `
 
 export const Title = styled.h1`
-    color: red;
+
+    color: #000;
+    text-align: center;
+    font-family: 'Source Sans 3';
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 78.125%;
 
 `
 
