@@ -8,7 +8,7 @@ export const Background = styled.div`
     /* background-repeat: no-repeat; */
     background-size: 100%;
     color:  rgba(14, 6, 58, 0.651);
-    /* height: 100%; */
+    height: 100vh;
     width: 100%;
 
 
