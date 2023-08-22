@@ -1,2 +1,8 @@
+Chakra
 
-npm install @mui/material @mui/styled-engine-sc styled-components
+npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
+
+
+Carousel
+
+npm install --save react-elastic-carousel
