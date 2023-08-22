@@ -44,7 +44,7 @@ export const LoginButton = styled.button`
 export const RegisterButton = styled.button`
     width: 10vw;
     height: 5vh;
-    margin-top: 2vh;
+    margin-top: 2.5vh;
    
 
     background-color: #6A84E0;

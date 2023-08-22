@@ -6,7 +6,7 @@ export const Background = styled.div`
     background-image: url(${MulherFundo});
     background-repeat: no-repeat;
     color:  rgba(14, 6, 58, 0.651);
-    height: 200vh;
+    height: 173vh;
     width: 100%;
 
 
