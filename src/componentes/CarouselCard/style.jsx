@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
+
 export const ContainerCard = styled.div`
-    display: ${props => props.isVisible ? "block" : "none"};
-    width: 344px;
-    height: 311px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4vh;
+    gap: 4vh;
+
+    width: 23vw;
+    height: 40vh;
     flex-shrink: 0;
 
     border-radius: 16px;
@@ -13,6 +18,10 @@ export const ContainerCard = styled.div`
 `
 
 export const Icon = styled.img`
+    display: flex;
+    align-self: center;
+    margin-top: 2vh;
+    
     width: 165px;
     height: 140px;
     flex-shrink: 0;
