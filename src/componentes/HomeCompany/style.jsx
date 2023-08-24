@@ -6,7 +6,7 @@ export const ContainerCompany = styled.section`
     align-items: center;
     height: 100vh;
     margin-top: 4vh;
-    background-color: blue;
+    background-color: #0000ff46;
 `
 
 export const Title = styled.h1`
