@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import CarouselCard from "../CarouselCard/CarouselCard";
 import Logo from "../../assets/LogoCompany.png";
-import { ButtonBack, ButtonNext, ContainerCards, ContainerCarousel } from "./style";
+import { ArrowBack, ArrowNext, ButtonBack, ButtonNext, ContainerCards, ContainerCarousel } from "./style";
+import seta from '../../assets/seta.svg'
 
 function CompanyCarousel() {
   const divs = [
@@ -28,7 +29,9 @@ function CompanyCarousel() {
 
   return (
     <ContainerCarousel>
-      <ButtonBack onClick={handleClickPrev}>voltar</ButtonBack>
+      <ButtonBack onClick={handleClickPrev}>
+        <ArrowBack src={seta} alt=''/>
+      </ButtonBack>
       <ContainerCards>
         {[currentIndex, (currentIndex + 1) % divs.length, (currentIndex + 2) % divs.length].map((cardIndex) => (
           <CarouselCard
@@ -40,7 +43,9 @@ function CompanyCarousel() {
           />
         ))}
       </ContainerCards>
-      <ButtonNext onClick={handleClickNext}>proximo</ButtonNext>
+      <ButtonNext onClick={handleClickNext}>
+        <ArrowNext src={seta} alt=''/>
+      </ButtonNext>
     </ContainerCarousel>
   );
 }
