@@ -4,9 +4,10 @@ export const ContainerCompany = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: 150vh;
     margin-top: 4vh;
-    background-color: #0000ff46;
+    margin-bottom: 4vh;
+    background: linear-gradient(to bottom, white 24%, #3D548D 24%);
 `
 
 export const Title = styled.h1`
@@ -26,5 +27,11 @@ export const ContainerCarousel = styled.div`
 `
 
 export const ContainerPubli = styled.div`
-   display: flex; 
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   margin-top: 4vh;
+  
+   width: 100%;
+    
 `

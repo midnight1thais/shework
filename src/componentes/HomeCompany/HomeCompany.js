@@ -1,5 +1,6 @@
 import { ContainerCarousel, ContainerCompany, ContainerPubli, Title } from "./style";
 import CompanyCarousel from "../CompanyCarousel/CompanyCarousel";
+import CompanyPubli from "../CompanyPubli/CompanyPubli";
 
 function HomeCompany(){ 
 
@@ -12,7 +13,7 @@ function HomeCompany(){
                <CompanyCarousel/>
             </ContainerCarousel>
             <ContainerPubli>
-                publicações
+                <CompanyPubli/>
             </ContainerPubli>
         </ContainerCompany>
     )
