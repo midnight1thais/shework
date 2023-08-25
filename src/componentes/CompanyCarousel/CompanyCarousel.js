@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CarouselCard from "../CarouselCard/CarouselCard";
+import CarouselCard from "../CompanyCard/CompanyCard"
 import Logo from "../../assets/LogoCompany.png";
 import { ArrowBack, ArrowNext, ButtonBack, ButtonNext, ContainerCards, ContainerCarousel } from "./style";
 import seta from '../../assets/seta.svg'
