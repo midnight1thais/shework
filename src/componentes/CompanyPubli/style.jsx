@@ -79,4 +79,5 @@ export const LinkA = styled.button`
 
 export const ContainerRight = styled.div`
     width: 50%;
+    margin-top: 5vh;
 `
