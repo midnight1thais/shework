@@ -1,10 +1,12 @@
 import React from 'react';
+import HomeHeader from '../HomeHeader/HomeHeader';
 import { Background, Description, Title, TitleDiv } from './style';
 
 
 function HomeCover() {
     return(
         <Background>
+            <HomeHeader/>
             <TitleDiv>
                 <Title>Empregando</Title>
                 <Title>Mulheres</Title>

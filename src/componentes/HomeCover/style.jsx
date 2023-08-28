@@ -11,8 +11,7 @@ export const Background = styled.div`
 
 
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    flex-direction: column;
 `
 
 export const TitleDiv = styled.div`
@@ -20,7 +19,8 @@ export const TitleDiv = styled.div`
     flex-direction: column;
     justify-content: flex-end;
 
-    margin-left: 45%;
+    margin-left: 48%;
+    margin-top: 60vh;
 `
 
 export const Title = styled.h1`
