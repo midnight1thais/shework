@@ -6,8 +6,7 @@ function HomePerson(){
 
     return(
         <ContainerPerson>
-            <Title>Faça parte da nossa rede de</Title>
-            <Title>oportunidades</Title>
+            <Title>Impulsione sua carreira</Title>
             <ContainerCarousel>
                <PersonCarousel/>
             </ContainerCarousel>

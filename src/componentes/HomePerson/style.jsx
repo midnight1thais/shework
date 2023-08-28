@@ -7,18 +7,21 @@ export const ContainerPerson = styled.section`
     height: 150vh;
     margin-top: 4vh;
     margin-bottom: 4vh;
-    background: linear-gradient(to bottom, white 24%, #3D548D 24%);
+    background: purple;
 `
 
 export const Title = styled.h1`
+    margin-top: 2vh;
+    margin-bottom: 3vh;
 
     color: #000;
     text-align: center;
     font-family: 'Source Sans 3';
-    font-size: 400%;
+    font-size: 300%;
     font-style: normal;
     font-weight: 400;
     line-height: 7vh;
+
 
 `
 
