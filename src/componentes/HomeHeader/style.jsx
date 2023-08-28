@@ -7,8 +7,9 @@ export const HeaderGlobal = styled.header`
     
     height: 10vh;
     width: 100%;
-
-    background-color: purple;
+    
+    background-color: transparent;
+    
 `
 
 export const Menu = styled.ul`
