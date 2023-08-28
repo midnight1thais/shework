@@ -1,11 +1,18 @@
 import React from "react";
-import { ContainerCard, Icon, Text } from "./style";
+import { ContainerAll, ContainerCard, ContainerTop, Date, Description, Icon, Service, Title } from "./style";
 
-function PersonCard({ company, iconSrc, text, isVisible }) {
+function PersonCard({ date, service, title, descricao, iconSrc, isVisible }) {
   return (
     <ContainerCard isVisible={isVisible}>
-      <Icon src={iconSrc} alt={`${company} logo`} />
-      <Text>{text}</Text>
+      <Icon src={iconSrc} alt=''/>
+      <ContainerAll>
+        <ContainerTop>
+          <Date>{date}</Date>
+          <Service>{service}</Service>
+        </ContainerTop>
+        <Title>{title}</Title>
+        <Description>{descricao}</Description>
+      </ContainerAll>
     </ContainerCard>
   );
 }
