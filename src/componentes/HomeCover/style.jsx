@@ -20,7 +20,7 @@ export const TitleDiv = styled.div`
     justify-content: flex-end;
 
     margin-left: 48%;
-    margin-top: 60vh;
+    margin-top: 55vh;
 `
 
 export const Title = styled.h1`
