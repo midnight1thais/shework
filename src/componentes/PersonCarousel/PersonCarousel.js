@@ -1,14 +1,30 @@
 import React, { useState } from "react";
-import CarouselCard from "../CompanyCard/CompanyCard";
 import Logo from "../../assets/LogoCompany.png";
+import PersonCard from "../PersonCard/PersonCard";
 import { ContainerCards, ContainerCarousel, DotContainer, Dot, ActiveDot } from "./style";
 
 function CompanyCarousel() {
   const divs = [
-    { company: "numero 1", text: "Nome empresa 1" },
-    { company: "numero 2", text: "Nome empresa 2" },
-    { company: "numero 3", text: "Nome empresa 3" },
-    { company: "numero 4", text: "Nome empresa 4" },
+    { data: "6 Novembro 2022", 
+    serviço: "outros", 
+    titulo:"Maria da Silva", 
+    descricao: "Tenho 21 anos e estou procurando vaga para tercerizados , faço limpeza e..." 
+    },
+    { data: "3 Dezembro 2022", 
+    serviço: "Técnico em TI", 
+    titulo:"Juliana de Mello", 
+    descricao: "Tenho 21 anos e estou procurando vaga para tercerizados , faço limpeza e..." 
+    },
+    { data: "17 Agosto 2023", 
+    serviço: "Técnico em TI", 
+    titulo:"Andressa de Carvalho", 
+    descricao: "Tenho 21 anos e estou procurando vaga para tercerizados , faço limpeza e..." 
+    },
+    { data: "21 Julho 2023", 
+    serviço: "Técnico em TI", 
+    titulo:"Andressa de Carvalho", 
+    descricao: "Tenho 21 anos e estou procurando vaga para tercerizados , faço limpeza e..." 
+    },
     // Add more items as needed
   ];
 
@@ -29,11 +45,13 @@ function CompanyCarousel() {
     <ContainerCarousel>
       <ContainerCards>
         {[currentIndex, (currentIndex + 1) % divs.length].map((cardIndex) => (
-          <CarouselCard
+          <PersonCard
             key={cardIndex}
-            company={divs[cardIndex].company}
+            data={divs[cardIndex].data}
+            serviço={divs[cardIndex].serviço}
             iconSrc={Logo}
-            text={divs[cardIndex].text}
+            titulo={divs[cardIndex].titulo}
+            descricao={divs[cardIndex].descricao}
             isVisible={true}
           />
         ))}
