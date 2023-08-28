@@ -1,29 +1,29 @@
 import React, { useState } from "react";
-import Logo from "../../assets/LogoCompany.png";
+import ImgWoman from '../../assets/ImgProfileWoman.jpg'
 import PersonCard from "../PersonCard/PersonCard";
 import { ContainerCards, ContainerCarousel, DotContainer, Dot, ActiveDot } from "./style";
 
 function CompanyCarousel() {
   const divs = [
-    { data: "6 Novembro 2022", 
-    serviço: "outros", 
-    titulo:"Maria da Silva", 
-    descricao: "Tenho 21 anos e estou procurando vaga para tercerizados , faço limpeza e..." 
+    { date: "6 Novembro 2022", 
+    service: "Serviços Gerais", 
+    title:"Maria da Silva", 
+    descricao: "Tenho 21 anos e estou procurando vaga para serviços gerais , faço limpeza e..." 
     },
-    { data: "3 Dezembro 2022", 
-    serviço: "Técnico em TI", 
-    titulo:"Juliana de Mello", 
-    descricao: "Tenho 21 anos e estou procurando vaga para tercerizados , faço limpeza e..." 
+    { date: "3 Dezembro 2022", 
+    service: "Técnico em TI", 
+    title:"Juliana de Mello", 
+    descricao: "Tenho 21 anos e estou procurando vaga para técnico em TI , faço limpeza e..." 
     },
-    { data: "17 Agosto 2023", 
-    serviço: "Técnico em TI", 
-    titulo:"Andressa de Carvalho", 
-    descricao: "Tenho 21 anos e estou procurando vaga para tercerizados , faço limpeza e..." 
+    { date: "17 Agosto 2023", 
+    service: "Técnico em TI", 
+    title:"Andressa de Carvalho", 
+    descricao: "Tenho 21 anos e estou procurando vaga para serviços gerais , faço limpeza e..." 
     },
-    { data: "21 Julho 2023", 
-    serviço: "Técnico em TI", 
-    titulo:"Andressa de Carvalho", 
-    descricao: "Tenho 21 anos e estou procurando vaga para tercerizados , faço limpeza e..." 
+    { date: "21 Julho 2023", 
+    service: "Serviços Gerais", 
+    title:"Andressa de Lima", 
+    descricao: "Tenho 21 anos e estou procurando vaga para técnico em TI , faço limpeza,.........." 
     },
     // Add more items as needed
   ];
@@ -47,10 +47,10 @@ function CompanyCarousel() {
         {[currentIndex, (currentIndex + 1) % divs.length].map((cardIndex) => (
           <PersonCard
             key={cardIndex}
-            data={divs[cardIndex].data}
-            serviço={divs[cardIndex].serviço}
-            iconSrc={Logo}
-            titulo={divs[cardIndex].titulo}
+            date={divs[cardIndex].date}
+            service={divs[cardIndex].service}
+            iconSrc={ImgWoman}
+            title={divs[cardIndex].title}
             descricao={divs[cardIndex].descricao}
             isVisible={true}
           />

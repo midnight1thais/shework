@@ -21,8 +21,8 @@ export const ButtonNext = styled.button`
 
 export const DotContainer = styled.div`
     display: flex;
-    justify-content: space-between;
-    margin-top: 1vh; /* Espaçamento do ContainerCards */
+    gap: 8vw;
+    margin-top: 3vh; 
 `
 
 export const ContainerCards = styled.div`
