@@ -4,10 +4,9 @@ export const ContainerPerson = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 150vh;
+    height: 100vh;
     margin-top: 4vh;
     margin-bottom: 4vh;
-    background: purple;
 `
 
 export const Title = styled.h1`
@@ -25,15 +24,29 @@ export const Title = styled.h1`
 
 `
 
+export const Explanation = styled.p`
+    margin-bottom: 4vh;
+
+    color: rgba(0, 0, 0, 0.49);
+    font-family: 'Work Sans';
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    
+`
+
 export const ContainerCarousel = styled.div`
     display: flex;
 `
 
 export const ContainerPubli = styled.div`
    display: flex;
-   flex-direction: row;
+   flex-direction: column;
    justify-content: space-between;
-   margin-top: 4vh;
+   align-items: center;
+   margin-top: 15vh;
+   margin-right: 7vw;
   
    width: 100%;
     
