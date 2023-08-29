@@ -4,7 +4,8 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 // import Login from './pagina/Login/Login';
 // import Register from './pagina/Register/Register';
-import Home from './pagina/Home/Home'
+// import Home from './pagina/Home/Home'
+import PubliPerson from './pagina/PubliPerson/PubliPerson';
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
     <>
       <ChakraProvider>
         <StyledGlobal />
-        <Home/>
+        <PubliPerson/>
+        {/* <Home/> */}
         {/* <Register /> */}
         {/* <Login/> */}
       </ChakraProvider>
