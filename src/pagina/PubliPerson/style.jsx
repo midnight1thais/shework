@@ -49,6 +49,24 @@ export const ContainerSearch = styled.div`
     background: #345274;
 `
 
+export const ComboBoxContainer = styled.div`
+  display: inline-block;
+  margin: 20px;
+`;
+
+export const ComboBox = styled.select`
+  padding: 8px;
+  width: 15vw;
+  font-size: 16px;
+
+  border-radius: 7px;
+`;
+
+export const OptionSelected = styled.option`
+   
+`
+
+
 export const ContainerInput = styled.div`
     display: flex;
     flex-direction: row;
@@ -74,4 +92,10 @@ export const InputSearch = styled.input`
     outline: none;
     background-color: transparent;
 
+`
+
+export const ContainerCarousel = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
