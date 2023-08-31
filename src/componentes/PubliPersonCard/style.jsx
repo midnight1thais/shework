@@ -46,9 +46,13 @@ export const Icon = styled.img`
     margin-top: 2vh;
     margin-left: 2vh;
     
-    width: 10vw;
+    width: 12.5vw;
     height: 25vh;
     flex-shrink: 0;
+
+    border-radius: 16px;
+    background: #FFF;
+    box-shadow: 0px 4px 10px 0px #000;
 `
 
 export const Description = styled.p`
