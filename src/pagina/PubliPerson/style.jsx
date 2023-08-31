@@ -4,7 +4,7 @@ export const ContainerHeader = styled.header`
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 15vh;
+    height: 18vh;
     width: 100%;
     gap: 2vh;
     padding-top: 2vh;
