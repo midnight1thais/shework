@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const BodyBack = styled.body`
+export const BodyBack = styled.section`
     display: flex;
     justify-content: center;
     width: 100%;
@@ -83,6 +83,40 @@ export const ContainerLeft = styled.div`
     
     background-color: #ed3957;
 `
+
+export const AddThings = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #5139ed;
+`
+
+export const AddTitle = styled.p`
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+`
+
+export const AddIconButton = styled.button`
+    
+`
+
+export const AddIcon = styled.img`
+    height: 3vh;
+    width: 3vw;
+`
+
+export const ContainerAdd = styled.div`
+    background-color: brown;
+`
+
+export const Popup = styled.div`
+    
+`
+
 
 export const ContainerText = styled.div`
     display: flex;
