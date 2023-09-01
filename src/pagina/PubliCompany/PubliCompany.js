@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import { BigTitle, ComboBox, ComboBoxContainer, ContainerCarousel, ContainerHeader, ContainerInput, ContainerSearch, IconSearch, InputSearch, LittleTitle, OptionSelected } from "./style"
 
 import iconsearch from '../../assets/IconSearch.svg'
-import PubliPersonCard from "../../componentes/PubliPersonCard/PubliPersonCard";
+import PubliCompanyCard from "../../componentes/PubliCompanyCard/PubliCompanyCard";
 
-function PubliPerson(){
+function PubliCompany(){
 
     const [selectedOption, setSelectedOption] = useState('');
 
@@ -62,7 +62,7 @@ function PubliPerson(){
         </ComboBoxContainer>
         </ContainerSearch>
         <ContainerCarousel>
-            <PubliPersonCard/>
+            <PubliCompanyCard/>
         </ContainerCarousel>
         
         
@@ -71,4 +71,4 @@ function PubliPerson(){
     )
 }
 
-export default PubliPerson
+export default PubliCompany
