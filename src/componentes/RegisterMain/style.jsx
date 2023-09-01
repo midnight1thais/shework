@@ -87,10 +87,6 @@ export const Input = styled.input`
     color: #FFFFFF;
     text-indent: 1vw;
 
-    ::placeholder {
-       color: #800075;
-   }
-   
 
 `
 
