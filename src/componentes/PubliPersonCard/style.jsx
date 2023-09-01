@@ -98,3 +98,20 @@ export const LinkA = styled.button`
     font-weight: 400;
     line-height: normal;
 `
+
+export const ContainerImg = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+    gap: 4vh;
+`
+
+export const ButtonRight = styled.button`
+    border-style: none;
+    background-color: transparent;
+    
+`
+export const IconRight = styled.img`
+    display: flex;
+    margin-right: 3vw;
+`
