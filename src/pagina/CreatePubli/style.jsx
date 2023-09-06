@@ -4,7 +4,7 @@ export const BodyBack = styled.section`
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 200vh;
+    height: 215vh;
     background-color: #324176;
 `
 
@@ -12,7 +12,7 @@ export const Main = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 180vh;
+    height: 195vh;
     width: 80vw;
     margin-top: 5vh;
 
@@ -158,6 +158,24 @@ export const ContainerAdd = styled.div`
     height: 15vh;
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.11);
+
+    ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px; /* Ajuste a altura máxima conforme necessário */
+    overflow: auto; /* Adicione uma barra de rolagem quando necessário */
+    }
+
+    li {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #FFFFFF;
+    }
+
+    max-height: 15vh; /* Ajuste a altura máxima conforme necessário */
+    overflow: auto; /* Adicione uma barra de rolagem quando necessário *
 `
 
 export const ContainerText = styled.div`
@@ -169,6 +187,7 @@ export const ContainerBottom = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 6vh;
+    margin-bottom: 4vh;
   
     width: 45vw;
     background-color: green;

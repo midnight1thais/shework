@@ -9,8 +9,28 @@ import CreateModal from '../../componentes/CreateModal/CreateModal';
 function CreatePubli() {
 
     const [openModal, setOpenModal] = useState(false)
-    const [cursos, setCursos] = useState([]);
 
+    const [competencias, setCompetencias] = useState([]);
+    const [experiencias, setExperiencias] = useState([]);
+    const [linguas, setLinguas] = useState([]);
+
+    const handleAddItem = (item, tipoLista) => {
+        switch (tipoLista) {
+            case "competencias":
+                setCompetencias([...competencias, item]);
+                break;
+            case "experiencias":
+                setExperiencias([...experiencias, item]);
+                break;
+            case "linguas":
+                setLinguas([...linguas, item]);
+                break;
+            default:
+                break;
+        }
+        setOpenModal(false);
+    };
+    
     return(
         <>
         <BodyBack>
@@ -43,12 +63,17 @@ function CreatePubli() {
                         <AddThings >
                             <AddTitle>Adicionar Competência</AddTitle>
                             <AddIconButton onClick={() => setOpenModal(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
-                            <CreateModal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} addCurso={curso => setCursos([...cursos, curso])} />
+                            <CreateModal  
+                            isOpen={openModal}
+                            setModalOpen={() => setOpenModal(!openModal)}
+                            addCurso={(curso, tipoLista) => handleAddItem(curso, tipoLista)}
+                            tipoLista="competencias"
+                            />
                         </AddThings>
                         
                         <ContainerAdd>
                         <ul>
-                            {cursos.map((curso, index) => (
+                            {competencias.map((curso, index) => (
                             <li key={index}>{curso}</li>
                             ))}
                         </ul>
@@ -59,12 +84,17 @@ function CreatePubli() {
                         <AddThings >
                             <AddTitle>Adicionar Experiência</AddTitle>
                             <AddIconButton onClick={() => setOpenModal(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
-                            <CreateModal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} addCurso={curso => setCursos([...cursos, curso])} />
+                            <CreateModal 
+                            isOpen={openModal}
+                            setModalOpen={() => setOpenModal(!openModal)}
+                            addCurso={(curso, tipoLista) => handleAddItem(curso, tipoLista)}
+                            tipoLista="experiencias"
+                            />
                         </AddThings>
                         
                         <ContainerAdd>
                         <ul>
-                            {cursos.map((curso, index) => (
+                            {experiencias.map((curso, index) => (
                             <li key={index}>{curso}</li>
                             ))}
                         </ul>
@@ -74,12 +104,17 @@ function CreatePubli() {
                         <AddThings >
                             <AddTitle>Adicionar Linguas</AddTitle>
                             <AddIconButton onClick={() => setOpenModal(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
-                            <CreateModal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} addCurso={curso => setCursos([...cursos, curso])} />
+                            <CreateModal
+                            isOpen={openModal}
+                            setModalOpen={() => setOpenModal(!openModal)}
+                            addCurso={(curso, tipoLista) => handleAddItem(curso, tipoLista)}
+                            tipoLista="linguas"
+                            />
                         </AddThings>
                         
                         <ContainerAdd>
                         <ul>
-                            {cursos.map((curso, index) => (
+                            {linguas.map((curso, index) => (
                             <li key={index}>{curso}</li>
                             ))}
                         </ul>
@@ -91,12 +126,17 @@ function CreatePubli() {
                         <AddThings >
                             <AddTitle>Adicionar Competência</AddTitle>
                             <AddIconButton onClick={() => setOpenModal(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
-                            <CreateModal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} addCurso={curso => setCursos([...cursos, curso])} />
+                            <CreateModal 
+                            isOpen={openModal}
+                            setModalOpen={() => setOpenModal(!openModal)}
+                            addCurso={(curso, tipoLista) => handleAddItem(curso, tipoLista)}
+                            tipoLista="competencias"
+                            />
                         </AddThings>
                         
                         <ContainerAdd>
                         <ul>
-                            {cursos.map((curso, index) => (
+                            {competencias.map((curso, index) => (
                             <li key={index}>{curso}</li>
                             ))}
                         </ul>
