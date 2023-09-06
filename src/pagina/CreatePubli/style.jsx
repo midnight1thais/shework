@@ -4,12 +4,15 @@ export const BodyBack = styled.section`
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 120vh;
+    height: 200vh;
     background-color: #324176;
 `
 
 export const Main = styled.main`
-    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 180vh;
     width: 80vw;
     margin-top: 5vh;
 
@@ -27,6 +30,9 @@ export const ContainerGlobalTop = styled.section`
 `
 
 export const TitleGlobal = styled.h1`
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+
     color: #FFF;
     text-align: center;
     font-family: 'Work Sans';
@@ -34,11 +40,18 @@ export const TitleGlobal = styled.h1`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    
 `
 
 export const ContainerRight = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+
+    gap: 4vh;
+    margin-left: 3vw;
+    margin-right: 10vw;
 
     background-color: yellow;
 `
@@ -51,6 +64,37 @@ export const  SubTitle = styled.h1`
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.32px;
+    text-align: center;
+
+`
+
+export const  SubTitleLeft = styled.h1`
+    margin-bottom: 6vh;
+
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.32px;
+    text-align: center;
+
+`
+
+export const  SubTitleLeft2 = styled.h1`
+    margin-top: 4vh;
+    margin-bottom: 6vh;
+
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.32px;
+    text-align: center;
+
 `
 
 export const Label = styled.label`
@@ -80,7 +124,7 @@ export const Input = styled.input`
 
 `
 export const ContainerLeft = styled.div`
-    
+    width: 30vw;
     background-color: #ed3957;
 `
 
@@ -110,13 +154,11 @@ export const AddIcon = styled.img`
 `
 
 export const ContainerAdd = styled.div`
-    background-color: brown;
+    margin-top: 0.5%;
+    height: 15vh;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.11);
 `
-
-export const Popup = styled.div`
-    
-`
-
 
 export const ContainerText = styled.div`
     display: flex;
@@ -124,13 +166,37 @@ export const ContainerText = styled.div`
 `
 
 export const ContainerBottom = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    margin-top: 6vh;
+  
+    width: 45vw;
     background-color: green;
 `
 
-export const ContainerFooter = styled.footer`
-    
+export const ContainerFooter = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: 1vh;
+
+    width: 80vw;
     background-color: blue;
 
 `
 
+export const ButtonBack = styled.button`
+   
+`
+
+export const IconBack = styled.img`
+    height: 4vh;
+    width: 4vw;
+`
+
+export const ButtonForward = styled.button`
+    height: 4vh;
+    width: 8vw;
+    background-color: #fff;
+    border-radius: 15px;
+`
