@@ -7,7 +7,7 @@ export const Background = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgb(0,0,0, 0.7);
+    background-color: #1d1d1f88;
     z-index: 1000;
 `
 
@@ -17,13 +17,14 @@ export const ContainerModal = styled.div`
     flex-direction: column;
 
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    margin-top: 15vh;
+    margin-left: 15vw;
     padding: 60px;
     background-color: #324176;
     border-radius: 10px;
     color: black;
+
+    
 
 `
 
