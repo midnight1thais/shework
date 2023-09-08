@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const ContainerExperience = styled.section`
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: 90vh;
     margin-top: 4vh;
     margin-bottom: 4vh;
     background: linear-gradient(to bottom, #D9D9D9 80%, white 50%);
