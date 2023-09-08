@@ -8,22 +8,22 @@ function CompanyCarousel() {
     { date: "6 Novembro 2022", 
     service: "Serviços Gerais", 
     title:"Maria da Silva", 
-    descricao: "Tenho 21 anos e estou procurando vaga para serviços gerais , faço limpeza e..." 
+    descricao: "Tenho 21 anos e estou procurando vaga para serviços" 
     },
     { date: "3 Dezembro 2022", 
     service: "Técnico em TI", 
     title:"Juliana de Mello", 
-    descricao: "Tenho 21 anos e estou procurando vaga para técnico em TI , faço limpeza e..." 
+    descricao: "Tenho 21 anos e estou procurando vaga para técnico" 
     },
     { date: "17 Agosto 2023", 
     service: "Técnico em TI", 
     title:"Andressa de Carvalho", 
-    descricao: "Tenho 21 anos e estou procurando vaga para serviços gerais , faço limpeza e..." 
+    descricao: "Tenho 21 anos e estou procurando vaga para serviços" 
     },
     { date: "21 Julho 2023", 
     service: "Serviços Gerais", 
     title:"Andressa de Lima", 
-    descricao: "Tenho 21 anos e estou procurando vaga para técnico em TI , faço limpeza,.........." 
+    descricao: "Tenho 21 anos e estou procurando vaga para técnico"
     },
     // Add more items as needed
   ];
