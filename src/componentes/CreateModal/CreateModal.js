@@ -3,19 +3,21 @@ import React, {useState} from 'react'
 import { Background, ContainerMid, ContainerModal, ContainerTop, Input, Label, TitleDes} from './style'
 
 function CreateModal({ isOpen, setModalOpen, addCurso, tipoLista}){
-  
+  console.log('função', tipoLista)  
+
   const [nomeCurso, setNomeCurso] = useState(''); // Estado para o nome do curso
-
-  // Função para lidar com a adição do curso
-  const handleAddCurso = () => {
-    if (nomeCurso.trim() !== '') {
-        addCurso(nomeCurso, tipoLista);
-        setModalOpen();
-    }
-};
-
+ 
 
   if (isOpen) {
+  
+      // Função para lidar com a adição do curso
+    const handleAddCurso = () => {
+      if (nomeCurso.trim() !== '') {
+          addCurso(nomeCurso, tipoLista);
+          console.log('handleAddCurso', tipoLista)
+          setModalOpen();
+      }
+    };
     return (
       <Background>
         <ContainerModal>
