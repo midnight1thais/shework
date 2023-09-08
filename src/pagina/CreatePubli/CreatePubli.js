@@ -18,6 +18,7 @@ function CreatePubli() {
         switch (tipoLista) {
             case "competencias":
                 setCompetencias([...competencias, item]);
+                console.log(item)
                 break;
             case "experiencias":
                 setExperiencias([...experiencias, item]);
@@ -59,7 +60,7 @@ function CreatePubli() {
                         </Label>
                     </ContainerRight>
                     <ContainerLeft>
-                        <SubTitleLeft>Competências Técnicas</SubTitleLeft>
+                        <SubTitleLeft>Competências</SubTitleLeft>
                         <AddThings >
                             <AddTitle>Adicionar Competência</AddTitle>
                             <AddIconButton onClick={() => setOpenModal(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>

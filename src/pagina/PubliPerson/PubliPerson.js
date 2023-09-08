@@ -1,73 +1,29 @@
-import React, {useState} from "react";
-import { BigTitle, ComboBox, ComboBoxContainer, ContainerCarousel, ContainerHeader, ContainerInput, ContainerSearch, IconSearch, InputSearch, LittleTitle, OptionSelected } from "./style"
-
-import iconsearch from '../../assets/IconSearch.svg'
-import PubliPersonCard from "../../componentes/PubliPersonCard/PubliPersonCard";
+import { DivLeftA, ImgWoman, SectionGlobal, SectionLeft, SectionRight, SimpleTag, SimpleTagText, TextName } from "./style";
+import ImgWomanIcon from '../../assets/ImgWomanPubliPerson.png'
+import PubliHeader from "../../componentes/PubliHeader/PubliHeader";
+import PubliInfo from "../../componentes/PubliInfo/PubliInfo";
 
 function PubliPerson(){
 
-    const [selectedOption, setSelectedOption] = useState('');
-
-    const options1 = [
-      'Serviços de limpeza',
-      'Cozinheira',
-      'Mecânica',
-      'Costura',
-      'Todos',
-    ];
-
-    const options2 = [
-        'Analista de sistemas de automação',
-        'Desenhista de páginas da internet',
-        'Programador de multimídia',
-        'Monitorador de sistemas',
-        'Todos',
-      ];
-  
-    const handleOptionChange = (event) => {
-      setSelectedOption(event.target.value);
-    };
-
     return(
-        <>
-        <ContainerHeader>
-            <BigTitle>EXPLORE AS PUBLICAÇÕES</BigTitle>
-            <LittleTitle>Compartilhe sua vaga para uma possível contratação</LittleTitle>
-        </ContainerHeader>
+        <SectionGlobal>
+            <SectionLeft>
+                <DivLeftA>
+                    <ImgWoman src={ImgWomanIcon} alt=""/>
+                    <TextName> Maria da Silva </TextName>
+                    <TextName> Cardoso </TextName>
+                    <SimpleTag> 
+                            <SimpleTagText>Brasileira </SimpleTagText>
+                    </SimpleTag>
+                </DivLeftA>
 
-        <ContainerSearch>
-            <ContainerInput>
-                <IconSearch src={iconsearch} alt=""/>
-                <InputSearch placeholder="Search"/>
-            </ContainerInput>
-            <ComboBoxContainer>
-            <ComboBox value={selectedOption} onChange={handleOptionChange}>
-            <OptionSelected value="">Outros Serviços</OptionSelected>
-            {options1.map((option, index) => (
-                <OptionSelected key={index} value={option}>
-                {option}
-                </OptionSelected>
-            ))}
-            </ComboBox>
-        </ComboBoxContainer>
-        <ComboBoxContainer>
-            <ComboBox value={selectedOption} onChange={handleOptionChange}>
-            <OptionSelected value="">Técnico em TI</OptionSelected>
-            {options2.map((option, index) => (
-                <OptionSelected key={index} value={option}>
-                {option}
-                </OptionSelected>
-            ))}
-            </ComboBox>
-        </ComboBoxContainer>
-        </ContainerSearch>
-        <ContainerCarousel>
-            <PubliPersonCard/>
-        </ContainerCarousel>
-        
-        
+            </SectionLeft>
+            <SectionRight>
+                <PubliHeader/>
+                <PubliInfo/>
 
-        </>
+            </SectionRight>
+        </SectionGlobal>
     )
 }
 

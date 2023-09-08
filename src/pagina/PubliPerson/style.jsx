@@ -1,101 +1,66 @@
-import styled from 'styled-components';
+import { styled } from "styled-components";
 
-export const ContainerHeader = styled.header`
+export const SectionGlobal = styled.section`
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 18vh;
+    flex-direction: row;
     width: 100%;
-    gap: 2vh;
-    padding-top: 2vh;
+    height: 300vh;
+`
+
+export const SectionLeft = styled.section`
+    display: flex;
+    background-color: rgba(61, 84, 141, 0.80);
+    width: 30vw;
+    height: 100%;
+    position: relative;
+
+`
+
+export const DivLeftA = styled.div`
+    margin-top: 7vh;
     
-    background-color: rgba(8, 26, 92, 0.61);
-    opacity: 0.8;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `
 
-export const BigTitle = styled.h1`
-    color: #FFF;
-    font-family: 'Roboto';
-    font-size: 55px;
+export const ImgWoman = styled.img`
+    margin-bottom: 3vh;
+    margin-left: 2.3vw;
+    width: 20vw;
+`
+
+export const TextName = styled.h1`
+    margin-left: 2.3vw;
+
+    color: #D9D9D9;
+    font-family: 'Poppins';
+    font-size: 40px;
     font-style: normal;
-    font-weight: 600;
-    line-height: 90.909%;
-    letter-spacing: 5.5px;
+    font-weight: 300;
+    line-height: 125% ;
+`
+export const SimpleTag = styled.div`
+    display: flex;
+    justify-content: right;
+    width: 14.5vw;
+    height: 30px;
+    border-radius: 0px 6px 6px 0px;
+
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.30));
+    opacity: 0.4;
+    background-color: rgba(197, 211, 247, 0.8);
 `
 
-export const LittleTitle = styled.p`
-    color: rgba(255, 255, 255, 0.49);
-    font-family: 'Work Sans';
-    font-size: 20px;
+export const SimpleTagText = styled.p`
+    margin-right: 1vw;
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 19px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    letter-spacing: 0.24px;
+
 `
 
-export const ContainerSearch = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 10vh;
-    width: 70vw;
-    margin-top: 6vh;
-    margin-left: 15vw;
+export const SectionRight = styled.section`
     
-    border-radius: 30px;
-    
-
-    opacity: 0.6;
-    background: #345274;
-`
-
-export const ComboBoxContainer = styled.div`
-  display: inline-block;
-  margin: 20px;
-`;
-
-export const ComboBox = styled.select`
-  padding: 8px;
-  width: 15vw;
-  font-size: 16px;
-
-  border-radius: 7px;
-`;
-
-export const OptionSelected = styled.option`
-   
-`
-
-
-export const ContainerInput = styled.div`
-    display: flex;
-    flex-direction: row;
-    height: 6vh;
-    width: 30vw;
-
-    gap: 2vw;
-    margin-left: 2vw;
-    padding: 10px;
-    align-items: center;
-
-    border-radius: 8px;
-    background-color: white;
-`
-
-export const IconSearch = styled.img`
-    
-`
-
-export const InputSearch = styled.input`
-    width: 15vw;
-    border: none;
-    outline: none;
-    background-color: transparent;
-
-`
-
-export const ContainerCarousel = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 `

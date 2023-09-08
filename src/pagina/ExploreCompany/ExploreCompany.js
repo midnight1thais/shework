@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { BigTitle, ComboBox, ComboBoxContainer, ContainerCarousel, ContainerHeader, ContainerInput, ContainerSearch, IconSearch, InputSearch, LittleTitle, OptionSelected } from "./style"
 
 import iconsearch from '../../assets/IconSearch.svg'
-import PubliCompanyCard from "../../componentes/PubliCompanyCard/PubliCompanyCard";
+import ExploreCompanyCard from "../../componentes/ExploreCompanyCard/ExploreCompanyCard";
 
 function PubliCompany(){
 
@@ -62,7 +62,7 @@ function PubliCompany(){
         </ComboBoxContainer>
         </ContainerSearch>
         <ContainerCarousel>
-            <PubliCompanyCard/>
+            <ExploreCompanyCard/>
         </ContainerCarousel>
         
         

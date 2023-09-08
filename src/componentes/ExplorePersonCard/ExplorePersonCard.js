@@ -3,7 +3,7 @@ import ImgShare from '../../assets/compartilhar.svg'
 import ImgContract from '../../assets/contratar.svg'
 import { ButtonRight, ContainerAll, ContainerCard, ContainerImg, ContainerTop, Date, Description, Icon, IconRight, Service, Title } from "./style";
 
-function PubliPersonCard(){
+function ExplorePersonCard(){
 
     const isVisible = true;
 
@@ -34,4 +34,4 @@ function PubliPersonCard(){
     )
 }
 
-export default PubliPersonCard
+export default ExplorePersonCard
