@@ -48,11 +48,41 @@ export const DivInfo = styled.div`
 export const DivLeftA = styled.div`
     display: flex;
     flex-direction: column;
+    margin-top: 2vh;
+    margin-left: 1.5vw;
+    gap: 2vh;
+`
+
+export const DivTextA = styled.div`
 
 `
+
+export const TextLeft = styled.p`
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.24px;
+    opacity: 0.5;
+`
+
+export const SubTextLeft = styled.p`
+    color: #000;
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.24px;
+`
+
 
 export const DivRightA = styled.div`
     display: flex;
     flex-direction: column;
-
+    margin-left: 10vw;
+    margin-top: 2vh;
+    gap: 2vh;
 `

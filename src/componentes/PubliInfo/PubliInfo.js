@@ -1,4 +1,4 @@
-import { DivIcon, DivInfo, DivLeftA, DivRightA, HeaderInfo, IconProfile, SectionInfo, TextInfo } from "./style";
+import { DivIcon, DivInfo, DivLeftA, DivRightA, DivTextA, HeaderInfo, IconProfile, SectionInfo, SubTextLeft, TextInfo, TextLeft } from "./style";
 import PubliIconProfile from '../../assets/PubliIconProfile.svg'
 
 function PubliInfo(){
@@ -14,10 +14,40 @@ function PubliInfo(){
             </HeaderInfo>
             <DivInfo>
                 <DivLeftA>
-                    
+                    <DivTextA>
+                        <TextLeft>
+                            Data de Nascimento
+                        </TextLeft>
+                        <SubTextLeft>
+                            27 de agosto, 1999
+                        </SubTextLeft>
+                    </DivTextA>
+                    <DivTextA>
+                        <TextLeft>
+                            Cidade e Estado
+                        </TextLeft>
+                        <SubTextLeft>
+                            São Leopoldo, RS
+                        </SubTextLeft>
+                    </DivTextA>
                 </DivLeftA>
                 <DivRightA>
-                    right
+                    <DivTextA>
+                        <TextLeft>
+                            Data de Nascimento
+                        </TextLeft>
+                        <SubTextLeft>
+                            27 de agosto, 1999
+                        </SubTextLeft>
+                    </DivTextA>
+                    <DivTextA>
+                        <TextLeft>
+                            Cidade e Estado
+                        </TextLeft>
+                        <SubTextLeft>
+                            São Leopoldo, RS
+                        </SubTextLeft>
+                    </DivTextA>
                 </DivRightA>
             </DivInfo>
 
