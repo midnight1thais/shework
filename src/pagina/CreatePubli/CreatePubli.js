@@ -8,7 +8,7 @@ import CreateModal from '../../componentes/CreateModal/CreateModal';
 
 function CreatePubli() {
 
-    const [openModal, setOpenModal] = useState(false)
+    const [openModal, setOpenModal] = useState(false);
 
     const [competencias, setCompetencias] = useState([]);
     const [experiencias, setExperiencias] = useState([]);
@@ -22,6 +22,7 @@ function CreatePubli() {
                 break;
             case "experiencias":
                 setExperiencias([...experiencias, item]);
+                console.log('experiencia')
                 break;
             case "linguas":
                 setLinguas([...linguas, item]);
@@ -63,12 +64,22 @@ function CreatePubli() {
                         <SubTitleLeft>Competências</SubTitleLeft>
                         <AddThings >
                             <AddTitle>Adicionar Competência</AddTitle>
-                            <AddIconButton onClick={() => setOpenModal(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
+                            
+                            {!openModal ? (<AddIconButton 
+                            
+                            onClick={() => setOpenModal(true)}
+                            >
+                            <AddIcon src={AddIconImg} alt=''/></AddIconButton>
+                            ) : (<AddIconButton 
+                            
+                                onClick={() => setOpenModal(false)}
+                                >
+                                <AddIcon src={AddIconImg} alt=''/></AddIconButton>)}
                             <CreateModal  
                             isOpen={openModal}
                             setModalOpen={() => setOpenModal(!openModal)}
-                            addCurso={(curso, tipoLista) => handleAddItem(curso, tipoLista)}
                             tipoLista="competencias"
+                            addCurso={(curso, tipoLista) => handleAddItem(curso, tipoLista)}
                             />
                         </AddThings>
                         
@@ -88,8 +99,8 @@ function CreatePubli() {
                             <CreateModal 
                             isOpen={openModal}
                             setModalOpen={() => setOpenModal(!openModal)}
-                            addCurso={(curso, tipoLista) => handleAddItem(curso, tipoLista)}
                             tipoLista="experiencias"
+                            addCurso={(curso, tipoLista) => handleAddItem(curso, tipoLista)}
                             />
                         </AddThings>
                         
