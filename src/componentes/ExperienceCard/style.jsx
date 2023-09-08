@@ -7,7 +7,7 @@ export const ContainerCard = styled.div`
     gap: 4vh;
 
     width: 30vw;
-    height: 23vh;
+    height: 30vh;
     flex-shrink: 0;
 
     border-radius: 16px;
@@ -22,4 +22,5 @@ export const Report = styled.p`
     font-weight: 400;
     line-height: 100%;
     letter-spacing: 0.3px;
+    
 `
