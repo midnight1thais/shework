@@ -21,6 +21,7 @@ function PubliPerson(){
             <SectionRight>
                 <PubliHeader/>
                 <PubliInfo/>
+                
 
             </SectionRight>
         </SectionGlobal>
