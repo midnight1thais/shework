@@ -7,8 +7,9 @@ import { ChakraProvider } from '@chakra-ui/react'
 // import Home from './pagina/Home/Home'
 // import CreatePubli from './pagina/CreatePubli/CreatePubli';
 // import PubliPerson from './pagina/PubliPerson/PubliPerson';
-import JobCompany from './pagina/JobCompany/JobCompany';
+// import JobCompany from './pagina/JobCompany/JobCompany';
 // import PubliCompany from './pagina/PubliCompany/PubliCompany';
+import Corporation from './pagina/Corporation/Corporation';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
         {/* <Register /> */}
         {/* <Login/> */}
         {/* <PubliPerson/> */}
-        <JobCompany/>
+        {/* <JobCompany/> */}
+        <Corporation/>
       </ChakraProvider>
     </>
   );
