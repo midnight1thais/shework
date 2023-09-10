@@ -6,7 +6,8 @@ import { ChakraProvider } from '@chakra-ui/react'
 // import Register from './pagina/Register/Register';
 // import Home from './pagina/Home/Home'
 // import CreatePubli from './pagina/CreatePubli/CreatePubli';
-import PubliPerson from './pagina/PubliPerson/PubliPerson';
+// import PubliPerson from './pagina/PubliPerson/PubliPerson';
+import JobCompany from './pagina/JobCompany/JobCompany';
 // import PubliCompany from './pagina/PubliCompany/PubliCompany';
 
 function App() {
@@ -16,11 +17,11 @@ function App() {
         <StyledGlobal />
         {/* <PubliCompany/> */}
         {/* <CreatePubli/> */}
-        <PubliPerson/>
         {/* <Home/> */}
         {/* <Register /> */}
         {/* <Login/> */}
         {/* <PubliPerson/> */}
+        <JobCompany/>
       </ChakraProvider>
     </>
   );
