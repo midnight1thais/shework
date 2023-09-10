@@ -4,7 +4,7 @@ export const SectionGlobal = styled.section`
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 300vh;
+    height: 337vh;
 `
 
 export const SectionLeft = styled.section`
@@ -63,4 +63,9 @@ export const SimpleTagText = styled.p`
 
 export const SectionRight = styled.section`
     
+`
+
+export const DivBottom = styled.div`
+    display: flex;
+    flex-direction: row;
 `
