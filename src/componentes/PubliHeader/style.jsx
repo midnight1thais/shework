@@ -5,7 +5,6 @@ export const HeaderPerson = styled.header`
     flex-direction: row;
     width: 100%;
 
-    background-color: green;
 `
 
 export const HeaderLine = styled.div`
