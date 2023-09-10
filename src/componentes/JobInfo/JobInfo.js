@@ -1,25 +1,25 @@
 import { DivIcon, DivInfo, DivLeftA, DivRightA, DivTextA, HeaderInfo, IconProfile, SectionInfo, SubTextLeft, TextInfo, TextLeft } from "./style";
-import PubliIconProfile from '../../assets/PubliIconProfile.svg'
+import JobInfoIcon from '../../assets/JobInfoIcon.svg'
 
-function PubliInfo(){
+function JobInfo () { 
 
     return(
         <>
         <SectionInfo>
             <HeaderInfo>
                 <DivIcon>
-                    <IconProfile src={PubliIconProfile} alt=""/>
+                    <IconProfile src={JobInfoIcon} alt=""/>
                 </DivIcon>
-                <TextInfo>Informações Pessoais</TextInfo>
+                <TextInfo>Detalhes da Vaga</TextInfo>
             </HeaderInfo>
             <DivInfo>
                 <DivLeftA>
                     <DivTextA>
                         <TextLeft>
-                            Data de Nascimento
+                            Tipo de vaga
                         </TextLeft>
                         <SubTextLeft>
-                            27 de agosto, 1999
+                            Hibrido
                         </SubTextLeft>
                     </DivTextA>
                     <DivTextA>
@@ -34,18 +34,36 @@ function PubliInfo(){
                 <DivRightA>
                     <DivTextA>
                         <TextLeft>
-                            Email
+                            Média Salarial da Vaga
                         </TextLeft>
                         <SubTextLeft>
-                            mariadasilda@gmail.com
+                            2.000 
                         </SubTextLeft>
                     </DivTextA>
                     <DivTextA>
                         <TextLeft>
-                            Linkedlin
+                            Nível de Experiência
                         </TextLeft>
                         <SubTextLeft>
-                            www.xyz.com
+                            Estágio
+                        </SubTextLeft>
+                    </DivTextA>
+                </DivRightA>
+                <DivRightA>
+                    <DivTextA>
+                        <TextLeft>
+                            Média Salarial da Vaga
+                        </TextLeft>
+                        <SubTextLeft>
+                            2.000 
+                        </SubTextLeft>
+                    </DivTextA>
+                    <DivTextA>
+                        <TextLeft>
+                            Nível de Experiência
+                        </TextLeft>
+                        <SubTextLeft>
+                            Estágio
                         </SubTextLeft>
                     </DivTextA>
                 </DivRightA>
@@ -57,4 +75,4 @@ function PubliInfo(){
     )
 }
 
-export default PubliInfo
+export default JobInfo
