@@ -1,5 +1,5 @@
 import { DivContainer, DivIcon, DivRe, HeaderInfo, IconProfile, SectionInfo, SubRe, TextInfo, TitleRe } from "./style"
-import JobRequisiteIcon from '../../assets/PubliCourseIcon.svg'
+import JobRequisiteIcon from '../../assets/JobCourseIcon.png'
 
 function JobRequisite() {
 

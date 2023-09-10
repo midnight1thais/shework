@@ -1,5 +1,5 @@
 import { ContainerRespo, ContainerText, DivIcon,HeaderInfo, IconProfile, ImgRespo, ReadRespo, SectionInfo, TextInfo, TextRespo } from "./style"
-import JobRespoIcon from '../../assets/PubliCourseIcon.svg'
+import JobRespoIcon from '../../assets/JobCourseIcon.png'
 import seta from '../../assets/JobSeta.svg'
 import JobImg1 from '../../assets/JobRespoIcon.svg'
 
