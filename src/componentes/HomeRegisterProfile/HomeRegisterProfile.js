@@ -38,18 +38,19 @@ function HomeRegisterProfile() {
           <img
             src={avatarImage}
             alt="Imagem de perfil"
-            style={{ width: '10vw', height: '8vh', borderRadius: '50%' }}
+            style={{ width: '7vw', height: '7vh', borderRadius: '50%', marginTop: '0.5vh',}}
           />
         ) : (
           <div
             style={{
-              width: '5vw',
-              height: '8vh',
+              width: '4vw',
+              height: '7vh',
               borderRadius: '50%',
               backgroundColor: 'lightgray',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
+              marginTop: '0.5vh',
             }}
           >
             <span>Editar</span>

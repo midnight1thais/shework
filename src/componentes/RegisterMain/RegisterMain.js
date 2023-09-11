@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Flex, Grid, GridItem } from '@chakra-ui/react'
 import { Background, Container, Main, Title, Input, Select, Button, LinkA, Entrar, Label, Text, InputCategory } from './style'
+import { Link } from 'react-router-dom';
 
 function RegisterMain() {
 
@@ -108,17 +109,17 @@ function RegisterMain() {
                             alignItems="center"
                             >
                             <Flex justifyContent="center" flexDirection="column">
-                                <Button value="Cadastrar" type="submit">Cadastrar</Button>
+                            <Link to='/homeRegister'><Button value="Cadastrar" type="submit">Cadastrar</Button></Link>
 
                                 <Entrar>
                                     <Text>Você ja tem uma conta?
-                                        <LinkA> Entrar</LinkA>
+                                        <LinkA><Link to='/login'>Entrar</Link></LinkA>
                                     </Text>
                                 </Entrar>
 
                                 <Entrar>
-                                    <Text>Quer contratar?
-                                        <LinkA> Cadastre-se </LinkA>
+                                    <Text>É uma empresa?
+                                        <LinkA><Link to='/homeRegisterCompany'> Cadastre-se</Link></LinkA>
                                     </Text>
                                 </Entrar>
                             </Flex>

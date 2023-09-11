@@ -2,11 +2,12 @@ import React, {useState} from 'react';
 import { HeaderGlobal, Menu, ItemMenu, LogoStyle, Description, NameProfile, DesProfile, ProfileDiv } from './style'
 import Logo from '../../assets/Logo.svg'
 import HomeRegisterProfile from '../HomeRegisterProfile/HomeRegisterProfile';
-import PersonModal from '../PersonModal/PersonModal';
+import CompanyModal from '../CompanyModal/CompanyModal';
 
-function HomeRegisterHeader() {
+function HomeRegisterCompanyHeader() {
 
     const [openModal, setOpenModal] = useState(false);
+
 
     return(
         <>
@@ -22,9 +23,9 @@ function HomeRegisterHeader() {
         <ProfileDiv>
             <HomeRegisterProfile/>
             <Description>
-                <NameProfile onClick={() => setOpenModal(true)}>Anna George</NameProfile>
-                <DesProfile>Serviços Gerais</DesProfile>
-                <PersonModal  
+                <NameProfile onClick={() => setOpenModal(true)}>Technology Company</NameProfile>
+                <DesProfile>Empresa</DesProfile>
+                <CompanyModal  
                     isOpen={openModal}
                     setModalOpen={() => setOpenModal(!openModal)}
                 />
@@ -36,4 +37,4 @@ function HomeRegisterHeader() {
     )
 }
 
-export default HomeRegisterHeader
+export default HomeRegisterCompanyHeader

@@ -189,7 +189,7 @@ function CreateJob() {
                
                 <ContainerFooter>
                     <ButtonBack><Link to='/homeRegister'><IconBack src={IconButtonBack}/></Link></ButtonBack>
-                    <ButtonForward> Avançar </ButtonForward>
+                    <Link to='/jobCompany'><ButtonForward>Avançar</ButtonForward></Link>
                     <div></div>
                 </ContainerFooter>
             </Main>

@@ -20,7 +20,7 @@ export const Main = styled.main`
     width: 80vw;
     max-height: 90vh;
     max-width: 80vw;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 
     &::-webkit-scrollbar-track {
     background-color: #F4F4F4;
@@ -45,15 +45,21 @@ export const Container = styled.section`
     padding: 0vh 8vw 0vh 8vw;
 `
 
-export const ContactForm = styled.section`
+export const ContactForm = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0vh 8vw 0vh 8vw;
     gap: 1rem;
 
-    height: 100vh;
+    height: 80vh;
 
+`
+
+export const ButtonBack = styled.img`
+    display: flex;
+    left: 0;
+    margin-right: 70vw;
 `
 
 export const Div = styled.div`
@@ -61,7 +67,7 @@ export const Div = styled.div`
     input[type="password"],
     input[type="date"] {
     color: #FFFFFF;
-    text-indent: 1vw;
+    
   }
     label{
     align-self: flex-start;
@@ -94,12 +100,21 @@ export const Title = styled.h1`
     
 `
 
+export const Label = styled.label`
+    align-self: flex-start;
 
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color:#FFFFFF;
+`
 
 export const Input = styled.input`
     width: 50vw;
     height: 5vh;
+    text-indent: 0.5vw;
 
+    color: #FFFF;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 300;

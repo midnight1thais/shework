@@ -33,29 +33,26 @@ export const ProfileDiv = styled.div`
     justify-content: space-between;
     gap: 1em;
     margin-right: 3%;
-    width: 24vw;
+    width: 20vw;
 `
 
 export const Description = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 0.4em;
+    gap: 0.5em;
     margin-right: 3%;
 `
 
 
 export const NameProfile = styled.button`
-    display: flex;
-    justify-content: flex-start;
     margin-top: 1vh;
-    width: 9vw;
+    width: 11vw;
     color: #FFF;
     font-family: 'Poppins';
     font-size: 90%;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-
 `
 
 

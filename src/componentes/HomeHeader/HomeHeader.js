@@ -18,7 +18,7 @@ function HomeHeader() {
         
         <JoinButtons>
             <LoginButton><Link to='/login'>Entrar</Link></LoginButton>
-            <RegisterButton>Cadastrar</RegisterButton>
+            <RegisterButton><Link to='/register'>Cadastrar</Link></RegisterButton>
         </JoinButtons>
 
         </HeaderGlobal>
