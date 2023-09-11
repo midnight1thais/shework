@@ -10,6 +10,7 @@ import CreateJob from '../pagina/CreateJob/CreateJob'
 import Corporation from '../pagina/Corporation/Corporation'
 import JobCompany from '../pagina/JobCompany/JobCompany'
 import PubliPerson from '../pagina/PubliPerson/PubliPerson'
+import HomeRegisterCompany from "../pagina/HomeRegisterCompany/HomeRegisterCompany";
 
 function Rotas(){
 
@@ -17,6 +18,7 @@ function Rotas(){
         <BrowserRouter>
         <Routes>
             <Route index element={<Home/>}/>
+            <Route path="home" element={<Home/>}/>
             <Route path="login" element={<Login/>}/>
             <Route path="homeRegister" element={<HomeRegister/>}/>
             <Route path="register" element={<Register/>}/>
@@ -27,6 +29,7 @@ function Rotas(){
             <Route path="corporation" element={<Corporation/>}/>
             <Route path="jobCompany" element={<JobCompany/>}/>
             <Route path="publiPerson" element={<PubliPerson/>}/>
+            <Route path="homeRegisterCompany" element={<HomeRegisterCompany/>}/>
         </Routes>
         </BrowserRouter>
     )
