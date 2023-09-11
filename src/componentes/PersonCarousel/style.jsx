@@ -40,7 +40,8 @@ export const Dot = styled.div`
     cursor: pointer;
 `
 
-export const ActiveDot = styled(Dot)`
+export const ActiveDot = styled.div`
     width: 10px;
     background-color: #243d5a;
+    border-radius: 50%;
 `
