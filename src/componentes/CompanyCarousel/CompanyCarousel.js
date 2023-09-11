@@ -39,7 +39,7 @@ function CompanyCarousel() {
             company={divs[cardIndex].company}
             iconSrc={Logo}
             text={divs[cardIndex].text}
-            isVisible={true}
+            isvisiblecard={true}
           />
         ))}
       </ContainerCards>
