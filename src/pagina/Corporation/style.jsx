@@ -37,21 +37,26 @@ export const DivAboutImg = styled.div`
 
 export const DivAboutText = styled.div`
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    margin-top: 3vh;
+    gap: 10vw;
 `
 
 export const DivValues = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+    height: 80vh;
+    width: 100%;
     background-color: #3D548D;
 `
 
 export const DivProject = styled.div`
-    
-`
-
-export const DivProgression = styled.div`
-    
+    margin-top: 3vh;
+    height: 120vh;
 `
 
 export const DivOpportunities = styled.div`
-    
+    margin-top: 3vh;
+    height: 120vh;
 `
