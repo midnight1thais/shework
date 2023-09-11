@@ -29,6 +29,7 @@ function App() {
         {/* <JobCompany/> */}
         {/* <Corporation/> */}
         {/* <CreateJob/> */}
+        
         <Rotas/>
       </ChakraProvider>
     </>
