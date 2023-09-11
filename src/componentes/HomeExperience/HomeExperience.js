@@ -1,5 +1,5 @@
 import ExperienceCarousel from "../ExperienceCarousel/ExperienceCarousel"
-import { BigTitle, ContainerAction, ContainerCarousel, ContainerEmail, ContainerExperience, ContainerShare, ContainerTitle, InputTitle, InputWrite, LittleTitle, TextEmail } from './style'
+import { BigTitle, ButtonWrite, ContainerAction, ContainerCarousel, ContainerEmail, ContainerExperience, ContainerShare, ContainerTitle, InputTitle, InputWrite, LittleTitle, TextEmail } from './style'
 
 
 function HomeExperience(){
@@ -15,6 +15,7 @@ function HomeExperience(){
                 <ContainerShare>
                     <InputTitle>Compartilhe a sua!</InputTitle>
                     <InputWrite placeholder='Escreva aqui'/>
+                    <ButtonWrite>Envie</ButtonWrite>
                 </ContainerShare>
                 <ContainerCarousel>
                     <ExperienceCarousel/>

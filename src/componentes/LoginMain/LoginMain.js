@@ -1,7 +1,11 @@
 
+import { Link } from 'react-router-dom'
 import { Background, Container, Div, Main, Title, Input, ContactForm, Button, LinkA, Entrar} from './style'
 
+
 function LoginMain(){
+
+
     return(
         <>
         <Background>
@@ -19,24 +23,26 @@ function LoginMain(){
                         </Div>
                         <Div> 
                             <label>E-mail</label>
-                            <Input type="text"/>
+                            <Input 
+                            type='email'
+                            />
                         </Div>
                         <Div>
                             <label>Senha</label>
-                            <Input type="password"/>
+                            <Input 
+                            type='password'
+                            />
                         </Div>
-    
-                        <Button value="Entrar" type="submit"/>
+                        <Button type="submit"><Link to='/homeRegister'>Entrar </Link></Button>
                         <Entrar>
                             <p>Você não tem uma conta?</p>
                             <LinkA> Cadastrar</LinkA> 
                         </Entrar> 
                         <Entrar>
-                            <p>Quer contratar?</p>
+                            <p>É uma empresa?</p>
                             <LinkA> Cadastre-se </LinkA> 
                         </Entrar>      
                     </ContactForm>
-            
 
                 </Container>
             </Main>

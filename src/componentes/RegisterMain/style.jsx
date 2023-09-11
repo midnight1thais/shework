@@ -66,6 +66,8 @@ export const Title = styled.h1`
 export const Label = styled.label`
     display: flex;
     flex-direction: column;
+    margin-top: 2vh;
+    margin-left: 2vw;
 
 
     font-family: 'Poppins', sans-serif;
@@ -130,6 +132,8 @@ export const Button = styled.button`
     width: 45%;
     height: 6vh;
     margin-top: 5vh;
+    margin-bottom: 1vh;
+    margin-left: 14vw;
     
     font-family: 'Poppins', sans-serif;
     background: rgba(255, 255, 255, 0.9);
@@ -140,13 +144,15 @@ export const Button = styled.button`
 ` 
 export const Entrar = styled.div`
     display: flex;
+    justify-content: center;
     flex-direction: row;
     flex-flow: row nowrap;
-
+   
   
 `
 export const Text = styled.p`
     color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5vh;
 `
 
 export const LinkA = styled.button`
@@ -154,4 +160,5 @@ export const LinkA = styled.button`
     font-family: 'Poppins', sans-serif;
     color: rgba(255, 255, 255, 0.9);
     margin-left: 0.5vw;
+    
 `

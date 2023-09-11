@@ -25,7 +25,6 @@ export const Main = styled.main`
 export const ContainerGlobalTop = styled.section`
     display: flex;
     flex-direction: row;
-    background-color: red;
 
 `
 
@@ -53,7 +52,6 @@ export const ContainerRight = styled.div`
     margin-left: 3vw;
     margin-right: 10vw;
 
-    background-color: yellow;
 `
 
 export const  SubTitle = styled.h1`
@@ -125,14 +123,12 @@ export const Input = styled.input`
 `
 export const ContainerLeft = styled.div`
     width: 30vw;
-    background-color: #ed3957;
 `
 
 export const AddThings = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #5139ed;
 `
 
 export const AddTitle = styled.p`
@@ -175,7 +171,7 @@ export const ContainerAdd = styled.div`
     }
 
     max-height: 15vh; /* Ajuste a altura máxima conforme necessário */
-    overflow: auto; /* Adicione uma barra de rolagem quando necessário *
+    overflow: auto; /* Adicione uma barra de rolagem quando necessário */
 `
 
 export const ContainerText = styled.div`
@@ -190,7 +186,6 @@ export const ContainerBottom = styled.div`
     margin-bottom: 4vh;
   
     width: 45vw;
-    background-color: green;
 `
 
 export const ContainerFooter = styled.div`
@@ -200,7 +195,6 @@ export const ContainerFooter = styled.div`
     margin-bottom: 1vh;
 
     width: 80vw;
-    background-color: blue;
 
 `
 

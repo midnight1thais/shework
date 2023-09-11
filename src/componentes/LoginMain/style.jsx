@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-import fundo from '../../assets/fundo.svg';
+import fundo from '../../assets/fundo.png';
 
 
 export const Background = styled.div`
     background-image: url(${fundo});
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
-    width: 100vw;
+    height: 140vh;
+    width: 100%;
 
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
@@ -18,6 +18,21 @@ export const Background = styled.div`
 export const Main = styled.main`
     height: 90vh;
     width: 80vw;
+    max-height: 90vh;
+    max-width: 80vw;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+    }
+    &::-webkit-scrollbar {
+        width: 10px;
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: #a9a5a5;
+    }
 
     background-color: rgba(255, 255, 255, 0.1) /* Cor preta com 50% de transparência */;
     backdrop-filter: blur(40px); /* Efeito de desfoque */
@@ -26,7 +41,7 @@ export const Main = styled.main`
 `
 
 export const Container = styled.section`
-    height: 100vh;
+    height: 90vh;
     padding: 0vh 8vw 0vh 8vw;
 `
 
@@ -65,12 +80,17 @@ export const Title = styled.h1`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3vh;
-    
+    margin-top: 3vh;
 
     font-size: 30px;
     font-weight: 400px;
     color:#FFFFFF;
+    text-align: center;
+    font-family: 'Work Sans';
+    font-size: 76px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
     
 `
 
@@ -96,7 +116,8 @@ export const Input = styled.input`
 
 
 
-export const Button = styled.input`
+export const Button = styled.button`
+    margin-top: 5vh;
     width: 45%;
     height: 3.5%;
     

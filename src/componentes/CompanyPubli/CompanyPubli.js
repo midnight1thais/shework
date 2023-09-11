@@ -1,5 +1,6 @@
 import { ButtonPubli, ContainerLink, ContainerTitle, LinkA, TitleNormal, TitlePurple, CompanyText, ContainerLeft, ContainerRight } from "./style";
 import CompanyImg from '../../assets/CompanyImg.svg'
+import { Link } from "react-router-dom";
 
 function CompanyPubli(){
 
@@ -14,10 +15,10 @@ function CompanyPubli(){
                 <TitlePurple>Transforme seu futuro</TitlePurple>
                 <TitlePurple>profissional!</TitlePurple>
             </ContainerTitle>
-            <ButtonPubli>Explore as publicações</ButtonPubli>
+            <ButtonPubli><Link to='/exploreCompany'>Explore as publicações</Link></ButtonPubli>
             <ContainerLink>
                 <CompanyText>É uma empresa?</CompanyText>
-                <LinkA>Publique AQUI</LinkA>
+                <LinkA><Link to='/createJob'>Publique AQUI</Link></LinkA>
             </ContainerLink>
         </ContainerLeft>
         <ContainerRight>

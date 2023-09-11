@@ -4,6 +4,7 @@ import { AddIcon, AddIconButton, AddThings, AddTitle, BodyBack, ButtonBack, Butt
 import AddIconImg from '../../assets/plusIcon.svg'
 import IconButtonBack from '../../assets/IconButtonBack.svg'
 import CreateModal from '../../componentes/CreateModal/CreateModal';
+import { Link } from 'react-router-dom';
 
 
 function CreatePubli() {
@@ -155,8 +156,8 @@ function CreatePubli() {
                         </ContainerAdd>
                 </ContainerBottom>
                 <ContainerFooter>
-                    <ButtonBack><IconBack src={IconButtonBack}/></ButtonBack>
-                    <ButtonForward> Avançar </ButtonForward>
+                    <ButtonBack><Link to='/homeRegister'><IconBack src={IconButtonBack}/></Link></ButtonBack>
+                    <Link to='/publiPerson'><ButtonForward>Avançar </ButtonForward></Link>
                     <div></div>
                 </ContainerFooter>
             </Main>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, GridItem } from '@chakra-ui/react'
+import { Flex, Grid, GridItem } from '@chakra-ui/react'
 import { Background, Container, Main, Title, Input, Select, Button, LinkA, Entrar, Label, Text, InputCategory } from './style'
 
 function RegisterMain() {
@@ -28,8 +28,7 @@ function RegisterMain() {
                         <Grid 
                             templateColumns='repeat(2, 1fr)' 
                             templateRows='repeat(3, 1fr)'
-                            h='60vh'
-                            bg={'red'}
+                            h='70vh'
                             gap={0.5}
                             justifyContent="center"  
                             alignItems="center" 
@@ -40,10 +39,11 @@ function RegisterMain() {
                                 colSpan={2}
                                 colStart={1} colEnd={1}
                                 rowSpan={1}
-                                bg="yellow"
-                                h='30vh'
+                                h='32vh'
+                                maxW='40vw'
+                                ml='4vw'
                             >
-
+                           
                                 <Label>E-mail
                                     <Input type="text" />
                                 </Label>
@@ -58,10 +58,12 @@ function RegisterMain() {
                             </GridItem>
                             
                             <GridItem 
-                                bg="blue" 
-                                h='30vh' 
+                                h='32vh' 
+                                maxW='40vw'
+                                ml='2vw'
                                 colStart={2} colEnd={2}
                                 rowSpan={1}
+
                             >
                                 <Label>Nome
                                     <Input type="text" />
@@ -79,10 +81,9 @@ function RegisterMain() {
                             </GridItem>
 
                             <GridItem 
-                                bg={'orange'} 
                                 colStart={1} colEnd={3}
                                 rowSpan={2}
-                                w='30vw'
+                                w='32vw'
                                 h='10vh' 
                                 justifySelf="center"
                                 alignItems="center"
@@ -99,15 +100,14 @@ function RegisterMain() {
 
                                 )}
                             </GridItem>
-
                             <GridItem 
                             colStart={1} colEnd={3}
                             rowSpan={2}
                             w='50vw'
-                            bg={'orange'}
                             justifySelf="center"
                             alignItems="center"
                             >
+                            <Flex justifyContent="center" flexDirection="column">
                                 <Button value="Cadastrar" type="submit">Cadastrar</Button>
 
                                 <Entrar>
@@ -121,6 +121,7 @@ function RegisterMain() {
                                         <LinkA> Cadastre-se </LinkA>
                                     </Text>
                                 </Entrar>
+                            </Flex>
                             </GridItem>
                         </Grid>
 
