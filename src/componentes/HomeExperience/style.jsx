@@ -83,6 +83,10 @@ export const ButtonWrite = styled.button`
     font-weight: 600;
     line-height: 24px; /* 120% */
     letter-spacing: 0.2px;
+
+    &:hover{
+        background-color: #e5e5e5;
+    }
 `
 
 export const ContainerCarousel = styled.div`
