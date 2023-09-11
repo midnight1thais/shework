@@ -42,6 +42,14 @@ export const ContainerMid = styled.div`
 export const TitleDes = styled.h1`
     display: flex;
     align-self: center;
+
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.32px;
 `
 
 export const Label = styled.label`
