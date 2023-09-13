@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Grid, GridItem } from '@chakra-ui/react'
+import { Flex, Grid, GridItem } from '@chakra-ui/react'
 import { Background, Container, Main, Title, Input, Select, Button, LinkA, Entrar, Label, Text, InputCategory } from './style'
+import { Link } from 'react-router-dom';
 
 function RegisterMain() {
 
@@ -28,8 +29,7 @@ function RegisterMain() {
                         <Grid 
                             templateColumns='repeat(2, 1fr)' 
                             templateRows='repeat(3, 1fr)'
-                            h='60vh'
-                            bg={'red'}
+                            h='70vh'
                             gap={0.5}
                             justifyContent="center"  
                             alignItems="center" 
@@ -40,10 +40,11 @@ function RegisterMain() {
                                 colSpan={2}
                                 colStart={1} colEnd={1}
                                 rowSpan={1}
-                                bg="yellow"
-                                h='30vh'
+                                h='32vh'
+                                maxW='40vw'
+                                ml='4vw'
                             >
-
+                           
                                 <Label>E-mail
                                     <Input type="text" />
                                 </Label>
@@ -58,10 +59,12 @@ function RegisterMain() {
                             </GridItem>
                             
                             <GridItem 
-                                bg="blue" 
-                                h='30vh' 
+                                h='32vh' 
+                                maxW='40vw'
+                                ml='2vw'
                                 colStart={2} colEnd={2}
                                 rowSpan={1}
+
                             >
                                 <Label>Nome
                                     <Input type="text" />
@@ -79,10 +82,9 @@ function RegisterMain() {
                             </GridItem>
 
                             <GridItem 
-                                bg={'orange'} 
                                 colStart={1} colEnd={3}
                                 rowSpan={2}
-                                w='30vw'
+                                w='32vw'
                                 h='10vh' 
                                 justifySelf="center"
                                 alignItems="center"
@@ -99,28 +101,28 @@ function RegisterMain() {
 
                                 )}
                             </GridItem>
-
                             <GridItem 
                             colStart={1} colEnd={3}
                             rowSpan={2}
                             w='50vw'
-                            bg={'orange'}
                             justifySelf="center"
                             alignItems="center"
                             >
-                                <Button value="Cadastrar" type="submit">Cadastrar</Button>
+                            <Flex justifyContent="center" flexDirection="column">
+                            <Link to='/homeRegister'><Button value="Cadastrar" type="submit">Cadastrar</Button></Link>
 
                                 <Entrar>
                                     <Text>Você ja tem uma conta?
-                                        <LinkA> Entrar</LinkA>
+                                        <LinkA><Link to='/login'>Entrar</Link></LinkA>
                                     </Text>
                                 </Entrar>
 
                                 <Entrar>
-                                    <Text>Quer contratar?
-                                        <LinkA> Cadastre-se </LinkA>
+                                    <Text>É uma empresa?
+                                        <LinkA><Link to='/homeRegisterCompany'> Cadastre-se</Link></LinkA>
                                     </Text>
                                 </Entrar>
+                            </Flex>
                             </GridItem>
                         </Grid>
 

@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-
 import { Background, ContainerMid, ContainerModal, ContainerTop, Input, Label, TitleDes} from './style'
 
 function CreateModal({ isOpen, setModalOpen, addCurso, tipoLista}){
@@ -23,7 +22,7 @@ function CreateModal({ isOpen, setModalOpen, addCurso, tipoLista}){
         <ContainerModal>
           <div>
             <ContainerTop>
-              <TitleDes> Descrição do Curso </TitleDes>
+              <TitleDes> Adicionar Informação </TitleDes>
             </ContainerTop>
             <Label>Nome
                   <Input type="text" value={nomeCurso} onChange={(e) => setNomeCurso(e.target.value)} />
@@ -36,7 +35,7 @@ function CreateModal({ isOpen, setModalOpen, addCurso, tipoLista}){
                     <Input type="text" />
               </Label>
             </ContainerMid>
-            <Label>Descrição do Curso
+            <Label>Descrição
                     <Input type="text" />
             </Label>
           </div>

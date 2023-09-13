@@ -1,59 +1,55 @@
-import { DivIcon, HeaderCourse, IconProfile, SectionCourse } from "./style"
-import IconCourse from '../../assets/IconCourse'
-
+import { DivIcon, DivCourse, HeaderCourse, IconProfile, SectionCourse, TextCourse } from "./style";
+import PubliCourseIcon from '../../assets/PubliCourseIcon.svg'
+import PubliCourseCard from "../PubliCourseCard/PubliCourseCard";
 
 function PubliCourse(){
+
+    const divs = [
+        { date: "2021-2023", 
+        title:"Nome do Curso", 
+        descricao: "DESCRIÇÃO REDUZIDA" 
+        },
+        { date: "2021-2023", 
+        title:"Nome do Curso", 
+        descricao: "DESCRIÇÃO REDUZIDA" 
+        },
+        { date: "2021-2023", 
+        title:"Nome do Curso", 
+        descricao: "DESCRIÇÃO REDUZIDA" 
+        },
+        { date: "2021-2023", 
+        title:"Nome do Curso", 
+        descricao: "DESCRIÇÃO REDUZIDA"
+        },
+        // Add more items as needed
+      ];
 
     return(
         <>
         <SectionCourse>
             <HeaderCourse>
                 <DivIcon>
-                    <IconProfile src={IconCourse} alt=''/>
+                    <IconProfile src={PubliCourseIcon} alt=""/>
                 </DivIcon>
-                <TextInfo>Informações Pessoais</TextInfo>
+                <TextCourse>Cursos</TextCourse>
             </HeaderCourse>
             <DivCourse>
-                <DivLeftA>
-                    <DivTextA>
-                        <TextLeft>
-                            Data de Nascimento
-                        </TextLeft>
-                        <SubTextLeft>
-                            27 de agosto, 1999
-                        </SubTextLeft>
-                    </DivTextA>
-                    <DivTextA>
-                        <TextLeft>
-                            Cidade e Estado
-                        </TextLeft>
-                        <SubTextLeft>
-                            São Leopoldo, RS
-                        </SubTextLeft>
-                    </DivTextA>
-                </DivLeftA>
-                <DivRightA>
-                    <DivTextA>
-                        <TextLeft>
-                            Data de Nascimento
-                        </TextLeft>
-                        <SubTextLeft>
-                            27 de agosto, 1999
-                        </SubTextLeft>
-                    </DivTextA>
-                    <DivTextA>
-                        <TextLeft>
-                            Cidade e Estado
-                        </TextLeft>
-                        <SubTextLeft>
-                            São Leopoldo, RS
-                        </SubTextLeft>
-                    </DivTextA>
-                </DivRightA>
+            {divs.map((card) => (
+                <PubliCourseCard
+                key={card}
+                date={card.date}
+                service={card.service}
+                title={card.title}
+                descricao={card.descricao}
+                isVisible={true}
+            />
+            ))}
             </DivCourse>
+
         </SectionCourse>
+        
         </>
     )
 }
 
-export default PubliCourse 
+export default PubliCourse

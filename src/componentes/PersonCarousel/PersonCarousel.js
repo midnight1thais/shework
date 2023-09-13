@@ -58,7 +58,7 @@ function CompanyCarousel() {
       </ContainerCards>
       <DotContainer>
         <Dot onClick={() => { handleDotClick(currentIndex - 1 >= 0 ? currentIndex - 1 : divs.length - 1); handleCardChange(); }} />
-        <ActiveDot isActive={isCenterDotActive} onClick={() => handleCardChange()} />
+        <ActiveDot isActiveDot={isCenterDotActive} onClick={() => handleCardChange()} />
         <Dot onClick={() => { handleDotClick((currentIndex + 1) % divs.length); handleCardChange(); }} />
       </DotContainer>
     </ContainerCarousel>

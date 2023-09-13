@@ -13,8 +13,13 @@ export const HeaderCourse = styled.div`
 `
 
 export const DivIcon = styled.div`
+    display: flex;
+    justify-content: center;
     max-width: 5.5vw;
     max-height: 7vh;
+    width: 5.5vw;
+    height: 7vh;
+    
     border-radius: 10px;
     background-color:#B8C4D2;
 `
@@ -24,6 +29,9 @@ export const IconProfile = styled.img`
    align-self: center;
    max-width: 5.5vw;
    max-height: 7vh;
+
+   width: 4.4vw;
+   height: 6vh;
 `
 
 export const TextCourse = styled.p`
@@ -42,7 +50,41 @@ export const TextCourse = styled.p`
 
 export const DivCourse = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+
+    margin-top: 4vh;
+    margin-left: 2vw;
+    gap: 1vh;
+
+    width: 63vw;
+    height: 60vh;
+    max-width: 63vw;
+    max-height: 60vh;
+    flex-shrink: 0;
+
+    border-radius: 16px;
+    background: #FFF;
+    box-shadow: 0px 4px 10px 0px #000;
+
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        padding-top: 10px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: #B8C4D2; /* Cor do polegar da barra de rolagem */
+        border-radius: 4px; /* Borda do polegar da barra de rolagem */
+    }
+    
+    &::-webkit-scrollbar-track {
+        background-color: transparent; /* Cor de fundo da barra de rolagem */
+        border-radius: 8px; /* Borda da barra de rolagem */
+        height: 27vh;
+    }
+
+
 `
 
 export const DivLeftA = styled.div`

@@ -1,6 +1,7 @@
 import React from 'react';
 import { HeaderGlobal, Menu, ItemMenu, JoinButtons, LoginButton, RegisterButton, LogoStyle } from './style'
 import Logo from '../../assets/Logo.svg'
+import { Link } from 'react-router-dom';
 
 function HomeHeader() {
 
@@ -16,8 +17,8 @@ function HomeHeader() {
         </Menu>
         
         <JoinButtons>
-            <LoginButton>Entrar</LoginButton>
-            <RegisterButton>Cadastrar</RegisterButton>
+            <LoginButton><Link to='/login'>Entrar</Link></LoginButton>
+            <RegisterButton><Link to='/register'>Cadastrar</Link></RegisterButton>
         </JoinButtons>
 
         </HeaderGlobal>

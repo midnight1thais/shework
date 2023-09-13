@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import { BigTitle, ComboBox, ComboBoxContainer, ContainerCarousel, ContainerHeader, ContainerInput, ContainerSearch, IconSearch, InputSearch, LittleTitle, OptionSelected } from "./style"
 
+import IconBack from '../../assets/JobButtonBack.svg'
 import iconsearch from '../../assets/IconSearch.svg'
 import ExploreCompanyCard from "../../componentes/ExploreCompanyCard/ExploreCompanyCard";
+import { Link } from "react-router-dom";
 
 function PubliCompany(){
 
@@ -34,6 +36,8 @@ function PubliCompany(){
             <BigTitle>EXPLORE AS PUBLICAÇÕES</BigTitle>
             <LittleTitle>Explore uma vaga para uma possível contratação</LittleTitle>
         </ContainerHeader>
+
+        <Link to='/homeRegister'><img src={IconBack} alt=""/></Link>
 
         <ContainerSearch>
             <ContainerInput>

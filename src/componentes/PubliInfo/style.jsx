@@ -4,7 +4,8 @@ export const SectionInfo = styled.section`
     display: flex;
     flex-direction: column;
     margin-top: 3vh;
-    background-color: #f44f6b;
+    width: 70vw;
+    margin-left: 2vw;
 `
 
 export const HeaderInfo = styled.div`

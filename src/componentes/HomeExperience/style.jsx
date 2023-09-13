@@ -71,6 +71,24 @@ export const InputWrite = styled.input`
     border: 1px solid #9C9C9C;
 `
 
+export const ButtonWrite = styled.button`
+    border-radius: 10px;
+    background-color: #C6C5C5;
+    width: 5vw;
+
+    color: #000;
+    font-family: 'Lato';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 120% */
+    letter-spacing: 0.2px;
+
+    &:hover{
+        background-color: #e5e5e5;
+    }
+`
+
 export const ContainerCarousel = styled.div`
     margin-right: 5vw;
 `

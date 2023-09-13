@@ -34,18 +34,18 @@ function PubliInfo(){
                 <DivRightA>
                     <DivTextA>
                         <TextLeft>
-                            Data de Nascimento
+                            Email
                         </TextLeft>
                         <SubTextLeft>
-                            27 de agosto, 1999
+                            mariadasilda@gmail.com
                         </SubTextLeft>
                     </DivTextA>
                     <DivTextA>
                         <TextLeft>
-                            Cidade e Estado
+                            Linkedlin
                         </TextLeft>
                         <SubTextLeft>
-                            São Leopoldo, RS
+                            www.xyz.com
                         </SubTextLeft>
                     </DivTextA>
                 </DivRightA>

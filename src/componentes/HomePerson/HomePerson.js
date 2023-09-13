@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ButtonPubli, ContainerLink, LinkA } from "../PersonCard/style";
 import PersonCarousel from "../PersonCarousel/PersonCarousel";
 import { ContainerCarousel, ContainerPerson, ContainerPubli, Explanation, Title } from "./style";
@@ -13,9 +14,9 @@ function HomePerson(){
                <PersonCarousel/>
             </ContainerCarousel>
             <ContainerPubli>
-                <ButtonPubli>Explore as publicações</ButtonPubli>
+                <ButtonPubli><Link to='/explorePerson'>Explore as publicações</Link></ButtonPubli>
                 <ContainerLink>
-                    <LinkA>Publique AQUI</LinkA>
+                    <LinkA><Link to='/createPubli'>Publique AQUI</Link></LinkA>
                 </ContainerLink>
             </ContainerPubli>
         </ContainerPerson>
