@@ -7,7 +7,7 @@ export const Background = styled.div`
     background-image: url(${fundo});
     background-repeat: no-repeat;
     background-size: cover;
-    height: 140vh;
+    height: 100vh;
     width: 100%;
 
     display: flex;
@@ -87,6 +87,7 @@ export const Title = styled.h1`
     flex-direction: column;
     align-items: center;
     margin-top: 3vh;
+    margin-bottom: 3vh;
 
     font-size: 30px;
     font-weight: 400px;
@@ -133,8 +134,8 @@ export const Input = styled.input`
 
 export const Button = styled.button`
     margin-top: 5vh;
-    width: 45%;
-    height: 3.5%;
+    width: 15vw;
+    height: 4.5vh;
     
     font-family: 'Poppins', sans-serif;
     background: rgba(255, 255, 255, 0.9);

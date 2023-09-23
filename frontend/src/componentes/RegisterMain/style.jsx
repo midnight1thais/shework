@@ -147,6 +147,7 @@ export const Entrar = styled.div`
     justify-content: center;
     flex-direction: row;
     flex-flow: row nowrap;
+    
    
   
 `

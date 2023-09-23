@@ -75,8 +75,9 @@ function RegisterMain() {
                                 </Label>
                                 <Label htmlFor="servico">Categoria
                                     <Select id="servico" value={servico} onChange={handleChange} type='text'>
-                                        <option value="gerais" type='text'>Outros serviços gerais</option>
+                                        <option value="gerais" type='text'>Outros Trabalhos</option>
                                         <option value="ti" type='text'>Técnico TI</option>
+                                        <option value="company" type='text'>Empresa</option>
                                     </Select>
                                 </Label >
                             </GridItem>
@@ -90,7 +91,7 @@ function RegisterMain() {
                                 alignItems="center"
                             >
                                 {servico === 'gerais' && (
-                                    <Label htmlFor="outrosServicosInput">Descreva o serviço:
+                                    <Label htmlFor="outrosServicosInput">Descreva o trabalho:
                                         <InputCategory
                                             type="text"
                                             id="outrosServicosInput"
@@ -108,7 +109,7 @@ function RegisterMain() {
                             justifySelf="center"
                             alignItems="center"
                             >
-                            <Flex justifyContent="center" flexDirection="column">
+                            <Flex justifyContent="center" flexDirection="column" mb="2vh">
                             <Link to='/homeRegister'><Button value="Cadastrar" type="submit">Cadastrar</Button></Link>
 
                                 <Entrar>
@@ -117,11 +118,7 @@ function RegisterMain() {
                                     </Text>
                                 </Entrar>
 
-                                <Entrar>
-                                    <Text>É uma empresa?
-                                        <LinkA><Link to='/homeRegisterCompany'> Cadastre-se</Link></LinkA>
-                                    </Text>
-                                </Entrar>
+                              
                             </Flex>
                             </GridItem>
                         </Grid>
