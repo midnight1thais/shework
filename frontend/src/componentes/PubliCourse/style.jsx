@@ -4,9 +4,7 @@ export const SectionCourse = styled.section`
     display: flex;
     flex-direction: column;
     margin-top: 3vh;
-    height: 80vh;
-    width: 70vw;
-    margin-left: 2vw;
+    background-color: #d6cd17;
 `
 
 export const HeaderCourse = styled.div`
@@ -21,6 +19,7 @@ export const DivIcon = styled.div`
     max-height: 7vh;
     width: 5.5vw;
     height: 7vh;
+    
     border-radius: 10px;
     background-color:#B8C4D2;
 `
@@ -30,6 +29,7 @@ export const IconProfile = styled.img`
    align-self: center;
    max-width: 5.5vw;
    max-height: 7vh;
+
    width: 4.4vw;
    height: 6vh;
 `
