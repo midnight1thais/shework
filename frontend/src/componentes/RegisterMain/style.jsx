@@ -28,7 +28,7 @@ export const Main = styled.main`
 
 `
 
-export const Container = styled.section`
+export const ContainerForm = styled.form`
     /* height: 80vh; */
     /* padding: 0vh 8vw 0vh 8vw; */
 ` 

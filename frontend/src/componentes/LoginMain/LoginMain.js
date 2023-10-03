@@ -1,87 +1,112 @@
 
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Background, Container, Div, Main, Title, Input, ContactForm, Button, LinkA, Entrar, Label, ButtonBack } from './style'
-import { useState } from 'react';
-import axios from 'axios';
+import { useContext, useState } from 'react';
+import { AuthContext } from "../../context/AuthContext";
+import { api } from "../../services/api";
 import ButtonBackIMG from '../../assets/JobButtonBack.svg'
 
 function LoginMain(){
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+    const { signIn, signed } = useContext(AuthContext);
+    const [user, setUser] = useState(null);
   
-    const navigate = useNavigate()
+    const navigate = useNavigate();
   
-    const goToHomeRegister = () => {
-      navigate('/homeRegister')
-    }
+    const goToHome = () => {
+       
+      navigate("/home");
   
-    const hadleSubmit = (e) => {
-      e.preventDefault()
+      window.location.reload();
+        
+      };
   
-      const credentials = { email, password } 
-      
-      axios
-      .post('http://localhost:8000/login', credentials, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-      .then(response => {
-        alert(response.data.message)
-        goToHomeRegister()
-      })
-      .catch(error => console.log(error))
-      
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const data = {
+        email,
+        senha
+      };
+      try{
+      const response = await api.post('auth/login', data)
+  
+        alert("Usuário conectado com sucesso!");
+        console.log(user)
+        console.log(signIn)
+  
+        setUser(response.data);
+        
+  
+        api.defaults.headers.common[
+            "Authorization"
+        ] = `Bearer ${response.data.data[0].token}`
+          
+        localStorage.setItem("@Auth:user", JSON.stringify(response.data.data[0].nome));
+        localStorage.setItem("@Auth:token", response.data.data[0].token);
+        
+        goToHome()
+        
+      } catch (error) {
+        alert('Algo de errado não está certo')
+        console.log(error.response);
+      }
     };
-
-    return(
-        <>
-        <Background>
-            <Main>
-                <Container>
-                <Title>Entrar</Title>
-                    <ContactForm onSubmit={hadleSubmit}>
-                        <Div>
-                            <Label>Nome</Label>
-                            <Input type="text"/>
-                        </Div>
-                        <Div>
-                            <Label>Data de Nascimento</Label>
-                            <Input type="date"/>
-                        </Div>
-                        <Div> 
-                            <Label>E-mail</Label>
-                            <Input 
-                            type='email'
-                            value={email}
-                            onChange = {(e) => setEmail(e.target.value)}
-                            />
-                        </Div>
-                        <Div>
-                            <Label>Senha</Label>
-                            <Input 
-                            type='password'
-                            value={password} 
-                            onChange = {(e) => setPassword(e.target.value)}  
-                            />
-                        </Div>
-                        <Button type="submit">Entrar</Button>
-                        <Entrar>
-                            <p>Você não tem uma conta?</p>
-                            <LinkA><Link to='/register'>Cadastrar</Link></LinkA> 
-                        </Entrar> 
-                        <Entrar>
-                            <p>É uma empresa?</p>
-                            <LinkA><Link to='/register'>Cadastre-se</Link></LinkA> 
-                        </Entrar>   
-                        <Link to='/home'><ButtonBack src={ButtonBackIMG} alt=''/></Link>  
-                    </ContactForm>
-                </Container>
-            </Main>
-        </Background>
-        </>
-    )
-}
+  
+  
+    if (!signed) {
+        return(
+            <>
+            <Background>
+                <Main>
+                    <Container>
+                    <Title>Entrar</Title>
+                        <ContactForm onSubmit={handleSubmit}>
+                            <Div>
+                                <Label>Nome</Label>
+                                <Input type="text"/>
+                            </Div>
+                            <Div>
+                                <Label>Data de Nascimento</Label>
+                                <Input type="date"/>
+                            </Div>
+                            <Div> 
+                                <Label>E-mail</Label>
+                                <Input 
+                                type='email'
+                                value={email}
+                                onChange = {(e) => setEmail(e.target.value)}
+                                />
+                            </Div>
+                            <Div>
+                                <Label>Senha</Label>
+                                <Input 
+                                type='password'
+                                value={senha} 
+                                onChange = {(e) => setSenha(e.target.value)}  
+                                />
+                            </Div>
+                            <Button type="submit" onClick={handleSubmit}>Entrar</Button>
+                            <Entrar>
+                                <p>Você não tem uma conta?</p>
+                                <LinkA><Link to='/register'>Cadastrar</Link></LinkA> 
+                            </Entrar> 
+                            <Entrar>
+                                <p>É uma empresa?</p>
+                                <LinkA><Link to='/register'>Cadastre-se</Link></LinkA> 
+                            </Entrar>   
+                            <Link to='/home'><ButtonBack src={ButtonBackIMG} alt=''/></Link>  
+                        </ContactForm>
+                    </Container>
+                </Main>
+            </Background>
+            </>
+        )
+    } else {
+        console.log('entrei no signed')
+        return <Navigate to="/home" />;
+    };
+};
 
 export default LoginMain

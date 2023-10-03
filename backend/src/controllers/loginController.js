@@ -24,10 +24,10 @@ async function login(request, response) {
                 bcrypt.compare(request.body.senha, results[0].senha, (err, result) => {
                     if (err) {                        
                         return response.status(401).send({
-                            msg: 'Email or password is incorrect!'
+                          msg: 'Email or senha is incorrect!'
                         });
                     } else if(result) {
-                        const id = results[0].id;
+                        const id = results[0].id_user;
                         const token = jwt.sign({ userId: id },'the-super-strong-secrect',{ expiresIn: 300 });
                         results[0]['token'] = token; 
                         

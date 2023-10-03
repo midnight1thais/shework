@@ -7,6 +7,7 @@ import PersonModal from '../PersonModal/PersonModal';
 function HomeRegisterHeader() {
 
     const [openModal, setOpenModal] = useState(false);
+    
 
     return(
         <>

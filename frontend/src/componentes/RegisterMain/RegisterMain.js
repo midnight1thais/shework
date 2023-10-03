@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { Flex, Grid, GridItem } from '@chakra-ui/react'
-import { Background, Container, Main, Title, Input, Select, Button, LinkA, Entrar, Label, Text, InputCategory } from './style'
+import { Background, Main, Title, Input, Select, Button, LinkA, Entrar, Label, Text, InputCategory, ContainerForm } from './style'
+import { api } from "../../services/api";
 import { Link } from 'react-router-dom';
 
 function RegisterMain() {
 
     const [servico, setServico] = useState('gerais');
     const [outrosServicos, setOutrosServicos] = useState('');
+
+    const [email, setEmail] = useState("");
+    const [senha, setPassword] = useState("");
+    const [nome, setName] = useState("");
+  
 
     const handleChange = (event) => {
         setServico(event.target.value);
@@ -19,12 +25,23 @@ function RegisterMain() {
         setOutrosServicos(event.target.value);
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const data = {
+          nome,
+          email,
+          senha,
+        };
+        await api.post('/user/create', data);
+        alert("Usuário criado com sucesso!");
+      };
+
 
     return (
         <>
             <Background>
                 <Main>
-                    <Container>
+                    <ContainerForm onSubmit={handleSubmit}>
                         <Title>Cadastro</Title>
                         <Grid 
                             templateColumns='repeat(2, 1fr)' 
@@ -46,11 +63,19 @@ function RegisterMain() {
                             >
                            
                                 <Label>E-mail
-                                    <Input type="text" />
+                                    <Input 
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)} 
+                                    />
                                 </Label>
 
                                 <Label>Senha
-                                    <Input type="password" />
+                                    <Input 
+                                    type="password" 
+                                    value={senha}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    />
                                 </Label>
 
                                 <Label>Confirmação da Senha
@@ -67,7 +92,11 @@ function RegisterMain() {
 
                             >
                                 <Label>Nome
-                                    <Input type="text" />
+                                    <Input 
+                                    type="text"
+                                    value={nome}
+                                    onChange={(e) => setName(e.target.value)}
+                                    />
                                 </Label>
 
                                 <Label>Data de Nascimento
@@ -110,7 +139,7 @@ function RegisterMain() {
                             alignItems="center"
                             >
                             <Flex justifyContent="center" flexDirection="column" mb="2vh">
-                            <Link to='/homeRegister'><Button value="Cadastrar" type="submit">Cadastrar</Button></Link>
+                            <Button value="Cadastrar" type="submit">Cadastrar</Button>
 
                                 <Entrar>
                                     <Text>Você ja tem uma conta?
@@ -123,7 +152,7 @@ function RegisterMain() {
                             </GridItem>
                         </Grid>
 
-                    </Container>
+                    </ContainerForm>
                 </Main>
             </Background>
 

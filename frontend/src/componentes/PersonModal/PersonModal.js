@@ -1,9 +1,20 @@
 import React from 'react'
 import { Background, ButtonHere, ContainerButtons, ContainerMid, ContainerModal, ContainerTop, Input, Label, TitleDes} from './style'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function PersonModal({ isOpen, setModalOpen}){
 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Limpa o localStorage
+    localStorage.removeItem("@Auth:user");
+    localStorage.removeItem("@Auth:token");
+
+    // Redireciona de volta para a tela de login
+    navigate("/login");
+    window.location.reload();
+  };
 
   if (isOpen) {
 
@@ -29,7 +40,7 @@ function PersonModal({ isOpen, setModalOpen}){
           </div>
           <ContainerButtons>
             <ButtonHere onClick={setModalOpen}>Fechar</ButtonHere>
-            <Link to='/home'><ButtonHere>Sair</ButtonHere></Link>
+            <ButtonHere onClick={handleLogout}>Sair</ButtonHere>
           </ContainerButtons>
         </ContainerModal>
       </Background>
