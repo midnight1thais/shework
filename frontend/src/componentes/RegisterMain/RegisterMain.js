@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function RegisterMain() {
 
-    const [servico, setServico] = useState('gerais');
+    const [servico, setServico] = useState('');
     const [outrosServicos, setOutrosServicos] = useState('');
 
     const [email, setEmail] = useState("");
@@ -31,7 +31,9 @@ function RegisterMain() {
           nome,
           email,
           senha,
+          servico
         };
+        console.log(data)
         const response = await api.post('/user/create', data);
         console.log(response.data.data[0])
         alert("Usuário criado com sucesso!");
@@ -104,7 +106,7 @@ function RegisterMain() {
                                     <Input type="date" />
                                 </Label>
                                 <Label htmlFor="servico">Categoria
-                                    <Select id="servico" value={servico} onChange={handleChange} type='text'>
+                                    <Select id="servico" value={servico} onChange={(e) => setServico(e.target.value)} type='text'>
                                         <option value="gerais" type='text'>Outros Trabalhos</option>
                                         <option value="ti" type='text'>Técnico TI</option>
                                         <option value="company" type='text'>Empresa</option>
@@ -125,8 +127,8 @@ function RegisterMain() {
                                         <InputCategory
                                             type="text"
                                             id="outrosServicosInput"
-                                            value={outrosServicos}
-                                            onChange={handleOutrosServicosChange}
+                                            value={servico}
+                                            onChange={(e) => setServico(e.target.value)}
                                         />
                                     </Label>
 
