@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HeaderGlobal = styled.header`
     display: flex;
     flex-direction: row;
-    gap: 22vw;
+    gap: 20vw;
     
     height: 10vh;
     width: 100%;
@@ -32,14 +32,14 @@ export const ProfileDiv = styled.div`
     flex-direction: row;
     justify-content: space-between;
     gap: 1em;
-    margin-right: 3%;
-    width: 24vw;
+    margin-right: 1vw;
+    max-width: 22vw;
+    background-color: green;
 `
 
 export const Description = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 0.4em;
     margin-right: 3%;
 `
 
@@ -60,6 +60,8 @@ export const NameProfile = styled.button`
 
 
 export const DesProfile = styled.p`
+    background-color: red;
+  
 
     color: #FFF;
     font-family: 'Work Sans';
@@ -67,11 +69,11 @@ export const DesProfile = styled.p`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    letter-spacing: 1.4px;
+    letter-spacing: 1px;
 `
 
 export const LogoStyle = styled.img`
     width: 15vw;
     height: 10vh;
-
+    margin-left: 1.7vw;
 `
