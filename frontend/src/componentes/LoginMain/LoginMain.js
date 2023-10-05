@@ -1,8 +1,7 @@
 
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Background, Container, Div, Main, Title, Input, ContactForm, Button, LinkA, Entrar, Label, ButtonBack } from './style'
-import { useContext, useState } from 'react';
-import { AuthContext } from "../../context/AuthContext";
+import { useState } from 'react';
 import { api } from "../../services/api";
 import ButtonBackIMG from '../../assets/JobButtonBack.svg'
 
@@ -10,8 +9,8 @@ function LoginMain(){
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
-    const { signIn, signed } = useContext(AuthContext);
     const [user, setUser] = useState(null);
+    const signed = false;
   
     const navigate = useNavigate();
   
@@ -24,34 +23,38 @@ function LoginMain(){
       };
   
     const handleSubmit = async (e) => {
-      e.preventDefault();
-      const data = {
-        email,
-        senha
-      };
-      try{
-      const response = await api.post('auth/login', data)
-  
-        alert("Usuário conectado com sucesso!");
-        console.log(user)
-        console.log(signIn)
-  
-        setUser(response.data);
+        e.preventDefault();
+      
+        const data = {
+            email,
+            senha
+        };
+        console.log(data);
         
-  
-        api.defaults.headers.common[
-            "Authorization"
-        ] = `Bearer ${response.data.data[0].token}`
-          
-        localStorage.setItem("@Auth:user", JSON.stringify(response.data.data[0].nome));
-        localStorage.setItem("@Auth:token", response.data.data[0].token);
-        
-        goToHome()
-        
-      } catch (error) {
-        alert('Algo de errado não está certo')
-        console.log(error.response);
-      }
+            const response = await api.post('auth/login', data)
+            console.log(response.data);
+
+            // Reorna da API com as chaves
+            if (response.data.success === true) {
+                alert("Usuário conectado com sucesso!");
+
+                api.defaults.headers.common[
+                    "Authorization"
+                ] = `Bearer ${response.data.data[0].token}`
+
+                localStorage.setItem("@Auth:user", JSON.stringify(response.data.data[0].email));
+                localStorage.setItem("@Auth:token", response.data.data[0].token);
+                setUser(response.data.data[0])
+
+                //signed = true;
+                
+                goToHome()
+
+            } else {
+                alert('Num deu!')
+
+            }       
+      
     };
   
   
