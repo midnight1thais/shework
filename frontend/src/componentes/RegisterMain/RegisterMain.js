@@ -32,7 +32,8 @@ function RegisterMain() {
           email,
           senha,
         };
-        await api.post('/user/create', data);
+        const response = await api.post('/user/create', data);
+        console.log(response.data.data[0])
         alert("Usuário criado com sucesso!");
       };
 
