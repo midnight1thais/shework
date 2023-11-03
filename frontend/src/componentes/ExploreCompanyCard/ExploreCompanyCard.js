@@ -18,10 +18,9 @@ function ExploreCompanyCard(){
             <ContainerAll>
                 <ContainerTop>
                 <Date>21 Julho 2023</Date>
-                <Service>Serviços Gerais</Service>
                 </ContainerTop>
-                <Title>Andressa de Lima</Title>
-                <Description>Tenho 21 anos e estou procurando vaga para técnico em TI , faço programas em ReactJS...</Description>
+                <Title>InovaTech</Title>
+                <Description>Maior empresa de Tecnologia do Rio Grande do Sul, nós queremos mudar o mundo...</Description>
             </ContainerAll>
             <ContainerImg>
                 <ButtonRight><IconRight src={ImgShare} alt=''/></ButtonRight>

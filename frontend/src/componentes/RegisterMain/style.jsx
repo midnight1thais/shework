@@ -54,12 +54,18 @@ export const Title = styled.h1`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3vh;
-    
+    margin-top: 9vh;
+    margin-bottom: 8vh;
 
     font-size: 30px;
     font-weight: 400px;
     color:#FFFFFF;
+    text-align: center;
+    font-family: 'Work Sans';
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
     
 `
 

@@ -31,7 +31,7 @@ function PubliExperience() {
                 <DivIcon>
                     <IconProfile src={PubliExperienceIcon} alt=""/>
                 </DivIcon>
-                <TextCourse>Cursos</TextCourse>
+                <TextCourse>Experiências</TextCourse>
             </HeaderCourse>
             <DivCourse>
             {divs.map((card) => (

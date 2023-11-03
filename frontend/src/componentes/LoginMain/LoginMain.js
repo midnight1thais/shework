@@ -16,7 +16,7 @@ function LoginMain(){
   
     const goToHome = () => {
        
-      navigate("/home");
+      navigate("/homeRegister");
   
       window.location.reload();
         
@@ -66,18 +66,12 @@ function LoginMain(){
                     <Container>
                     <Title>Entrar</Title>
                         <ContactForm onSubmit={handleSubmit}>
-                            <Div>
-                                <Label>Nome</Label>
-                                <Input type="text"/>
-                            </Div>
-                            <Div>
-                                <Label>Data de Nascimento</Label>
-                                <Input type="date"/>
-                            </Div>
+                           
                             <Div> 
                                 <Label>E-mail</Label>
                                 <Input 
                                 type='email'
+                                placeholder='teste2@gmail.com'
                                 value={email}
                                 onChange = {(e) => setEmail(e.target.value)}
                                 />
@@ -86,6 +80,7 @@ function LoginMain(){
                                 <Label>Senha</Label>
                                 <Input 
                                 type='password'
+                                placeholder='**************'
                                 value={senha} 
                                 onChange = {(e) => setSenha(e.target.value)}  
                                 />
@@ -95,10 +90,6 @@ function LoginMain(){
                                 <p>Você não tem uma conta?</p>
                                 <LinkA><Link to='/register'>Cadastrar</Link></LinkA> 
                             </Entrar> 
-                            <Entrar>
-                                <p>É uma empresa?</p>
-                                <LinkA><Link to='/register'>Cadastre-se</Link></LinkA> 
-                            </Entrar>   
                             <Link to='/home'><ButtonBack src={ButtonBackIMG} alt=''/></Link>  
                         </ContactForm>
                     </Container>
