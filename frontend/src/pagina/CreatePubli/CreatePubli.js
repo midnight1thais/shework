@@ -77,7 +77,7 @@ function CreatePubli() {
             link: link_certificado,
         }
         // post das informações da pessoa
-        axios.post(`${api.defaults.baseURL}/publiperson/create`, formPessoa)
+        axios.post(`${api.defaults.baseURL}/publiperson/publiperson/create`, formPessoa)
         .then(function (response) {
             setItem(response.data.data)
         })
@@ -86,7 +86,7 @@ function CreatePubli() {
         });    
 
         // post da competencia tecnica
-        axios.post(`${api.defaults.baseURL}/competenciaTec/create`, formCompetencia)
+        axios.post(`${api.defaults.baseURL}/publiperson/competenciaTec/create`, formCompetencia)
         .then(function (response) {
             setItem(response.data.data)
         })
@@ -95,7 +95,7 @@ function CreatePubli() {
         });
 
         // post da experiencia
-        axios.post(`${api.defaults.baseURL}/experiencias/create`, formExperiencia)
+        axios.post(`${api.defaults.baseURL}/publiperson/experiencias/create`, formExperiencia)
         .then(function (response) {
             setItem(response.data.data)
         })
@@ -105,7 +105,7 @@ function CreatePubli() {
       
 
         // post da lingua
-        axios.post(`${api.defaults.baseURL}/linguas/create`, formLinguas)
+        axios.post(`${api.defaults.baseURL}/publiperson/linguas/create`, formLinguas)
         .then(function (response) {
             setItem(response.data.data)
         })
@@ -115,7 +115,7 @@ function CreatePubli() {
         
 
         // post da certificados
-        axios.post(`${api.defaults.baseURL}/certificados/create`, formCertificados)
+        axios.post(`${api.defaults.baseURL}/publiperson/certificados/create`, formCertificados)
         .then(function (response) {
             setItem(response.data.data)
         })
