@@ -4,7 +4,6 @@ export const SectionCourse = styled.section`
     display: flex;
     flex-direction: column;
     margin-top: 3vh;
-    background-color: #d6cd17;
 `
 
 export const HeaderCourse = styled.div`

@@ -34,7 +34,6 @@ export const ProfileDiv = styled.div`
     gap: 1em;
     margin-right: 1vw;
     max-width: 22vw;
-    background-color: green;
 `
 
 export const Description = styled.div`
@@ -60,8 +59,7 @@ export const NameProfile = styled.button`
 
 
 export const DesProfile = styled.p`
-    background-color: red;
-  
+
 
     color: #FFF;
     font-family: 'Work Sans';

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Flex, Grid, GridItem } from '@chakra-ui/react'
 import { Background, Main, Title, Input, Select, Button, LinkA, Entrar, Label, Text, InputCategory, ContainerForm } from './style'
 import { api } from "../../services/api";
@@ -8,10 +9,11 @@ function RegisterMain() {
 
     const [servico, setServico] = useState('');
     const [outrosServicos, setOutrosServicos] = useState('');
-
+    // para colocar o email, senha nome e navegação
     const [email, setEmail] = useState("");
     const [senha, setPassword] = useState("");
     const [nome, setName] = useState("");
+
 
     const navigate = useNavigate();
     
@@ -22,6 +24,8 @@ function RegisterMain() {
         window.location.reload();
           
         };
+  
+   // se o evento for diferente de 'gerais' ele vai por outro serviço
 
     const handleChange = (event) => {
         setServico(event.target.value);
@@ -33,7 +37,7 @@ function RegisterMain() {
     const handleOutrosServicosChange = (event) => {
         setOutrosServicos(event.target.value);
     };
-
+  
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {
@@ -46,6 +50,7 @@ function RegisterMain() {
         const response = await api.post('/user/create', data);
         console.log(response.data.data[0])
         alert("Usuário criado com sucesso!");
+
         goToHome()
       };
 

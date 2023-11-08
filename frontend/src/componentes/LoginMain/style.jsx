@@ -6,16 +6,18 @@ import fundo from '../../assets/fundo.png';
 export const Background = styled.div`
     background-image: url(${fundo});
     background-repeat: no-repeat;
+    position: fixed;
     background-size: cover;
     height: 100vh;
     width: 100%;
 
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
+
 `
 
 export const Main = styled.main`
+    margin-top: 6vh;
     height: 90vh;
     width: 80vw;
     max-height: 90vh;
@@ -63,6 +65,8 @@ export const ButtonBack = styled.img`
 `
 
 export const Div = styled.div`
+    display: flex;
+    flex-direction: column;
     input[type="text"],
     input[type="password"],
     input[type="date"] {
@@ -86,8 +90,8 @@ export const Title = styled.h1`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+    margin-top: 9vh;
+    margin-bottom: 8vh;
 
     font-size: 30px;
     font-weight: 400px;
@@ -111,7 +115,7 @@ export const Label = styled.label`
 `
 
 export const Input = styled.input`
-    width: 50vw;
+    width: 30vw;
     height: 5vh;
     text-indent: 0.5vw;
 
