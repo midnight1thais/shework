@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Flex, Grid, GridItem } from '@chakra-ui/react'
 import { Background, Main, Title, Input, Select, Button, LinkA, Entrar, Label, Text, InputCategory, ContainerForm } from './style'
 import { api } from "../../services/api";
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 function RegisterMain() {
 
@@ -12,7 +12,16 @@ function RegisterMain() {
     const [email, setEmail] = useState("");
     const [senha, setPassword] = useState("");
     const [nome, setName] = useState("");
-  
+
+    const navigate = useNavigate();
+    
+    const goToHome = () => {
+       
+        navigate("/homeRegister");
+    
+        window.location.reload();
+          
+        };
 
     const handleChange = (event) => {
         setServico(event.target.value);
@@ -37,6 +46,7 @@ function RegisterMain() {
         const response = await api.post('/user/create', data);
         console.log(response.data.data[0])
         alert("Usuário criado com sucesso!");
+        goToHome()
       };
 
 
