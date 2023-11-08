@@ -33,8 +33,8 @@ const {
 // Da pessoa
 router.get('/publiperson', listPerson);
 router.post('/publiperson/create', storePerson);
-router.put('/publiperson/:id_publiPessoa', updatePerson);
-router.delete('/publiperson/:id', deletePerson);
+// router.put('/publiperson/:id_publiPessoa', updatePerson);
+// router.delete('/publiperson/:id', deletePerson);
 
 // Das competencias técnicas
 router.get('/competenciaTec', listCompetenciaTec);
