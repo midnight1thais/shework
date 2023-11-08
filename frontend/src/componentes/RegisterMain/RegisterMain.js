@@ -3,7 +3,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Flex, Grid, GridItem } from '@chakra-ui/react'
 import { Background, Main, Title, Input, Select, Button, LinkA, Entrar, Label, Text, InputCategory, ContainerForm } from './style'
 import { api } from "../../services/api";
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 function RegisterMain() {
 
@@ -13,9 +13,20 @@ function RegisterMain() {
     const [email, setEmail] = useState("");
     const [senha, setPassword] = useState("");
     const [nome, setName] = useState("");
+
+
     const navigate = useNavigate();
+    
+    const goToHome = () => {
+       
+        navigate("/homeRegister");
+    
+        window.location.reload();
+          
+        };
   
    // se o evento for diferente de 'gerais' ele vai por outro serviço
+
     const handleChange = (event) => {
         setServico(event.target.value);
         if (event.target.value !== 'gerais') {
@@ -27,14 +38,6 @@ function RegisterMain() {
         setOutrosServicos(event.target.value);
     };
   
-    const goToHome = () => {
-       
-      navigate("/homeRegister");
-  
-      window.location.reload();
-        
-      };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {
