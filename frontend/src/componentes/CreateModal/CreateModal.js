@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Background, ContainerMid, ContainerModal, ContainerTop, Input, Label, TitleDes} from './style'
 
-function CreateModal({ isOpen, children}){
+function CreateModal({ isOpen, children, setModalOpen}){
   const [nomeCurso, setNomeCurso] = useState(''); // Estado para o nome do curso
  
 
@@ -11,6 +11,7 @@ function CreateModal({ isOpen, children}){
       <Background>
         <ContainerModal>
           <div>{children}</div>
+          <button onClick={setModalOpen}>Fechar</button>
         </ContainerModal>
       </Background>
     )

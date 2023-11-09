@@ -7,13 +7,16 @@ import CreateModal from '../../componentes/CreateModal/CreateModal';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { api } from "../../services/api";
-import { ContainerMid } from '../../componentes/CreateModal/style';
+import { ContainerMid, ContainerTop, TitleDes } from '../../componentes/CreateModal/style';
 
 
 function CreatePubli() {
     // do modal (pop-up)
     const [openModal, setOpenModal] = useState(false);
-
+    const [openModalCompetencia, setOpenModalCompetencia] = useState(false);
+    const [openModalExperiencia, setOpenModalExperiencia] = useState(false);
+    const [openModalLingua, setOpenModalLingua] = useState(false);
+    const [openModalCertificado, setOpenModalCertificado] = useState(false);
     //geral
     const [item, setItem] = useState();
 
@@ -77,7 +80,7 @@ function CreatePubli() {
             link: link_certificado,
         }
         // post das informações da pessoa
-        axios.post(`${api.defaults.baseURL}/publiperson/publiperson/create`, formPessoa)
+        axios.post(`${api.defaults.baseURL}/publiperson/create`, formPessoa)
         .then(function (response) {
             setItem(response.data.data)
         })
@@ -86,7 +89,7 @@ function CreatePubli() {
         });    
 
         // post da competencia tecnica
-        axios.post(`${api.defaults.baseURL}/publiperson/competenciaTec/create`, formCompetencia)
+        axios.post(`${api.defaults.baseURL}/competenciaTec/create`, formCompetencia)
         .then(function (response) {
             setItem(response.data.data)
         })
@@ -95,7 +98,7 @@ function CreatePubli() {
         });
 
         // post da experiencia
-        axios.post(`${api.defaults.baseURL}/publiperson/experiencias/create`, formExperiencia)
+        axios.post(`${api.defaults.baseURL}/experiencias/create`, formExperiencia)
         .then(function (response) {
             setItem(response.data.data)
         })
@@ -105,7 +108,7 @@ function CreatePubli() {
       
 
         // post da lingua
-        axios.post(`${api.defaults.baseURL}/publiperson/linguas/create`, formLinguas)
+        axios.post(`${api.defaults.baseURL}/linguas/create`, formLinguas)
         .then(function (response) {
             setItem(response.data.data)
         })
@@ -115,7 +118,7 @@ function CreatePubli() {
         
 
         // post da certificados
-        axios.post(`${api.defaults.baseURL}/publiperson/certificados/create`, formCertificados)
+        axios.post(`${api.defaults.baseURL}/certificados/create`, formCertificados)
         .then(function (response) {
             setItem(response.data.data)
         })
@@ -124,6 +127,15 @@ function CreatePubli() {
         });
 
 };    
+
+    const fetchData = async () => {
+        const response = await api.get('/posts');        
+        setPostsList(response.data.data);
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return(
         <>
@@ -137,7 +149,7 @@ function CreatePubli() {
                             <Input type="text" value={nomePessoa} onChange={(e) => setNomePessoa(e.target.value)} />
                         </Label>
                         <Label>Data de Nascimento
-                             <Input type="text"value={dt_nascimento} onChange={(e) => setNascimento(e.target.value)} />
+                             <Input type="date"value={dt_nascimento} onChange={(e) => setNascimento(e.target.value)} />
                         </Label>
                         <Label>Cidade e Estado
                              <Input type="text" value={cidade_estado} onChange={(e) => setCidadeEstado(e.target.value)}/>
@@ -159,8 +171,8 @@ function CreatePubli() {
                         <SubTitleLeft>Competências</SubTitleLeft>
                         <AddThings >
                             <AddTitle>Adicionar Competência</AddTitle>
-                            <AddIconButton onClick={() => setOpenModal(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
-                            <CreateModal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
+                            <button onClick={() => setOpenModalCompetencia(true)}><AddIcon src={AddIconImg} alt=''/></button>
+                            <CreateModal isOpen={openModalCompetencia} setModalOpen={() => setOpenModalCompetencia(!openModalCompetencia)}>
                             <div>
                                 <ContainerTop>
                                 <TitleDes> Adicionar Competencia </TitleDes>
@@ -172,7 +184,7 @@ function CreatePubli() {
                                         <Input type="text" value={nivel_competencia} onChange={(e) => setNivelCompetencia(e.target.value)}/>
                                 </Label>
                             </div>
-                            <button onClick={setOpenModal}>Fechar</button>
+                            
                             </CreateModal>
                           
                         </AddThings>
@@ -185,8 +197,8 @@ function CreatePubli() {
                         <SubTitleLeft2>Experiência</SubTitleLeft2>
                         <AddThings >
                             <AddTitle>Adicionar Experiência</AddTitle>
-                            <AddIconButton onClick={() => setOpenModal(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
-                            <CreateModal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
+                            <AddIconButton onClick={() => setOpenModalExperiencia(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
+                            <CreateModal isOpen={openModalExperiencia} setModalOpen={() => setOpenModalExperiencia(!openModalExperiencia)}>
                             <div>
                                 <ContainerTop>
                                 <TitleDes> Adicionar Experiencia </TitleDes>
@@ -206,7 +218,6 @@ function CreatePubli() {
                                         <Input type="text" value={descricaoExperiencia} onChange={(e) => setDescricaoExperiencia(e.target.value)}/>
                                 </Label>
                             </div>
-                            <button onClick={setOpenModal}>Fechar</button>
                             </CreateModal>
                         </AddThings>
                         
@@ -217,8 +228,8 @@ function CreatePubli() {
                         <SubTitleLeft2>Linguas</SubTitleLeft2>
                         <AddThings >
                             <AddTitle>Adicionar Linguas</AddTitle>
-                            <AddIconButton onClick={() => setOpenModal(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
-                            <CreateModal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} >
+                            <AddIconButton onClick={() => setOpenModalLingua(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
+                            <CreateModal isOpen={openModalLingua} setModalOpen={() => setOpenModalLingua(!openModalLingua)} >
                             <div>
                                 <ContainerTop>
                                 <TitleDes> Adicionar Lingua </TitleDes>
@@ -227,10 +238,9 @@ function CreatePubli() {
                                     <Input type="text" value={nomeLingua} onChange={(e) => setNomeLingua(e.target.value)}/>
                                 </Label>
                                 <Label>Nivel de Conhecimento 
-                                    <Input type="text" value={nivel_lingua} onChange={(e) => setNivel(e.target.value)}/>
+                                    <Input type="text" value={nivel_lingua} onChange={(e) => setNivelLingua(e.target.value)}/>
                                 </Label>
                             </div>
-                            <button onClick={setOpenModal}>Fechar</button>
                             </CreateModal>
                         </AddThings>
                         
@@ -243,8 +253,8 @@ function CreatePubli() {
                         <SubTitleLeft>Certificados Academicos</SubTitleLeft>
                         <AddThings >
                             <AddTitle>Adicionar Certificados</AddTitle>
-                            <AddIconButton onClick={() => setOpenModal(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
-                            <CreateModal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} >
+                            <AddIconButton onClick={() => setOpenModalCertificado(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
+                            <CreateModal isOpen={openModalCertificado} setModalOpen={() => setOpenModalCertificado(!openModalCertificado)} >
                             <div>
                                 <ContainerTop>
                                 <TitleDes> Adicionar Certificados</TitleDes>
@@ -256,7 +266,6 @@ function CreatePubli() {
                                     <Input type="text" value={link_certificado} onChange={(e) => setLinkCertificado(e.target.value)}/>
                                 </Label>
                             </div>
-                            <button onClick={setOpenModal}>Fechar</button>
                             </CreateModal>
                         </AddThings>
                         

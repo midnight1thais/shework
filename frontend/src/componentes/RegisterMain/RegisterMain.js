@@ -1,5 +1,4 @@
 import React, { useState} from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Flex, Grid, GridItem } from '@chakra-ui/react'
 import { Background, Main, Title, Input, Select, Button, LinkA, Entrar, Label, Text, InputCategory, ContainerForm } from './style'
 import { api } from "../../services/api";
