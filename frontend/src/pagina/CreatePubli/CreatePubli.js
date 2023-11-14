@@ -128,14 +128,14 @@ function CreatePubli() {
 
 };    
 
-    const fetchData = async () => {
-        const response = await api.get('/posts');        
-        setPostsList(response.data.data);
-    }
+    // const fetchData = async () => {
+    //     const response = await api.get('/posts');        
+    //     setPostsList(response.data.data);
+    // }
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
 
     return(
         <>
