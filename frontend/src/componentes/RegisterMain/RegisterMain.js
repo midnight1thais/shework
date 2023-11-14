@@ -13,6 +13,7 @@ function RegisterMain() {
     const [senha, setPassword] = useState("");
     const [nome, setName] = useState("");
     const [confirmSenha, setConfirmSenha] = useState("");
+    const [escolhaCategoria, setEscolhaCategoria] = useState('')
 
     // const categoria = {
     //     servico1: 'Trabalhos Diversos',
@@ -46,6 +47,10 @@ function RegisterMain() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (categoria === escolhaCategoria) {
+            alert("Por favor, escolha uma categoria antes de cadastrar.");
+            return;
+        }
         
         if (senha !== confirmSenha) {
             alert("A senha e a confirmação da senha não coincidem.");
@@ -97,6 +102,7 @@ function RegisterMain() {
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)} 
+                                    is required 
                                     />
                                 </Label>
 
@@ -105,6 +111,7 @@ function RegisterMain() {
                                     type="password" 
                                     value={senha}
                                     onChange={(e) => setPassword(e.target.value)}
+                                    is required 
                                     />
                                 </Label>
 
@@ -112,6 +119,7 @@ function RegisterMain() {
                                     <Input type="password" 
                                     value={confirmSenha}
                                     onChange={(e) => setConfirmSenha(e.target.value)}
+                                    is required 
                                     />
                                 </Label>
                             </GridItem>
@@ -129,6 +137,7 @@ function RegisterMain() {
                                     type="text"
                                     value={nome}
                                     onChange={(e) => setName(e.target.value)}
+                                    is required 
                                     />
                                 </Label>
 
@@ -140,11 +149,12 @@ function RegisterMain() {
                                     />
                                 </Label> */}
                                 <Label htmlFor="servico">Categoria
-                                    <Select id="servico" value={categoria} onChange={(e) => setServico(e.target.value)} type='text'>
-                                        <option type='text'>Escolha Categoria</option>
+                                    <Select id="servico" value={categoria} onChange={(e) => setServico(e.target.value)} type='text' is required>
+                                        <option value={escolhaCategoria} type='text'>Escolha Categoria</option>
                                         <option value="Trabalhos Diversos" type='text'>Trabalhos Diversos</option>
                                         <option value="Técnico em TI" type='text'>Técnico TI</option>
                                         <option value="Empresa" type='text'>Empresa</option>
+                                        
                                     </Select>
                                 </Label >
                             </GridItem>
