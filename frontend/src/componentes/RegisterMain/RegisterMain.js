@@ -6,13 +6,19 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 function RegisterMain() {
 
-    const [servico, setServico] = useState('');
+    const [categoria, setServico] = useState('');
     const [outrosServicos, setOutrosServicos] = useState('');
     // para colocar o email, senha nome e navegação
     const [email, setEmail] = useState("");
     const [senha, setPassword] = useState("");
     const [nome, setName] = useState("");
+    const [confirmSenha, setConfirmSenha] = useState("");
 
+    // const categoria = {
+    //     servico1: 'Trabalhos Diversos',
+    //     servico2: 'Técnico TI',
+    //     servico3: 'Empresa'
+    //   };
 
     const navigate = useNavigate();
     
@@ -39,11 +45,18 @@ function RegisterMain() {
   
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        
+        if (senha !== confirmSenha) {
+            alert("A senha e a confirmação da senha não coincidem.");
+            return;
+        }
+
         const data = {
           nome,
           email,
           senha,
-          servico
+          categoria
         };
         console.log(data)
         const response = await api.post('/user/create', data);
@@ -96,7 +109,10 @@ function RegisterMain() {
                                 </Label>
 
                                 <Label>Confirmação da Senha
-                                    <Input type="password" />
+                                    <Input type="password" 
+                                    value={confirmSenha}
+                                    onChange={(e) => setConfirmSenha(e.target.value)}
+                                    />
                                 </Label>
                             </GridItem>
                             
@@ -116,14 +132,19 @@ function RegisterMain() {
                                     />
                                 </Label>
 
-                                <Label>Data de Nascimento
-                                    <Input type="date" />
-                                </Label>
+                                {/* <Label>Data de Nascimento
+                                    <Input 
+                                    type="date" 
+                                    value={dt_nascimento}
+                                    onChange={(e) => setData(e.target.value)}
+                                    />
+                                </Label> */}
                                 <Label htmlFor="servico">Categoria
-                                    <Select id="servico" value={servico} onChange={(e) => setServico(e.target.value)} type='text'>
-                                        <option value="gerais" type='text'>Outros Trabalhos</option>
-                                        <option value="ti" type='text'>Técnico TI</option>
-                                        <option value="company" type='text'>Empresa</option>
+                                    <Select id="servico" value={categoria} onChange={(e) => setServico(e.target.value)} type='text'>
+                                        <option type='text'>Escolha Categoria</option>
+                                        <option value="Trabalhos Diversos" type='text'>Trabalhos Diversos</option>
+                                        <option value="Técnico em TI" type='text'>Técnico TI</option>
+                                        <option value="Empresa" type='text'>Empresa</option>
                                     </Select>
                                 </Label >
                             </GridItem>
@@ -136,7 +157,7 @@ function RegisterMain() {
                                 justifySelf="center"
                                 alignItems="center"
                             >
-                                {servico === 'gerais' && (
+                                {/* {servico === 'gerais' && (
                                     <Label htmlFor="outrosServicosInput">Descreva o trabalho:
                                         <InputCategory
                                             type="text"
@@ -146,7 +167,7 @@ function RegisterMain() {
                                         />
                                     </Label>
 
-                                )}
+                                )} */}
                             </GridItem>
                             <GridItem 
                             colStart={1} colEnd={3}

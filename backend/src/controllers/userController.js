@@ -39,13 +39,15 @@ async function listUsers(request, response) {
 // Função que cria um novo usuário 
 async function storeUser(request, response) {
     // Preparar o comando de execução no banco
-    const query = 'INSERT INTO usuarios(nome, email, senha) VALUES(?, ?, ?);';
+    const query = 'INSERT INTO usuarios(nome, email, senha, categoria) VALUES(?, ?, ?, ?);';
 
     // Recuperar os dados enviados na requisição
     const params = Array(
         request.body.nome,
         request.body.email,
-        bcrypt.hashSync(request.body.senha, 10)
+        bcrypt.hashSync(request.body.senha, 10),
+        request.body.categoria
+              
     );
 
     // Executa a ação no banco e valida os retornos para o client que realizou a solicitação
