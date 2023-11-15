@@ -19,7 +19,7 @@ function PersonModal({ isOpen, setModalOpen}){
     // Limpa o localStorage
     localStorage.removeItem("@Auth:user");
     localStorage.removeItem("@Auth:token");
-    localStorage.removeItem("@Auth:email");
+    localStorage.removeItem("@Auth:user_email");
     localStorage.removeItem("@Auth:id");
     localStorage.removeItem("@Auth:user_id");
     localStorage.removeItem("@Auth:user_categoria");
@@ -30,38 +30,47 @@ function PersonModal({ isOpen, setModalOpen}){
     window.location.reload();
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    const handleSubmit = async (e) => {
+      e.preventDefault();
 
 
-    const data = {
-      nome,
-      email,
-      senha,
-      id_usuario:userId
+      const formUpdate = {
+        nome:nome,
+        email:email,
+        senha:senha,
+        id_usuario:userId
+      };
+      
+      console.log(formUpdate)
+
+      try {
+        const response = await api.put(`/user/${userId}`, formUpdate);
+        setUser(response.data.formUpdate);
+    
+        console.log("A resposta .data", response.data.formUpdate);
+    
+        if (response.data.success === true) {
+          alert("Usuário editado com sucesso!");
+    
+          // Atualize os dados no localStorage
+          const updatedUser = {
+            id: userId,
+            nome: formUpdate.nome,
+            email: formUpdate.email,
+            senha: formUpdate.senha,
+            categoria: localStorage.getItem("@Auth:user_categoria")
+          };
+    
+          localStorage.setItem("@Auth:user", JSON.stringify(updatedUser.email));
+          localStorage.setItem("@Auth:user_name", formUpdate.nome);
+        } else {
+          alert("Erro ao editar usuário no banco de dados");
+        }
+      } catch (error) {
+        console.error("Erro ao realizar a requisição:", error.message);
+      }
+              
     };
- 
-
-        const response = await api.put(`/user/${userId}`, data)
-            setUser(response.data);
-            
-            console.log(response.data.data[0])
-            localStorage.removeItem("@Auth:email");
-            localStorage.removeItem("@Auth:user_name");
-            if (response.data.success === true) {
-              alert("Usuário editado com sucesso!");
-            
-              const userName = response.data.data[0].nome;
-              const userEmail = response.data.data[0].email;
-
-              localStorage.setItem("@Auth:user_name", userName);
-              localStorage.setItem("@Auth:user_email", userEmail);
-
-            } else {
-              alert("Erro ao editar localStorage");
-            }
-            
-  };
 
 
 
