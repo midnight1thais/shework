@@ -141,13 +141,6 @@ function RegisterMain() {
                                     />
                                 </Label>
 
-                                {/* <Label>Data de Nascimento
-                                    <Input 
-                                    type="date" 
-                                    value={dt_nascimento}
-                                    onChange={(e) => setData(e.target.value)}
-                                    />
-                                </Label> */}
                                 <Label htmlFor="servico">Categoria
                                     <Select id="servico" value={categoria} onChange={(e) => setServico(e.target.value)} type='text' is required>
                                         <option value={escolhaCategoria} type='text'>Escolha Categoria</option>
