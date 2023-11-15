@@ -25,7 +25,7 @@ function RegisterMain() {
     
     const goToHome = () => {
        
-        navigate("/homeRegister");
+        navigate("/login");
     
         window.location.reload();
           
