@@ -1,4 +1,3 @@
-
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Background, Container, Div, Main, Title, Input, ContactForm, Button, LinkA, Entrar, Label, ButtonBack } from './style'
 import { useState } from 'react';
@@ -46,6 +45,12 @@ function LoginMain(){
                 localStorage.setItem("@Auth:token", response.data.data[0].token);
                 setUser(response.data.data[0])
 
+                const userName = response.data.data[0].nome;
+                const userCategoria = response.data.data[0].categoria;
+                const userId = response.data.data[0].id_usuario;
+                localStorage.setItem("@Auth:user_name", userName); 
+                localStorage.setItem("@Auth:user_categoria", userCategoria); 
+                localStorage.setItem("@Auth:user_id", userId)
                 //signed = true;
                 
                 goToHome()
