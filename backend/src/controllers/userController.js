@@ -84,14 +84,18 @@ async function storeUser(request, response) {
 
 // Função que atualiza o usuário no banco
 async function updateUser(request, response) {
+    console.log(request.body)
     // Preparar o comando de execução no banco
-    const query = "UPDATE usuarios SET `nome` = ?, `senha` = ? WHERE `id` = ?";
+    const query = "UPDATE usuarios SET `nome` = ?, `email` = ? ,`senha` = ? WHERE `id_usuario` = ?";
 
     // Recuperar os dados enviados na requisição respectivamente
     const params = Array(
         request.body.nome,
-        bcrypt.hashSync(request.body.senha, 10),        
-        request.params.id  // Recebimento de parametro da rota
+        request.body.email,
+        bcrypt.hashSync(request.body.senha, 10),
+        request.params.id_usuario   // Recebimento de parametro da rota
+           
+        
     );
 
     // Executa a ação no banco e valida os retornos para o client que realizou a solicitação
@@ -133,7 +137,7 @@ async function deleteUser(request, response) {
 
     // Recebimento de parametro da rota
     const params = Array(
-        request.params.id
+        request.params.id_usuario 
     );
 
     // Executa a ação no banco e valida os retornos para o client que realizou a solicitação
