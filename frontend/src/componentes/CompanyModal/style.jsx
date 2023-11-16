@@ -131,6 +131,13 @@ export const ButtonAdd = styled.button`
 
 // botão de adicionar imagem
 
+export const ImgPost = styled.img`
+  width: 90vw;
+  max-width: 100%;        /* Garante que a imagem não ultrapasse o contêiner */
+  height: auto;           /* Mantém a proporção da imagem */
+`
+
+
 export const ImgDiv = styled.div`
     display: flex;
     flex-direction: row;
@@ -143,4 +150,26 @@ export const AddIconButton = styled.button`
 export const AddIcon = styled.img`
     height: 3vh;
     width: 3vw;
+`
+
+// definindo o local de cada coisa
+
+export const ContainerAll = styled.div`
+    display: flex;
+    flex-direction: row;
+
+`
+
+export const ContainerRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;  /* Alinha os itens à direita */
+  margin-right: 20px;     /* Adicione um espaçamento direito */
+  margin-top: 20px;       /* Adicione um espaçamento superior */
+  align-items: center;    /* Alinha os itens ao centro verticalmente */
+`
+
+export const ContainerLeft = styled.div`
+    display:flex;
+    flex-direction: column;
 `
