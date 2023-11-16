@@ -1,9 +1,9 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { api } from "../../services/api";
 import { Link, useNavigate } from 'react-router-dom'
 import AddIconImg from '../../assets/plusIcon.svg'
-import { AddIcon, AddIconButton, Background, ButtonAdd, ButtonHere, ContainerButtons, ContainerCenter, ContainerMid, ContainerModal, ContainerTop, ImgDiv, Input, Label, TitleDes} from './style'
+import { AddIcon, AddIconButton, Background, ButtonAdd, ButtonHere, ContainerAll, ContainerButtons, ContainerCenter, ContainerLeft, ContainerMid, ContainerModal, ContainerRight, ContainerTop, ImgDiv, ImgPost, Input, Label, TitleDes, } from './style'
 
 
 function CompanyModal({ isOpen, setModalOpen}){
@@ -15,8 +15,11 @@ const [somos_descricao, setSomos] = useState("");
 const [fazemos_descricao, setFazemos] = useState("");
 const [valores, setValores] = useState("");
 
+const [image, setImage] = useState('');
+const [preview, setPreview] = useState('');
+
 const [user, setUser] = useState("");
-const userId= localStorage.getItem('@Auth:user_id')
+const userId= parseInt(localStorage.getItem('@Auth:user_id'), 10)
 
 const navigate = useNavigate();
 
@@ -35,24 +38,71 @@ const handleLogout = () => {
   window.location.reload();
 };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+console.log(userId)
+function handleImageChange(e) {
+  setImage(e.target.files[0]);
+  setPreview(URL.createObjectURL(e.target.files[0]));
+}
 
-    const data = {
-      id_usuarioEmpresa:userId,
-      nome,
-      somos_descricao,
-      fazemos_descricao,
-      valores
-    };
+useEffect(() => {
+  console.log('image', image);
+}, [image]);
 
-    console.log(data)
-    const response = await api.post('/company/create', data);
-    console.log(response.data.data[0])
-    alert("Empresa publicada com sucesso!");
+useEffect(() => {
+    console.log('--preview atual', preview);
+}, [preview]);
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  console.log('Imagem do post', image)
+  
+  let formData = new FormData();
+  formData.append('id_usuarioEmpresa', userId);
+  formData.append('nome', nome);
+  formData.append('file', image);
+  formData.append('somos_descricao', somos_descricao);
+  formData.append('fazemos_descricao', fazemos_descricao,);
+  formData.append('valores', valores);
+    
+  console.log('nome:', nome);
+  console.log('valores:', valores);
+  console.log('somos:', somos_descricao);
+  console.log('fazemos:',fazemos_descricao);
+  console.log('userId:', userId)
+  try {
+    const response = await api.post('/company/create', formData);
+    alert('Deu certo')
+    
+    console.log('Post criado com sucesso:', response.data);
+  } catch (error) {
+    console.error('Erro ao criar o post:', error);
+  }
+  
+};
+
+const handleImageClick = () => {
+  // Ativar click no input que está oculto.
+  document.getElementById('imageInput').click();        
+};
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const data = {
+  //     id_usuarioEmpresa:userId,
+  //     nome,
+  //     somos_descricao,
+  //     fazemos_descricao,
+  //     valores
+  //   };
+
+  //   console.log(data)
+  //   const response = await api.post('/company/create', data);
+  //   console.log(response.data.data[0])
+  //   alert("Empresa publicada com sucesso!");
 
 
-  };
+  // };
 
 
 
@@ -61,11 +111,14 @@ const handleLogout = () => {
     return (
       <Background>
         <ContainerModal>
+          <ContainerAll>
+          <ContainerLeft>
           <div>
             <ContainerTop>
               <TitleDes> Editar Tela Empresa </TitleDes>
             </ContainerTop>
-            <ContainerMid>
+            <ContainerLeft>
+            <ContainerCenter>
               <Label>Nome
                     <Input type="text" 
                     value={nome}
@@ -79,13 +132,11 @@ const handleLogout = () => {
                     onChange={(e) => setValores(e.target.value)} 
                     />
               </Label>
-              <ImgDiv>
-              <Label>Adicionar Fotos
-                    <Input type="text" />
-              </Label>
-              <AddIconButton ><AddIcon src={AddIconImg} alt=''/></AddIconButton>
-              </ImgDiv>
-            </ContainerMid>
+              <ContainerRight>
+            </ContainerRight>
+              
+            </ContainerCenter>
+        
             <ContainerCenter>
               <Label>O que somos
                     <Input type="text" 
@@ -117,14 +168,38 @@ const handleLogout = () => {
             <ContainerTop>
               <ButtonAdd>Adicionar Projeto</ButtonAdd>
             </ContainerTop>
-            
+            </ContainerLeft>
           </div>
           <ContainerButtons>
             <ButtonHere onClick={setModalOpen}>Fechar</ButtonHere>
             <ButtonHere onClick={handleSubmit}>Salvar</ButtonHere>
             <ButtonHere onClick={handleLogout}>Sair</ButtonHere>
           </ContainerButtons>
+          </ContainerLeft>
+
+          <ImgDiv>
+                <Label>Adicionar Fotos
+                </Label>
+                <AddIconButton onClick={handleImageClick}>
+                <input 
+                      type="file"
+                      name="image"
+                      accept="image/*"
+                      id="imageInput"
+                      multiple={false}
+                      onChange={handleImageChange}
+                    />
+                    {preview && (
+                      <div>
+                        <ImgPost src={preview} alt="Imagem selecionada"/>
+                      </div>
+                    )}
+                  </AddIconButton>
+                </ImgDiv>
+             </ContainerAll>
+
         </ContainerModal>
+
       </Background>
     )
   }
