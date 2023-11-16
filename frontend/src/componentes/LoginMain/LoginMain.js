@@ -20,6 +20,14 @@ function LoginMain(){
       window.location.reload();
         
       };
+    
+    const goToHomeCompany = () => {
+    
+    navigate("/homeRegisterCompany");
+
+    window.location.reload();
+        
+    };
   
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -53,7 +61,11 @@ function LoginMain(){
                 localStorage.setItem("@Auth:user_id", userId)
                 //signed = true;
                 
-                goToHome()
+                if (userCategoria === 'Empresa') {
+                    goToHomeCompany();
+                } else {
+                    goToHome();
+                }
 
             } else {
                 alert('Num deu!')
