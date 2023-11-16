@@ -45,8 +45,10 @@ export const Description = styled.div`
 
 
 export const NameProfile = styled.button`
+    display: flex;
+    align-items: left;
     margin-top: 1vh;
-    width: 11vw;
+    width: 12vw;
     color: #FFF;
     font-family: 'Poppins';
     font-size: 90%;
