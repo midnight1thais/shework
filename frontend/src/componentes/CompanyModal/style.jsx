@@ -15,13 +15,12 @@ export const Background = styled.div`
 export const ContainerModal = styled.div`
     display: flex;
     flex-direction: column;
-   
-    width: 50vw;
+
+    width: 70vw;
     height: 80vh;
-    position: fixed;
     margin-top: 15vh;
-    margin-left: 30vw;
-    padding: 60px;
+    margin-left: 15vw;
+    padding: 40px;
     background-color: #9d9ea0;
     border-radius: 10px;
     color: black;
@@ -40,6 +39,15 @@ export const ContainerMid = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 4vh;
+
+`
+
+export const ContainerCenter = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
     margin-top: 4vh;
 
 `
@@ -63,7 +71,6 @@ export const ButtonHere = styled.button`
 
 export const TitleDes = styled.h1`
     display: flex;
-    align-self: center;
 
     color: #FFF;
     font-family: 'Poppins';
@@ -117,4 +124,23 @@ export const ButtonAdd = styled.button`
     font-weight: 600;
     line-height: 24px; /* 120% */
     letter-spacing: 0.2px;
+
+`
+
+
+
+// botão de adicionar imagem
+
+export const ImgDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+
+export const AddIconButton = styled.button`
+    
+`
+
+export const AddIcon = styled.img`
+    height: 3vh;
+    width: 3vw;
 `
