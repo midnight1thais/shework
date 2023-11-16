@@ -33,6 +33,10 @@ function PersonModal({ isOpen, setModalOpen}){
     const handleSubmit = async (e) => {
       e.preventDefault();
 
+      if (nome.trim() === "" || email.trim() === "" || senha.trim() === "") {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+        return;
+      }
 
       const formUpdate = {
         nome:nome,
