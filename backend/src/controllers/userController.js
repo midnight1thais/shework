@@ -84,7 +84,6 @@ async function storeUser(request, response) {
 
 // Função que atualiza o usuário no banco
 async function updateUser(request, response) {
-    console.log(request.body)
     // Preparar o comando de execução no banco
     const query = "UPDATE usuarios SET `nome` = ?, `email` = ? ,`senha` = ? WHERE `id_usuario` = ?";
 
