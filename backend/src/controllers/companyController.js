@@ -70,8 +70,49 @@ async function storeCompany(request, response) {
     });
 }
 
+async function getPubliInformations(request, response) {
+    const publiId = request.params.id_publiEmpresa;
+    
+    const query = `
+    
+    SELECT
+      publicacao_empresa.id_publiEmpresa AS id_publiEmpresa,
+      publicacao_empresa.id_usuarioEmpresa AS id_usuarioEmpresa,
+      publicacao_empresa.nome AS nome,
+      publicacao_empresa.img AS img,
+      publicacao_empresa.somos_descricao AS somos_descricao,
+      publicacao_empresa.fazemos_descricao AS fazemos_descricao,
+      publicacao_empresa.valores AS valores,
+    FROM
+      publicacao_empresa
+    JOIN
+      usuarios ON publicacao_empresa.id_usuarioEmpresa = usuarios.id_usuario
+    WHERE
+      publicacao_empresa.id_publiEmpresa = ?
+    `;
+  
+    connection.query(query, [publiId], (error, results) => {
+      if (error) {
+        console.error('Erro ao recuperar as informações da publicação: ' + error.message);
+        return response.status(500).json({ error: 'Erro ao recuperar as informações da publicação' });
+      }
+
+      results.forEach((publi) => {
+        if (publi.img) {
+          const base64Data = publi.img;
+          // Define o nome do arquivo.
+          const publiImg = `publi_${publi.id_publiEmpresa}.jpeg`; 
+          base64_decode(base64Data, publiImg);
+        }
+      });
+  
+      response.json(results);
+    });
+  }
+
 
 
 module.exports = {
     storeCompany,
+    getPubliInformations
 }
