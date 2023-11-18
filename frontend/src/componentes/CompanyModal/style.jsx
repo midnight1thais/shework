@@ -173,3 +173,4 @@ export const ContainerLeft = styled.div`
     display:flex;
     flex-direction: column;
 `
+

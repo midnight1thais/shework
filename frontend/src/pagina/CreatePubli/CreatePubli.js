@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { api } from "../../services/api";
 import { ContainerMid, ContainerTop, TitleDes } from '../../componentes/CreateModal/style';
+import { useNavigate } from 'react-router-dom';
 
 
 function CreatePubli() {
@@ -19,6 +20,9 @@ function CreatePubli() {
     const [openModalCertificado, setOpenModalCertificado] = useState(false);
     //geral
     const [item, setItem] = useState();
+    const codUsuario = localStorage.getItem("@Auth:user_id");
+    const navigate = useNavigate();
+    const [codUser, setCodUser] = useState("");
 
     // da pessoa
     const [nomePessoa, setNomePessoa] = useState("");
@@ -32,6 +36,8 @@ function CreatePubli() {
     // da competência
     const [nomeCompetencia, setNomeCompetencia] = useState("");
     const [nivel_competencia, setNivelCompetencia] = useState("");
+    const [nomeCompetencias, setNomeCompetencias] = useState([]);
+    const [nivel_competencias, setNivelCompetencias] = useState([]);
 
     // da experiencia 
     const [nomeExperiencia, setNomeExperiencia] = useState("");
@@ -46,11 +52,24 @@ function CreatePubli() {
     // da certificados
     const [nomeCertificado, setNomeCertificado] = useState("");
     const [link_certificado, setLinkCertificado] = useState("");
+    const [nomeCertificados, setNomeCertificados] = useState([]);
+    const [link_certificados, setLinkCertificados] = useState([]);
+
+    const addCompetencias = () => {
+        setNomeCompetencias([...nomeCompetencias, nomeCompetencia]);
+        setNivelCompetencias([...nivel_competencias, nivel_competencia]);
+    }
+
+    const addCertificados = () => {
+        setNomeCertificados([...nomeCertificados, nomeCertificado]);
+        setLinkCertificados([...link_certificados, link_certificado]);
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const formPessoa = {
+            id_usuario: codUsuario,
             nome:nomePessoa,
             dt_nascimento:dt_nascimento,
             cidade_estado:cidade_estado,
@@ -60,10 +79,7 @@ function CreatePubli() {
             area_interesse:area_interesse
           };
 
-        const formCompetencia = {
-            nome:nomeCompetencia,
-            nivel_conhecimento: nivel_competencia,
-        };
+        
 
         const formExperiencia = {
             nome:nomeExperiencia,
@@ -75,56 +91,76 @@ function CreatePubli() {
             nome:nomeLingua,
             nivel_conhecimento: nivel_lingua,
         }
-        const formCertificados = {
-            nome:nomeCertificado,
-            link: link_certificado,
-        }
+        
         // post das informações da pessoa
         axios.post(`${api.defaults.baseURL}/publiperson/create`, formPessoa)
         .then(function (response) {
+            // post da competencia tecnica
+            nomeCompetencias.map((item, index) => {
+                const formCompetencia = {
+                    id_publicacao_pessoa: response.data.data.insertId,
+                    nome:item,
+                    nivel_conhecimento: nivel_competencias[index],
+                };
+    
+                axios.post(`${api.defaults.baseURL}/competenciaTec/create`, formCompetencia)
+                .then(function (response) {
+                    setItem(response.data.data)
+                })
+                .catch(function (error) {
+                    alert("erro")
+                });
+
+            })
+            // // post da certificados
+            nomeCertificados.map((item, index) => {
+                const formCertificados = {
+                    id_publicacao_pessoa: response.data.data.insertId,
+                    nome:item,
+                    link: link_certificados[index],
+                }
+                axios.post(`${api.defaults.baseURL}/certificados/create`, formCertificados)
+                .then(function (response) {
+                    setItem(response.data.data)
+                })
+                .catch(function (error) {
+                    alert("erro")
+                });
+            })
+
+            console.log(`/publiPerson/${response.data.data.insertId-1}`);
+
+
             setItem(response.data.data)
         })
         .catch(function (error) {
             alert("erro")
         });    
 
-        // post da competencia tecnica
-        axios.post(`${api.defaults.baseURL}/competenciaTec/create`, formCompetencia)
-        .then(function (response) {
-            setItem(response.data.data)
-        })
-        .catch(function (error) {
-            alert("erro")
-        });
 
-        // post da experiencia
-        axios.post(`${api.defaults.baseURL}/experiencias/create`, formExperiencia)
-        .then(function (response) {
-            setItem(response.data.data)
-        })
-        .catch(function (error) {
-            alert("erro")
-        });
+        // // post da experiencia
+        // axios.post(`${api.defaults.baseURL}/experiencias/create`, formExperiencia)
+        // .then(function (response) {
+        //     setItem(response.data.data)
+        // })
+        // .catch(function (error) {
+        //     alert("erro")
+        // });
       
 
-        // post da lingua
-        axios.post(`${api.defaults.baseURL}/linguas/create`, formLinguas)
-        .then(function (response) {
-            setItem(response.data.data)
-        })
-        .catch(function (error) {
-            alert("erro")
-        });
+        // // post da lingua
+        // axios.post(`${api.defaults.baseURL}/linguas/create`, formLinguas)
+        // .then(function (response) {
+        //     setItem(response.data.data)
+        // })
+        // .catch(function (error) {
+        //     alert("erro")
+        // });
         
 
-        // post da certificados
-        axios.post(`${api.defaults.baseURL}/certificados/create`, formCertificados)
-        .then(function (response) {
-            setItem(response.data.data)
-        })
-        .catch(function (error) {
-            alert("erro")
-        });
+        
+
+        // navigate(`/publiPerson/${codUser}`);
 
 };    
 
@@ -136,6 +172,8 @@ function CreatePubli() {
     // useEffect(() => {
     //     fetchData();
     // }, []);
+
+    const handleCompetence =() => {}
 
     return(
         <>
@@ -171,8 +209,17 @@ function CreatePubli() {
                         <SubTitleLeft>Competências</SubTitleLeft>
                         <AddThings >
                             <AddTitle>Adicionar Competência</AddTitle>
-                            <button onClick={() => setOpenModalCompetencia(true)}><AddIcon src={AddIconImg} alt=''/></button>
-                            <CreateModal isOpen={openModalCompetencia} setModalOpen={() => setOpenModalCompetencia(!openModalCompetencia)}>
+                            
+                            <button 
+                                onClick={() => setOpenModalCompetencia(true)}>
+                                <AddIcon src={AddIconImg} alt=''/>
+                            </button>
+                            
+                            <CreateModal 
+                                isOpen={openModalCompetencia} 
+                                setModalOpen={() => setOpenModalCompetencia(!openModalCompetencia)}
+                            >
+                            
                             <div>
                                 <ContainerTop>
                                 <TitleDes> Adicionar Competencia </TitleDes>
@@ -181,16 +228,26 @@ function CreatePubli() {
                                     <Input type="text" value={nomeCompetencia} onChange={(e) => setNomeCompetencia(e.target.value)}/>
                                 </Label>
                                 <Label>Nivel de Conhecimento 
-                                        <Input type="text" value={nivel_competencia} onChange={(e) => setNivelCompetencia(e.target.value)}/>
+                                        {/* <Input type="text" value={nivel_competencia} onChange={(e) => setNivelCompetencia(e.target.value)}/> */}
+                                        <select value={nivel_competencia} onChange={(e) => setNivelCompetencia(e.target.value)}>
+                                            <option value="Básico">Básico</option>
+                                            <option value="Intermediário">Intermediário</option>
+                                            <option value="Avançado">Avançado</option>
+                                        </select>
                                 </Label>
                             </div>
                             
+                                <button onClick={() => addCompetencias()}>Salvar</button>
                             </CreateModal>
                           
                         </AddThings>
                         
                         <ContainerAdd>
-                            {/* onde fica listado as competencias */}
+                            <ul>
+                                {nomeCompetencias.map((item, index) => (
+                                    <li key={index} style={{border: '1px solid gray', borderRadius: '10px', }}>{item} - {nivel_competencias[index]}</li>
+                                ))}
+                            </ul>
                         </ContainerAdd>
 
 
@@ -266,16 +323,21 @@ function CreatePubli() {
                                     <Input type="text" value={link_certificado} onChange={(e) => setLinkCertificado(e.target.value)}/>
                                 </Label>
                             </div>
+                            <button onClick={() => addCertificados()}>Salvar</button>
                             </CreateModal>
                         </AddThings>
                         
                         <ContainerAdd>
-                            {/* onde fica listado as linguas */}
+                            <ul>
+                                {nomeCertificados.map((item, index) => (
+                                    <li key={index} style={{border: '1px solid gray', borderRadius: '10px', }}>{item} - {link_certificados[index]}</li>
+                                ))}
+                            </ul>
                         </ContainerAdd>
                 </ContainerBottom>
                 <ContainerFooter>
                     <ButtonBack><Link to='/homeRegister'><IconBack src={IconButtonBack}/></Link></ButtonBack>
-                    <Link to='/publiPerson'><ButtonForward onClick={handleSubmit}>Avançar </ButtonForward></Link>
+                    <ButtonForward onClick={handleSubmit}>Avançar </ButtonForward>
                     <div></div>
                 </ContainerFooter>
             </Main>

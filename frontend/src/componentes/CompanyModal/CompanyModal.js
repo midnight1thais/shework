@@ -24,6 +24,7 @@ const userId= parseInt(localStorage.getItem('@Auth:user_id'), 10)
 const navigate = useNavigate();
 
 const handleLogout = () => {
+
   // Limpa o localStorage
   localStorage.removeItem("@Auth:user");
   localStorage.removeItem("@Auth:token");
@@ -71,9 +72,26 @@ const handleSubmit = async (e) => {
   console.log('userId:', userId)
   try {
     const response = await api.post('/company/create', formData);
-    alert('Deu certo')
+
+    console.log("essa é a resposta:", response)
+    console.log("essa é a resposta.data:", response.data)
+    console.log("essa é a resposta.data.data[0]:", response.data.data[0])
+    console.log("esse é o response.formData:", response.formData)
+    console.log("esse é o response.data.formData:", response.data.formData[0])
+    if (response.data.success === true){
+      // const publiId = response.data.data[0].id_publiEmpresa;
+      // const publiId = response.data.data.id_publiEmpresa;
+      // localStorage.setItem("@Auth:publi_id", publiId); 
+      alert('Deu certo')
+      } else {
+      alert('Num deu!')
+
+      } 
     
-    console.log('Post criado com sucesso:', response.data);
+
+    
+    // console.log('Post criado com sucesso FORMDATA:', response.FormData());
+    console.log('Post criado com sucesso DATA:', response.data);
   } catch (error) {
     console.error('Erro ao criar o post:', error);
   }
@@ -85,24 +103,13 @@ const handleImageClick = () => {
   document.getElementById('imageInput').click();        
 };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const data = {
-  //     id_usuarioEmpresa:userId,
-  //     nome,
-  //     somos_descricao,
-  //     fazemos_descricao,
-  //     valores
-  //   };
-
-  //   console.log(data)
-  //   const response = await api.post('/company/create', data);
-  //   console.log(response.data.data[0])
-  //   alert("Empresa publicada com sucesso!");
-
-
-  // };
+const handleFecha = () =>{
+  setImage('')
+  setPreview('')
+  setValores('')
+  setSomos('')
+  setName('')
+};
 
 
 
@@ -110,6 +117,7 @@ const handleImageClick = () => {
 
     return (
       <Background>
+        <form onSubmit={handleFecha}> 
         <ContainerModal>
           <ContainerAll>
           <ContainerLeft>
@@ -199,7 +207,7 @@ const handleImageClick = () => {
              </ContainerAll>
 
         </ContainerModal>
-
+        </form>
       </Background>
     )
   }

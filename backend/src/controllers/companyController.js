@@ -73,6 +73,7 @@ async function storeCompany(request, response) {
 async function getPubliInformations(request, response) {
     const publiId = request.params.id_publiEmpresa;
     
+    console.log(request.params)
     const query = `
     
     SELECT
@@ -88,7 +89,7 @@ async function getPubliInformations(request, response) {
     JOIN
       usuarios ON publicacao_empresa.id_usuarioEmpresa = usuarios.id_usuario
     WHERE
-      publicacao_empresa.id_publiEmpresa = ?
+      publicacao_empresa.id_publiEmpresa = ?;
     `;
   
     connection.query(query, [publiId], (error, results) => {
@@ -110,9 +111,42 @@ async function getPubliInformations(request, response) {
     });
   }
 
+// Função que retorna as imagens da publicação empresa no banco de dados
+async function getImgPubliCompany(request, response) {
+  // Preparar o comando de execução no banco
+  connection.query('SELECT img FROM publicacao_empresa WHERE id_publiEmpresa = ?', (err, results) => { 
+      try {  // Tenta retornar as solicitações requisitadas
+          if (results) {  // Se tiver conteúdo 
+              response.status(200).json({
+                  success: true,
+                  message: 'Retorno da imagem da publicação empresa com sucesso!',
+                  data: results
+              });
+          } else {  // Retorno com informações de erros
+              response
+                  .status(400)
+                  .json({
+                      success: false,
+                      message: `Não foi possível retornar a imagem da publicação empresa.`,
+                      query: err.sql,
+                      sqlMessage: err.sqlMessage
+                  });
+          }
+      } catch (e) {  // Caso aconteça qualquer erro no processo na requisição, retorna uma mensagem amigável
+          response.status(400).json({
+              succes: false,
+              message: "Ocorreu um erro. Não foi possível realizar sua requisição!",
+              query: err.sql,
+              sqlMessage: err.sqlMessage
+          })
+      }   
+  });
+}
+
 
 
 module.exports = {
     storeCompany,
-    getPubliInformations
+    getPubliInformations,
+    getImgPubliCompany
 }

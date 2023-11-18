@@ -49,7 +49,7 @@ router.get('/linguas', listLinguas);
 router.post('/linguas/create', storeLinguas);
 
 // Das certificados
-router.get('/certificados', listCertificados);
+router.get('/certificados/:id_user', listCertificados);
 router.post('/certificados/create', storeCertificados);
 
 

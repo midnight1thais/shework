@@ -31,10 +31,11 @@ async function listPerson(request, response) {
 // Função que cria um novo usuário 
 async function storePerson(request, response) {
     // Preparar o comando de execução no banco
-    const query = 'INSERT INTO publicacao_pessoa(nome, dt_nascimento, cidade_estado, email, linkedin, nacionalidade, area_interesse) VALUES(?, ?, ?, ?, ?, ?, ?);';
+    const query = 'INSERT INTO publicacao_pessoa(id_usuario, nome, dt_nascimento, cidade_estado, email, linkedin, nacionalidade, area_interesse) VALUES(?, ?, ?, ?, ?, ?, ?, ?);';
 
     // Recuperar os dados enviados na requisição
     const params = Array(
+        request.body.id_usuario,
         request.body.nome,
         request.body.dt_nascimento,
         request.body.cidade_estado,
@@ -194,10 +195,11 @@ async function listCompetenciaTec(request, response) {
 // Função que cria nova competencia Tecnica 
 async function storeCompetenciaTec(request, response) {
     // Preparar o comando de execução no banco
-    const query = 'INSERT INTO pessoa_competencia_tecnica(nome, nivel_conhecimento) VALUES(?, ?);';
+    const query = 'INSERT INTO pessoa_competencia_tecnica(id_publicacao_pessoa, nome, nivel_conhecimento) VALUES(?, ?, ?);';
 
     // Recuperar os dados enviados na requisição
     const params = Array(
+        request.body.id_publicacao_pessoa,
         request.body.nome,
         request.body.nivel_conhecimento
     );
@@ -385,8 +387,10 @@ async function storeLinguas(request, response) {
 // Função para listar as informações dos certificados
 async function listCertificados(request, response) {
     try {
-        const query = 'SELECT * FROM pessoa_certificados';
-        connection.query(query, (err, results) => {
+        const id_user = request.params.id_user;
+
+        const query = 'SELECT * FROM pessoa_certificados where id_publicacao_pessoa = ?';
+        connection.query(query, [id_user], (err, results) => {
             if (err) {
                 response.status(500).json({
                     success: false,
@@ -412,10 +416,11 @@ async function listCertificados(request, response) {
 // Função que cria novo certificado
 async function storeCertificados(request, response) {
     // Preparar o comando de execução no banco
-    const query = 'INSERT INTO pessoa_certificados(nome, link) VALUES(?, ?);';
+    const query = 'INSERT INTO pessoa_certificados(id_publicacao_pessoa, nome, link) VALUES(?, ?, ?);';
 
     // Recuperar os dados enviados na requisição
     const params = Array(
+        request.body.id_publicacao_pessoa,
         request.body.nome,
         request.body.link
     );
@@ -423,6 +428,7 @@ async function storeCertificados(request, response) {
     // Executa a ação no banco e valida os retornos para o client que realizou a solicitação
     connection.query(query, params, (err, results) => {
         try {
+            console.log('11:::', err)
             if (results) {
                 response
                     .status(201)

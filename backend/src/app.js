@@ -13,12 +13,6 @@ const companyRouter = require('./routes/companyRouter');
 // Importar o pacote dotenv, gerenciador de variáveis de ambiente
 const dotenv = require('dotenv').config();
 
-app.use(express.json({ limit: '50mb' }));
-app.use(express.urlencoded({ limit: '50mb', extended: true }));
-
-// Torna a pasta public "visível" atrávez da URL, para assim mostrar as imagens
-app.use('/uploads', express.static(__dirname + '\\public'));
-
 // Instanciar o express na variável app
 const app = express();
 
@@ -33,5 +27,11 @@ app.use('/api', publipersonRouter);
 app.use('/api/company', companyRouter);
 // Setar a porta do servidor, a parir do arquivo .env
 app.set('port', process.env.PORT || 1903);
+
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
+// Torna a pasta public "visível" atrávez da URL, para assim mostrar as imagens
+app.use('/uploads', express.static(__dirname + '\\public'));
 
 module.exports = app;
