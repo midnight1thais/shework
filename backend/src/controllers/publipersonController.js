@@ -390,6 +390,7 @@ async function listCertificados(request, response) {
         const id_user = request.params.id_user;
 
         const query = 'SELECT * FROM pessoa_certificados where id_publicacao_pessoa = ?';
+        
         connection.query(query, [id_user], (err, results) => {
             if (err) {
                 response.status(500).json({
