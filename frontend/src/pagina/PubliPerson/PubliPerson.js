@@ -8,11 +8,11 @@ import PubliCertificate from "../../componentes/PubliCertificate/PubliCertificat
 import PubliExperience from "../../componentes/PubliExperience/PubliExperience";
 import PubliAbility from "../../componentes/PubliAbility/PubliAbility";
 import PubliLanguage from "../../componentes/PubliLanguage/PubliLanguage";
-
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 function PubliPerson(){
+    const { id } = useParams();
 
     return(
         <SectionGlobal>
@@ -32,7 +32,9 @@ function PubliPerson(){
                 <PubliHeader/>
                 <PubliInfo/>
                 <PubliCourse/>
-                <PubliCertificate/>
+                <PubliCertificate 
+                    idPubliPerson={id}
+                />
                 <PubliExperience/>
                 <DivBottom>
                     <PubliAbility/>
