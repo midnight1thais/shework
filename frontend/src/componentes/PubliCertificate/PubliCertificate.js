@@ -6,19 +6,17 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function PubliCertificate() {
-
-    const [divs, setDivs] = useState([]);
+function PubliCertificate({idPubliPerson}) {
+    const [certificados, setCertificados] = useState([]);
     const param = useParams();
     const publiId = param.id_publiEmpresa;
     
     useEffect(() => {
         async function fetchPublis() {
             try {
-                console.log('55:::', )
-                const response = await api.get(`/certificados/${window.location.pathname.split('/').pop()}`); 
-                setDivs([...divs, response.data.data]);
-                console.log('11:::', response.data.data)
+                const response = await api.get(`/certificados/` + idPubliPerson); 
+                setCertificados(response.data.data);
+                console.log(response.data.data)
                 
             } catch (error) {
                 console.error('Erro ao recuperar as informações da publi:', error);
@@ -54,13 +52,13 @@ function PubliCertificate() {
                 <TextCourse>Certificados Acadêmicos</TextCourse>
             </HeaderCourse>
             <DivCourse>
-            {divs[0].map((card) => (
+            {/* {divs[0].map((card) => (
                 <a href={card.link} target="_blank"><PubliCertificateCard
                 key={card}
                 title={card.nome}
                 isVisible={true}
             /></a>
-            ))}
+            ))} */}
             </DivCourse>
 
         </SectionCourse>
