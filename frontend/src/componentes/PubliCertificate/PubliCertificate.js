@@ -52,6 +52,13 @@ function PubliCertificate({idPubliPerson}) {
                 <TextCourse>Certificados Acadêmicos</TextCourse>
             </HeaderCourse>
             <DivCourse>
+            {certificados.map((certificado) => {
+                return (
+                    <>
+                        <p>{certificado.nome}</p>
+                    </>
+                )
+            })}
             {/* {divs[0].map((card) => (
                 <a href={card.link} target="_blank"><PubliCertificateCard
                 key={card}
