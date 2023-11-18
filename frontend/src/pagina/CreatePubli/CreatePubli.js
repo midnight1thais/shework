@@ -128,10 +128,11 @@ function CreatePubli() {
                 });
             })
 
-            console.log(`/publiPerson/${response.data.data.insertId-1}`);
+            // console.log(`/publiPerson/${response.data.data.insertId}`);
 
 
             setItem(response.data.data)
+            navigate('/publiPerson/' + response.data.data.insertId)
         })
         .catch(function (error) {
             alert("erro")
