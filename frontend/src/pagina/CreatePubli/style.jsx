@@ -185,7 +185,7 @@ export const ContainerBottom = styled.div`
     margin-top: 6vh;
     margin-bottom: 4vh;
   
-    width: 45vw;
+    width: 30vw;
 `
 
 export const ContainerFooter = styled.div`
