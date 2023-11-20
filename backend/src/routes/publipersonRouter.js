@@ -25,7 +25,10 @@ const {
 
     // das linguas
     listCertificados,
-    storeCertificados
+    storeCertificados,
+
+    listCursos,
+    storeCursos
 } = require('../controllers/publipersonController')
 
 // Criar os endpoints (rotas) que serão acessados a partir dos métodos HTTP (get,post,put,delete)
@@ -51,6 +54,10 @@ router.post('/linguas/create', storeLinguas);
 // Das certificados
 router.get('/certificados/:id_user', listCertificados);
 router.post('/certificados/create', storeCertificados);
+
+// Dos cursos
+router.get('/cursos', listCursos);
+router.post('/cursos/create', storeCursos);
 
 
 module.exports = router;
