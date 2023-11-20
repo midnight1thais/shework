@@ -13,11 +13,11 @@ import { useNavigate } from 'react-router-dom';
 
 function CreatePubli() {
     // do modal (pop-up)
-    const [openModal, setOpenModal] = useState(false);
     const [openModalCompetencia, setOpenModalCompetencia] = useState(false);
     const [openModalExperiencia, setOpenModalExperiencia] = useState(false);
     const [openModalLingua, setOpenModalLingua] = useState(false);
     const [openModalCertificado, setOpenModalCertificado] = useState(false);
+    const [openModalCurso, setOpenModalCurso] = useState(false);
     //geral
     const [item, setItem] = useState();
     const codUsuario = localStorage.getItem("@Auth:user_id");
@@ -36,8 +36,8 @@ function CreatePubli() {
     // da competência
     const [nomeCompetencia, setNomeCompetencia] = useState("");
     const [nivel_competencia, setNivelCompetencia] = useState("");
-    const [nomeCompetencias, setNomeCompetencias] = useState([]);
-    const [nivel_competencias, setNivelCompetencias] = useState([]);
+    const [nomeCompetencias, setNomeCompetencias] = useState([]); //array   
+    const [nivel_competencias, setNivelCompetencias] = useState([]); //array   
 
     // da experiencia 
     const [nomeExperiencia, setNomeExperiencia] = useState("");
@@ -45,15 +45,33 @@ function CreatePubli() {
     const [dt_finalExperiencia, setDataFinalExperiencia] = useState("");
     const [descricaoExperiencia, setDescricaoExperiencia] = useState("");
 
+    const [nomeExperiencias, setNomeExperiencias] = useState([]);  //array  
+    const [dt_inicioExperiencias, setDataInicioExperiencias] = useState([]);  //array  
+    const [dt_finalExperiencias, setDataFinalExperiencias] = useState([]);  //array  
+    const [descricaoExperiencias, setDescricaoExperiencias] = useState([]);  //array  
+
     // da lingua
     const [nomeLingua, setNomeLingua] = useState("");
     const [nivel_lingua, setNivelLingua] = useState("");
+    const [nomeLinguas, setNomeLinguas] = useState([]); //array  
+    const [nivel_linguas, setNivelLinguas] = useState([]); //array  
 
     // da certificados
     const [nomeCertificado, setNomeCertificado] = useState("");
     const [link_certificado, setLinkCertificado] = useState("");
-    const [nomeCertificados, setNomeCertificados] = useState([]);
-    const [link_certificados, setLinkCertificados] = useState([]);
+    const [nomeCertificados, setNomeCertificados] = useState([]); //array  
+    const [link_certificados, setLinkCertificados] = useState([]); //array  
+
+    // do curso
+    const [nomeCurso, setNomeCurso] = useState("");
+    const [dt_inicioCurso, setDataInicioCurso] = useState("");
+    const [dt_finalCurso, setDataFinalCurso] = useState("");
+    const [descricaoCurso, setDescricaoCurso] = useState("");
+
+    const [nomeCursos, setNomeCursos] = useState([]);  //array  
+    const [dt_inicioCursos, setDataInicioCursos] = useState([]);  //array  
+    const [dt_finalCursos, setDataFinalCursos] = useState([]);  //array  
+    const [descricaoCursos, setDescricaoCursos] = useState([]);  //array  
 
     const addCompetencias = () => {
         setNomeCompetencias([...nomeCompetencias, nomeCompetencia]);
@@ -64,6 +82,27 @@ function CreatePubli() {
         setNomeCertificados([...nomeCertificados, nomeCertificado]);
         setLinkCertificados([...link_certificados, link_certificado]);
     }
+
+    const addExperiencias = () => {
+        setNomeExperiencias([...nomeExperiencias, nomeExperiencia]);
+        setDataInicioExperiencias([...dt_inicioExperiencias, dt_inicioExperiencia]);
+        setDataFinalExperiencias([...dt_finalExperiencias, dt_finalExperiencia]);
+        setDescricaoExperiencias([...descricaoExperiencias, descricaoExperiencia]);
+    }
+
+    const addLinguas= () => {
+        setNomeLinguas([...nomeLinguas, nomeLingua]);
+        setNivelLinguas([...nivel_linguas, nivel_lingua]);
+    }
+
+    const addCursos = () => {
+        setNomeCursos([...nomeCursos, nomeCurso]);
+        setDataInicioCursos([...dt_inicioCursos, dt_inicioCurso]);
+        setDataFinalCursos([...dt_finalCursos, dt_finalCurso]);
+        setDescricaoCursos([...descricaoCursos, descricaoCurso]);
+    }
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -81,16 +120,16 @@ function CreatePubli() {
 
         
 
-        const formExperiencia = {
-            nome:nomeExperiencia,
-            dt_inicio:dt_inicioExperiencia,
-            dt_final:dt_finalExperiencia,
-            descricao:descricaoExperiencia
-        }
-        const formLinguas = {
-            nome:nomeLingua,
-            nivel_conhecimento: nivel_lingua,
-        }
+        // const formExperiencias = {
+        //     nome:nomeExperiencia,
+        //     dt_inicio:dt_inicioExperiencia,
+        //     dt_final:dt_finalExperiencia,
+        //     descricao:descricaoExperiencia
+        // }
+        // const formLinguas = {
+        //     nome:nomeLingua,
+        //     nivel_conhecimento: nivel_lingua,
+        // }
         
         // post das informações da pessoa
         axios.post(`${api.defaults.baseURL}/publiperson/create`, formPessoa)
@@ -108,7 +147,7 @@ function CreatePubli() {
                     setItem(response.data.data)
                 })
                 .catch(function (error) {
-                    alert("erro")
+                    alert("erro na competencia")
                 });
 
             })
@@ -124,9 +163,60 @@ function CreatePubli() {
                     setItem(response.data.data)
                 })
                 .catch(function (error) {
-                    alert("erro")
+                    alert("erro no certificado")
                 });
             })
+            // post Experiencias
+            nomeExperiencias.map((item, index) => {
+                const formExperiencias = {
+                    id_publicacao_pessoa: response.data.data.insertId,
+                    nome:item,
+                    dt_inicio: dt_inicioExperiencias[index],
+                    dt_final: dt_finalExperiencias[index],
+                    descricao: descricaoExperiencias[index],
+                }
+                axios.post(`${api.defaults.baseURL}/experiencias/create`, formExperiencias)
+                .then(function (response) {
+                    setItem(response.data.data)
+                })
+                .catch(function (error) {
+                    alert("erro na experiencia", error)
+                });
+            })
+            // post Linguas
+            nomeLinguas.map((item, index) => {
+                const formLinguas = {
+                    id_publicacao_pessoa: response.data.data.insertId,
+                    nome:item,
+                    nivel_conhecimento: nivel_linguas[index],
+                }
+                axios.post(`${api.defaults.baseURL}/linguas/create`, formLinguas)
+                .then(function (response) {
+                    setItem(response.data.data)
+                })
+                .catch(function (error) {
+                    alert("erro na lingua", error)
+                });
+            })
+            // post Cursos
+            nomeCursos.map((item, index) => {
+                const formCursos = {
+                    id_publicacao_pessoa: response.data.data.insertId,
+                    nome:item,
+                    dt_inicio: dt_inicioCursos[index],
+                    dt_final: dt_finalCursos[index],
+                    descricao: descricaoCursos[index],
+                }
+                axios.post(`${api.defaults.baseURL}/cursos/create`, formCursos)
+                .then(function (response) {
+                    setItem(response.data.data)
+                })
+                .catch(function (error) {
+                    alert("erro no curso", error)
+                });
+            })
+            
+
 
             // console.log(`/publiPerson/${response.data.data.insertId}`);
 
@@ -205,6 +295,35 @@ function CreatePubli() {
                         <Label>Area Interesse
                              <Input type="text" value={area_interesse} onChange={(e) => setAreaInteresse(e.target.value)}/>
                         </Label>
+                            <ContainerBottom>
+                                <SubTitleLeft>Certificados Academicos</SubTitleLeft>
+                                <AddThings >
+                                    <AddTitle>Adicionar Certificados</AddTitle>
+                                    <AddIconButton onClick={() => setOpenModalCertificado(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
+                                    <CreateModal isOpen={openModalCertificado} setModalOpen={() => setOpenModalCertificado(!openModalCertificado)} >
+                                    <div>
+                                        <ContainerTop>
+                                        <TitleDes> Adicionar Certificados</TitleDes>
+                                        </ContainerTop>
+                                        <Label>Nome
+                                            <Input type="text" value={nomeCertificado} onChange={(e) => setNomeCertificado(e.target.value)}/>
+                                        </Label>
+                                        <Label> Link para acesso 
+                                            <Input type="text" value={link_certificado} onChange={(e) => setLinkCertificado(e.target.value)}/>
+                                        </Label>
+                                    </div>
+                                    <button onClick={() => addCertificados()}>Salvar</button>
+                                    </CreateModal>
+                                </AddThings>
+                                
+                                <ContainerAdd>
+                                    <ul>
+                                        {nomeCertificados.map((item, index) => (
+                                            <li key={index} style={{border: '1px solid gray', borderRadius: '10px', }}>{item} - {link_certificados[index]}</li>
+                                        ))}
+                                    </ul>
+                                </ContainerAdd>
+                        </ContainerBottom>
                     </ContainerRight>
                     <ContainerLeft>
                         <SubTitleLeft>Competências</SubTitleLeft>
@@ -266,21 +385,26 @@ function CreatePubli() {
                                 </Label>
                                 <ContainerMid>
                                     <Label> Data de Inicio
-                                            <Input type="text" value={dt_inicioExperiencia} onChange={(e) => setDataInicioExperiencia(e.target.value)}/>
+                                            <Input type="date" value={dt_inicioExperiencia} onChange={(e) => setDataInicioExperiencia(e.target.value)}/>
                                     </Label>
                                     <Label> Data Final
-                                            <Input type="text" value={dt_finalExperiencia} onChange={(e) => setDataFinalExperiencia(e.target.value)}/>
+                                            <Input type="date" value={dt_finalExperiencia} onChange={(e) => setDataFinalExperiencia(e.target.value)}/>
                                     </Label>   
                                 </ContainerMid>
                                 <Label> Descrição da Experiência
                                         <Input type="text" value={descricaoExperiencia} onChange={(e) => setDescricaoExperiencia(e.target.value)}/>
                                 </Label>
                             </div>
+                            <button onClick={() => addExperiencias()}>Salvar</button>
                             </CreateModal>
                         </AddThings>
                         
                         <ContainerAdd>
-                            {/* onde fica listado as experiências */}
+                            <ul>
+                                {nomeExperiencias.map((item, index) => (
+                                    <li key={index} style={{border: '1px solid gray', borderRadius: '10px', }}>{item} - {descricaoExperiencias[index]}</li>
+                                ))}
+                            </ul>
                         </ContainerAdd>
 
                         <SubTitleLeft2>Linguas</SubTitleLeft2>
@@ -296,46 +420,64 @@ function CreatePubli() {
                                     <Input type="text" value={nomeLingua} onChange={(e) => setNomeLingua(e.target.value)}/>
                                 </Label>
                                 <Label>Nivel de Conhecimento 
-                                    <Input type="text" value={nivel_lingua} onChange={(e) => setNivelLingua(e.target.value)}/>
+                                        <select value={nivel_lingua} onChange={(e) => setNivelLingua(e.target.value)}>
+                                            <option value="Básico">Básico</option>
+                                            <option value="Intermediário">Intermediário</option>
+                                            <option value="Avançado">Avançado</option>
+                                        </select>
                                 </Label>
                             </div>
-                            </CreateModal>
-                        </AddThings>
-                        
-                        <ContainerAdd>
-                            {/* onde fica listado as linguas */}
-                        </ContainerAdd>
-                    </ContainerLeft>
-                </ContainerGlobalTop>
-                <ContainerBottom>
-                        <SubTitleLeft>Certificados Academicos</SubTitleLeft>
-                        <AddThings >
-                            <AddTitle>Adicionar Certificados</AddTitle>
-                            <AddIconButton onClick={() => setOpenModalCertificado(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
-                            <CreateModal isOpen={openModalCertificado} setModalOpen={() => setOpenModalCertificado(!openModalCertificado)} >
-                            <div>
-                                <ContainerTop>
-                                <TitleDes> Adicionar Certificados</TitleDes>
-                                </ContainerTop>
-                                <Label>Nome
-                                    <Input type="text" value={nomeCertificado} onChange={(e) => setNomeCertificado(e.target.value)}/>
-                                </Label>
-                                <Label> Link para acesso 
-                                    <Input type="text" value={link_certificado} onChange={(e) => setLinkCertificado(e.target.value)}/>
-                                </Label>
-                            </div>
-                            <button onClick={() => addCertificados()}>Salvar</button>
+                            <button onClick={() => addLinguas()}>Salvar</button>
                             </CreateModal>
                         </AddThings>
                         
                         <ContainerAdd>
                             <ul>
-                                {nomeCertificados.map((item, index) => (
-                                    <li key={index} style={{border: '1px solid gray', borderRadius: '10px', }}>{item} - {link_certificados[index]}</li>
+                                {nomeLinguas.map((item, index) => (
+                                    <li key={index} style={{border: '1px solid gray', borderRadius: '10px', }}>{item} - {nivel_linguas[index]}</li>
                                 ))}
                             </ul>
                         </ContainerAdd>
-                </ContainerBottom>
+                        <ContainerBottom>
+                                <SubTitleLeft>Cursos</SubTitleLeft>
+                                <AddThings >
+                                    <AddTitle>Adicionar Cursos</AddTitle>
+                                    <AddIconButton onClick={() => setOpenModalCurso(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
+                                    <CreateModal isOpen={openModalCurso} setModalOpen={() => setOpenModalCurso(!openModalCurso)} >
+                                    <div>
+                                        <ContainerTop>
+                                        <TitleDes> Adicionar Cursos</TitleDes>
+                                        </ContainerTop>
+                                        <Label> Nome do Curso
+                                            <Input type="text" value={nomeCurso} onChange={(e) => setNomeCurso(e.target.value)}/>
+                                        </Label>
+                                        <ContainerMid>
+                                            <Label> Data de Inicio
+                                                    <Input type="date" value={dt_inicioCurso} onChange={(e) => setDataInicioCurso(e.target.value)}/>
+                                            </Label>
+                                            <Label> Data Final
+                                                    <Input type="date" value={dt_finalCurso} onChange={(e) => setDataFinalCurso(e.target.value)}/>
+                                            </Label>   
+                                        </ContainerMid>
+                                        <Label> Descrição do Curso
+                                                <Input type="text" value={descricaoCurso} onChange={(e) => setDescricaoCurso(e.target.value)}/>
+                                        </Label>
+                                    </div>
+                                    <button onClick={() => addCursos()}>Salvar</button>
+                                    </CreateModal>
+                                </AddThings>
+                                
+                                <ContainerAdd>
+                                    <ul>
+                                        {nomeCursos.map((item, index) => (
+                                            <li key={index} style={{border: '1px solid gray', borderRadius: '10px', }}>{item} - {descricaoCursos[index]}</li>
+                                        ))}
+                                    </ul>
+                                </ContainerAdd>
+                    </ContainerBottom>
+                    </ContainerLeft>
+                </ContainerGlobalTop>
+                
                 <ContainerFooter>
                     <ButtonBack><Link to='/homeRegister'><IconBack src={IconButtonBack}/></Link></ButtonBack>
                     <ButtonForward onClick={handleSubmit}>Avançar </ButtonForward>
