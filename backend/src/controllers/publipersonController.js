@@ -268,10 +268,11 @@ async function listExperiencias(request, response) {
 // Função que cria nova experiencia 
 async function storeExperiencias(request, response) {
     // Preparar o comando de execução no banco
-    const query = 'INSERT INTO pessoa_experiencia(nome, dt_inicio, dt_final, descricao) VALUES(?, ?, ?, ?);';
+    const query = 'INSERT INTO pessoa_experiencia(id_publicacao_pessoa, nome, dt_inicio, dt_final, descricao) VALUES(?, ?, ?, ?, ?);';
 
     // Recuperar os dados enviados na requisição
     const params = Array(
+        request.body.id_publicacao_pessoa,
         request.body.nome,
         request.body.dt_inicio,
         request.body.dt_final,
@@ -342,10 +343,11 @@ async function listLinguas(request, response) {
 // Função que cria nova lingua
 async function storeLinguas(request, response) {
     // Preparar o comando de execução no banco
-    const query = 'INSERT INTO pessoa_linguas(nome, nivel_conhecimento) VALUES(?, ?);';
+    const query = 'INSERT INTO pessoa_linguas(id_publicacao_pessoa, nome, nivel_conhecimento) VALUES(?, ?, ?);';
 
     // Recuperar os dados enviados na requisição
     const params = Array(
+        request.body.id_publicacao_pessoa,
         request.body.nome,
         request.body.nivel_conhecimento
     );
@@ -459,6 +461,82 @@ async function storeCertificados(request, response) {
     });
 }
 
+// CURSOS
+
+// Função para listar as informações dos cursos
+async function listCursos(request, response) {
+    try {
+        const query = 'SELECT * FROM pessoa_curso';
+        connection.query(query, (err, results) => {
+            if (err) {
+                response.status(500).json({
+                    success: false,
+                    message: 'Erro ao listar as publicações.',
+                    error: err
+                });
+            } else {
+                response.status(200).json({
+                    success: true,
+                    data: results
+                });
+            }
+        });
+    } catch (err) {
+        response.status(500).json({
+            success: false,
+            message: 'Erro ao listar as publicações.',
+            error: err
+        });
+    }
+}
+
+// Função que cria nova experiencia 
+async function storeCursos(request, response) {
+    // Preparar o comando de execução no banco
+    const query = 'INSERT INTO pessoa_curso(id_publicacao_pessoa, nome, dt_inicio, dt_final, descricao) VALUES(?, ?, ?, ?, ?);';
+
+    // Recuperar os dados enviados na requisição
+    const params = Array(
+        request.body.id_publicacao_pessoa,
+        request.body.nome,
+        request.body.dt_inicio,
+        request.body.dt_final,
+        request.body.descricao
+    );
+
+    // Executa a ação no banco e valida os retornos para o client que realizou a solicitação
+    connection.query(query, params, (err, results) => {
+        try {
+            if (results) {
+                response
+                    .status(201)
+                    .json({
+                        success: true,
+                        message: `Sucesso! Experiencia cadastrada.`,
+                        data: results
+                    });
+            } else {
+                response
+                    .status(400)
+                    .json({
+                        success: false,
+                        message: `Não foi possível realizar o cadastro. Verifique os dados informados`,
+                        query: err.sql,
+                        sqlMessage: err.sqlMessage
+                    });
+            }
+        } catch (e) { // Caso aconteça algum erro na execução
+            response.status(400).json({
+                    succes: false,
+                    message: "Ocorreu um erro. Não foi possível cadastrar experiencia!",
+                    query: err.sql,
+                    sqlMessage: err.sqlMessage
+                });
+        }
+    });
+}
+
+
 module.exports = {
     listPerson,
     storePerson,
@@ -473,6 +551,9 @@ module.exports = {
     storeLinguas,
 
     listCertificados,
-    storeCertificados
+    storeCertificados,
+
+    listCursos,
+    storeCursos
 
 }
