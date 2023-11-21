@@ -4,8 +4,10 @@ const connection = require('../config/db');
 // Função para listar as informações das publicações das pessoas
 async function listPerson(request, response) {
     try {
-        const query = 'SELECT * FROM publicacao_pessoa';
-        connection.query(query, (err, results) => {
+        const id_user = request.params.id_user;
+
+        const query = 'SELECT * FROM publicacao_pessoa WHERE id_publicacao_pessoa = ?;';
+        connection.query(query, [id_user], (err, results) => {
             if (err) {
                 response.status(500).json({
                     success: false,
@@ -466,8 +468,10 @@ async function storeCertificados(request, response) {
 // Função para listar as informações dos cursos
 async function listCursos(request, response) {
     try {
-        const query = 'SELECT * FROM pessoa_curso';
-        connection.query(query, (err, results) => {
+        const id_user = request.params.id_user;
+
+        const query = 'SELECT * FROM pessoa_curso WHERE id_publicacao_pessoa = ?;';
+        connection.query(query,[id_user], (err, results) => {
             if (err) {
                 response.status(500).json({
                     success: false,
