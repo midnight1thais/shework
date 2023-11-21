@@ -229,42 +229,10 @@ function CreatePubli() {
         });    
 
 
-        // // post da experiencia
-        // axios.post(`${api.defaults.baseURL}/experiencias/create`, formExperiencia)
-        // .then(function (response) {
-        //     setItem(response.data.data)
-        // })
-        // .catch(function (error) {
-        //     alert("erro")
-        // });
-      
 
-        // // post da lingua
-        // axios.post(`${api.defaults.baseURL}/linguas/create`, formLinguas)
-        // .then(function (response) {
-        //     setItem(response.data.data)
-        // })
-        // .catch(function (error) {
-        //     alert("erro")
-        // });
-        
-
-        
-
-        // navigate(`/publiPerson/${codUser}`);
 
 };    
 
-    // const fetchData = async () => {
-    //     const response = await api.get('/posts');        
-    //     setPostsList(response.data.data);
-    // }
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, []);
-
-    const handleCompetence =() => {}
 
     return(
         <>
