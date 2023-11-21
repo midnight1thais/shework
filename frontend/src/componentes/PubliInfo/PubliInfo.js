@@ -1,7 +1,30 @@
 import { DivIcon, DivInfo, DivLeftA, DivRightA, DivTextA, HeaderInfo, IconProfile, SectionInfo, SubTextLeft, TextInfo, TextLeft } from "./style";
 import PubliIconProfile from '../../assets/PubliIconProfile.svg'
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
-function PubliInfo(){
+function PubliInfo({idPubliPerson}){
+
+    const [informacoes, setInfoPerson] = useState([]);
+    
+    useEffect(() => {
+        async function fetchPublis() {
+            try {
+                const response = await api.get(`/publiperson/` + idPubliPerson); 
+                setInfoPerson(response.data.data);
+                console.log("Informações da pessoa", response.data.data)
+                
+            } catch (error) {
+                console.error('Erro ao recuperar as informações da publi:', error);
+            }
+        }
+
+        fetchPublis();
+    }, [idPubliPerson]);
+
+    console.log("as informações", informacoes)
 
     return(
         <>
@@ -12,6 +35,9 @@ function PubliInfo(){
                 </DivIcon>
                 <TextInfo>Informações Pessoais</TextInfo>
             </HeaderInfo>
+            {informacoes.map((infoPerson) => {
+                const formattedDate = format(new Date(infoPerson.dt_nascimento), 'dd/MM/yyyy', { locale: ptBR });
+                return (
             <DivInfo>
                 <DivLeftA>
                     <DivTextA>
@@ -19,15 +45,16 @@ function PubliInfo(){
                             Data de Nascimento
                         </TextLeft>
                         <SubTextLeft>
-                            27 de agosto, 1999
+                            {formattedDate}
                         </SubTextLeft>
+                            
                     </DivTextA>
                     <DivTextA>
                         <TextLeft>
                             Cidade e Estado
                         </TextLeft>
                         <SubTextLeft>
-                            São Leopoldo, RS
+                            {infoPerson.cidade_estado}
                         </SubTextLeft>
                     </DivTextA>
                 </DivLeftA>
@@ -37,7 +64,7 @@ function PubliInfo(){
                             Email
                         </TextLeft>
                         <SubTextLeft>
-                            mariadasilda@gmail.com
+                            {infoPerson.email}
                         </SubTextLeft>
                     </DivTextA>
                     <DivTextA>
@@ -45,11 +72,13 @@ function PubliInfo(){
                             Linkedlin
                         </TextLeft>
                         <SubTextLeft>
-                            www.xyz.com
+                            {infoPerson.linkedin}
                         </SubTextLeft>
                     </DivTextA>
                 </DivRightA>
             </DivInfo>
+                    )
+                })}
 
         </SectionInfo>
         
