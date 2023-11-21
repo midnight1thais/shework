@@ -1,13 +1,15 @@
 import React from "react";
 import { ContainerAll, ContainerCard, ContainerTop, Date, Description,  Title } from "./style";
 
-function PubliExperienceCard({ date, title, descricao, isVisible }) {
+function PubliExperienceCard({ dt_inicio, dt_final, title, descricao, isVisible }) {
   return (
     <ContainerCard isVisible={isVisible}>
       <ContainerAll>
+      <Title>{title}</Title>
         <ContainerTop>
-          <Title>{title}</Title>
-          <Date>{date}</Date>
+          <Date>{dt_inicio}</Date>
+          <p> - </p>
+          <Date>{dt_final}</Date>
         </ContainerTop>
         <Description>{descricao}</Description>
       </ContainerAll>
