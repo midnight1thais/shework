@@ -1,25 +1,47 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { api } from "../../services/api";
 import { Link, useNavigate } from 'react-router-dom'
 import AddIconImg from '../../assets/plusIcon.svg'
-import { AddIcon, AddIconButton, Background, ButtonAdd, ButtonHere, ContainerAll, ContainerButtons, ContainerCenter, ContainerLeft, ContainerMid, ContainerModal, ContainerRight, ContainerTop, ImgDiv, ImgPost, Input, Label, TitleDes, } from './style'
+import { AddIcon, AddIconButton, Background, ButtonAdd, ButtonHere, ContainerAdd, ContainerAll, ContainerButtons, ContainerCenter, ContainerLeft, ContainerMid, ContainerModal, ContainerRight, ContainerTop, ContainerValores, ImgDiv, ImgPost, Input, Label, TitleDes, } from './style'
+import CreateModal from '../CreateModal/CreateModal';
+import axios from 'axios';
 
 
 function CompanyModal({ isOpen, setModalOpen}){
+    // do modal (pop-up)
+    const [openModal, setOpenModal] = useState(false);
 
-// editando usuario
+    //geral
+    const [item, setItem] = useState();
 
-const [nome, setName] = useState("");
-const [somos_descricao, setSomos] = useState("");
-const [fazemos_descricao, setFazemos] = useState("");
-const [valores, setValores] = useState("");
+    // editando empresa
 
-const [image, setImage] = useState('');
-const [preview, setPreview] = useState('');
+    const [nome, setName] = useState("");
+    const [somos_descricao, setSomos] = useState("");
+    const [fazemos_descricao, setFazemos] = useState("");
 
-const [user, setUser] = useState("");
-const userId= parseInt(localStorage.getItem('@Auth:user_id'), 10)
+    // dos valores da empresa
+    const [valor, setValor] = useState("");
+    const [valores, setValores] = useState([]);
+
+    const [image, setImage] = useState('');
+    const [preview, setPreview] = useState('');
+
+    const [user, setUser] = useState("");
+    const userId= parseInt(localStorage.getItem('@Auth:user_id'), 10)
+
+    // projetos da empresa
+    const [projeto_titulo, setTituloProjeto] = useState("");
+    const [projeto_descricao, setDescricaoProjeto] = useState("");
+
+
+const addValores = (e) => {
+  if (e) {
+    e.preventDefault();
+  }
+  setValores([...valores, valor]);
+}
 
 const navigate = useNavigate();
 
@@ -64,36 +86,51 @@ const handleSubmit = async (e) => {
   formData.append('somos_descricao', somos_descricao);
   formData.append('fazemos_descricao', fazemos_descricao,);
   formData.append('valores', valores);
-    
-  console.log('nome:', nome);
-  console.log('valores:', valores);
-  console.log('somos:', somos_descricao);
-  console.log('fazemos:',fazemos_descricao);
-  console.log('userId:', userId)
-  try {
-    const response = await api.post('/company/create', formData);
+  formData.append('projeto_titulo', projeto_titulo);
+  formData.append('projeto_descricao', projeto_descricao);
 
+  console.log('os valores ------', ...valores)
+  
+  
+  // console.log('nome:', nome);
+  // console.log('valores:', valores);
+  // console.log('somos:', somos_descricao);
+  // console.log('fazemos:',fazemos_descricao);
+  // console.log('userId:', userId)
+  try {
+    axios.post(`${api.defaults.baseURL}/company/create`, formData)
+    .then(function (response) {
+    // Convertendo para JSON e, em seguida, analisando de volta
+    setItem(response.data.data)
+    navigate('/corporation/' + response.data.data.insertId)
+
+    })
+    .catch(function (error) {
+        alert("erro")
+        console.log("erro ao criar formEmpresa", error)
+    });    
     // console.log("essa é a resposta:", response)
     // console.log("essa é a resposta.data:", response.data)
     // console.log("essa é a resposta.data.data[0]:", response.data.data[0])
     // console.log("esse é o response.formData:", response.formData)
     // console.log("esse é o response.data.formData:", response.data.formData[0])
     
-    console.log("resposta success", response.data.success)
-    if (response.data.success){
-      const publiCompanyId = response.data.data.insertId;
-      localStorage.setItem("@Auth:publiCompany_id", publiCompanyId); 
+    // console.log("resposta success", response.data.success)
+    // if (response.data.success){
+    //   const publiCompanyId = response.data.data.insertId;
+    //   localStorage.setItem("@Auth:publiCompany_id", publiCompanyId); 
 
-      alert('Deu certo')
-      } else {
-      alert('Num deu!')
+      
+    //   alert('Deu certo')
+    //   } else {
+    //   alert('Num deu!')
 
-      } 
+    //   } 
     
 
     
     // console.log('Post criado com sucesso FORMDATA:', response.FormData());
-    console.log('Post criado com sucesso DATA:', response.data);
+    // console.log('Post criado com sucesso DATA:', response.data);
   } catch (error) {
     console.error('Erro ao criar o post:', error);
   }
@@ -105,7 +142,7 @@ const handleImageClick = () => {
   document.getElementById('imageInput').click();        
 };
 
-const handleFecha = () =>{
+const handleLimpa = () =>{
   setImage('')
   setPreview('')
   setValores('')
@@ -119,7 +156,6 @@ const handleFecha = () =>{
 
     return (
       <Background>
-        <form onSubmit={handleFecha}> 
         <ContainerModal>
           <ContainerAll>
           <ContainerLeft>
@@ -133,15 +169,29 @@ const handleFecha = () =>{
                     <Input type="text" 
                     value={nome}
                     onChange={(e) => setName(e.target.value)} 
-                    is required 
                     />
               </Label>
-              <Label>Nossos valores
-                    <Input type="text" 
-                    value={valores}
-                    onChange={(e) => setValores(e.target.value)} 
-                    />
-              </Label>
+              <div>
+              <ContainerValores>
+              <Label>Nossos valores </Label>
+              <AddIconButton onClick={() => setOpenModal(true)}><AddIcon src={AddIconImg} alt=''/></AddIconButton>
+              </ContainerValores>
+                    <CreateModal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} >
+                      <div>
+                      <Label>Adicione os valores da empresa
+                          <Input type="text" value={valor} onChange={(e) => setValor(e.target.value)}/>
+                      </Label>
+                      </div>
+                    <button onClick={() => addValores()}>Salvar</button>
+                    </CreateModal>
+                    <ContainerAdd>
+                      <ul>
+                          {valores && valores.map((item, index) => (
+                              <li key={index} style={{border: '1px solid gray', borderRadius: '10px', }}>{item} </li>
+                          ))}
+                      </ul>
+                    </ContainerAdd>
+              </div>
               <ContainerRight>
             </ContainerRight>
               
@@ -169,19 +219,22 @@ const handleFecha = () =>{
 
             <ContainerCenter>
               <Label> Titulo do Projeto
-                    <Input type="text" />
+                    <Input type="text" value={projeto_titulo} 
+                    onChange={(e) => setTituloProjeto(e.target.value)}
+                     />
               </Label>
               <Label> Descrição
-                    <Input type="text" />
+                    <Input type="text" value={projeto_descricao} onChange={(e) => setDescricaoProjeto(e.target.value)}/>
               </Label>
             </ContainerCenter>
-            <ContainerTop>
-              <ButtonAdd>Adicionar Projeto</ButtonAdd>
-            </ContainerTop>
+            {/* <ContainerTop>
+              <ButtonAdd onClick={(e) => addProjetos(e)}>Adicionar Projeto</ButtonAdd>
+            </ContainerTop> */}
             </ContainerLeft>
           </div>
           <ContainerButtons>
             <ButtonHere onClick={setModalOpen}>Fechar</ButtonHere>
+            <ButtonHere onClick={handleLimpa}>Limpar</ButtonHere>
             <ButtonHere onClick={handleSubmit}>Salvar</ButtonHere>
             <ButtonHere onClick={handleLogout}>Sair</ButtonHere>
           </ContainerButtons>
@@ -209,7 +262,7 @@ const handleFecha = () =>{
              </ContainerAll>
 
         </ContainerModal>
-        </form>
+        
       </Background>
     )
   }

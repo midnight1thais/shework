@@ -20,11 +20,8 @@ function base64_decode(base64str, fileName){
 
 // Função que cria um novo usuário 
 async function storeCompany(request, response) {
-    console.log(request.body)
     // Preparar o comando de execução no banco
-    const query = 'INSERT INTO publicacao_empresa(id_usuarioEmpresa,nome, img, somos_descricao, fazemos_descricao, valores) VALUES(?,?, ?, ?, ?, ?);';
-
-    console.log('ffffffffffffffaaaa', request.file)
+    const query = 'INSERT INTO publicacao_empresa(id_usuarioEmpresa,nome, img, somos_descricao, fazemos_descricao, valores, projeto_titulo, projeto_descricao) VALUES(?,?, ?, ?, ?, ?, ?, ?);';
 
     // Recuperar os dados enviados na requisição
     const params = Array(
@@ -33,10 +30,10 @@ async function storeCompany(request, response) {
         request.file.filename, 
         request.body.somos_descricao,
         request.body.fazemos_descricao,
-        request.body.valores
-              
+        request.body.valores,
+        request.body.projeto_titulo,
+        request.body.projeto_descricao
     );
-    console.log('ffffffffffffff', params)
 
     // Executa a ação no banco e valida os retornos para o client que realizou a solicitação
     connection.query(query, params, (err, results) => {
@@ -73,23 +70,9 @@ async function storeCompany(request, response) {
 async function getPubliInformations(request, response) {
     const publiId = request.params.id_publiEmpresa;
     
-    console.log(request.params)
-    const query = `
-    
-    SELECT
-      publicacao_empresa.id_publiEmpresa AS id_publiEmpresa,
-      publicacao_empresa.id_usuarioEmpresa AS id_usuarioEmpresa,
-      publicacao_empresa.nome AS nome,
-      publicacao_empresa.img AS img,
-      publicacao_empresa.somos_descricao AS somos_descricao,
-      publicacao_empresa.fazemos_descricao AS fazemos_descricao,
-      publicacao_empresa.valores AS valores,
-    FROM
-      publicacao_empresa
-    JOIN
-      usuarios ON publicacao_empresa.id_usuarioEmpresa = usuarios.id_usuario
+    const query = ` SELECT publicacao_empresa.id_publiEmpresa AS id_publiEmpresa, publicacao_empresa.id_usuarioEmpresa AS id_usuarioEmpresa, publicacao_empresa.nome AS nome, publicacao_empresa.img AS img, publicacao_empresa.somos_descricao AS somos_descricao, publicacao_empresa.fazemos_descricao AS fazemos_descricao, publicacao_empresa.valores AS valores, publicacao_empresa.projeto_titulo AS projeto_titulo, publicacao_empresa.projeto_descricao AS projeto_descricao FROM publicacao_empresa JOIN usuarios ON publicacao_empresa.id_usuarioEmpresa = usuarios.id_usuario
     WHERE
-      publicacao_empresa.id_publiEmpresa = ?;
+      id_publiEmpresa = ?
     `;
   
     connection.query(query, [publiId], (error, results) => {
@@ -113,8 +96,14 @@ async function getPubliInformations(request, response) {
 
 // Função que retorna as imagens da publicação empresa no banco de dados
 async function getImgPubliCompany(request, response) {
+
+  const params = Array(
+    request.params.id_publiEmpresa,
+  )
+  console.log(request)
   // Preparar o comando de execução no banco
-  connection.query('SELECT img FROM publicacao_empresa WHERE id_publiEmpresa = ?', (err, results) => { 
+  connection.query('SELECT img FROM publicacao_empresa WHERE id_publiEmpresa = ?', [params], (err, results) => { 
+    
       try {  // Tenta retornar as solicitações requisitadas
           if (results) {  // Se tiver conteúdo 
               response.status(200).json({
@@ -143,10 +132,88 @@ async function getImgPubliCompany(request, response) {
   });
 }
 
+// EMPRESA PROJETOS
+
+// Função para listar as informações de competência técnica
+async function listEmpresaProjetos(request, response) {
+  try {
+      const query = 'SELECT * FROM empresa_projetos';
+      connection.query(query, (err, results) => {
+          if (err) {
+              response.status(500).json({
+                  success: false,
+                  message: 'Erro ao listar as publicações.',
+                  error: err
+              });
+          } else {
+              response.status(200).json({
+                  success: true,
+                  data: results
+              });
+          }
+      });
+  } catch (err) {
+      response.status(500).json({
+          success: false,
+          message: 'Erro ao listar as publicações.',
+          error: err
+      });
+  }
+}
+
+// Função que cria nova competencia Tecnica 
+async function storeEmpresaProjetos(request, response) {
+  console.log(request)
+  // Preparar o comando de execução no banco
+  const query = 'INSERT INTO empresa_projetos(id_empresaProjeto, projeto_titulo, projeto_descricao) VALUES(?, ?, ?);';
+
+  // Recuperar os dados enviados na requisição
+  const params = Array(
+      request.body.id_empresaProjeto,
+      request.body.projeto_titulo,
+      request.body.projeto_descricao
+  );
+
+
+  // Executa a ação no banco e valida os retornos para o client que realizou a solicitação
+  connection.query(query, params, (err, results) => {
+      try {
+        console.log("resultado ok:", results )
+          if (results) {
+              response
+                  .status(201)
+                  .json({
+                      success: true,
+                      message: `Sucesso! Competencia cadastrada.`,
+                      data: results
+                  });
+          } else {
+              response
+                  .status(400)
+                  .json({
+                      success: false,
+                      message: `Não foi possível realizar o cadastro. Verifique os dados informados`,
+                      query: err.sql,
+                      sqlMessage: err.sqlMessage
+                  });
+          }
+      } catch (e) { // Caso aconteça algum erro na execução
+          response.status(400).json({
+                  succes: false,
+                  message: "Ocorreu um erro. Não foi possível cadastrar competencia!",
+                  query: err.sql,
+                  sqlMessage: err.sqlMessage
+              });
+      }
+  });
+}
 
 
 module.exports = {
     storeCompany,
     getPubliInformations,
-    getImgPubliCompany
+    getImgPubliCompany,
+
+    storeEmpresaProjetos,
+    listEmpresaProjetos
 }

@@ -26,7 +26,7 @@ function Rotas(){
             <Route path="explorePerson" element={<ExplorePerson/>}/>
             <Route path="createPubli" element={<CreatePubli/>}/>
             <Route path="createJob" element={<CreateJob/>}/>
-            <Route path="corporation" element={<Corporation/>}/>
+            <Route path="corporation/:id_company" element={<Corporation/>}/>
             <Route path="jobCompany" element={<JobCompany/>}/>
             <Route path="publiPerson/:id" element={<PubliPerson/>}/>
             <Route path="homeRegisterCompany" element={<HomeRegisterCompany/>}/>

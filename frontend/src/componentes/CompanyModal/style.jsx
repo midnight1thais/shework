@@ -16,7 +16,7 @@ export const ContainerModal = styled.div`
     display: flex;
     flex-direction: column;
 
-    width: 70vw;
+    width: 80vw;
     height: 80vh;
     margin-top: 15vh;
     margin-left: 15vw;
@@ -25,6 +25,7 @@ export const ContainerModal = styled.div`
     border-radius: 10px;
     color: black;
 
+    overflow: auto; /* Adicione uma barra de rolagem quando necessário */
     
 `
 
@@ -174,3 +175,34 @@ export const ContainerLeft = styled.div`
     flex-direction: column;
 `
 
+export const ContainerValores = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+
+export const ContainerAdd = styled.div`
+    margin-top: 0.5%;
+    height: 15vh;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.11);
+
+    ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px; /* Ajuste a altura máxima conforme necessário */
+    overflow: auto; /* Adicione uma barra de rolagem quando necessário */
+    }
+
+    li {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #FFFFFF;
+    }
+
+    width: 17vw;
+    max-width: 20vw;
+    max-height: 15vh; /* Ajuste a altura máxima conforme necessário */
+    overflow: auto; /* Adicione uma barra de rolagem quando necessário */
+`

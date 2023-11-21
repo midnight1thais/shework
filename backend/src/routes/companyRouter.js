@@ -7,7 +7,10 @@ const router = Router();
 const { 
     storeCompany,
     getPubliInformations,
-    getImgPubliCompany
+    getImgPubliCompany,
+
+    storeEmpresaProjetos,
+    listEmpresaProjetos
 } = require('../controllers/companyController')
 
 const upload = require('../config/multer')
@@ -17,5 +20,7 @@ router.post('/create', upload.single('file'), storeCompany);
 router.get('/informations/:id_publiEmpresa', getPubliInformations);
 router.get('/information/img_company/:id_publiEmpresa', getImgPubliCompany);
 
+router.get('/projects', storeEmpresaProjetos);
+router.get('/listprojects/:id_publiEmpresa', listEmpresaProjetos);
 
 module.exports = router;

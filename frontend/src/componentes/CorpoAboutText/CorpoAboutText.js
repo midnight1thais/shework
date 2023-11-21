@@ -1,18 +1,43 @@
+import { useEffect, useState } from 'react';
 import seta from '../../assets/JobSeta.svg'
+import { api } from '../../services/api';
 import { ButtonLeft, ButtonRight, DivLeft, DivRight, SubLeft, SubRight, TitleLeft, TitleRight } from './style'
 
 
-function CorpoAboutText(){
+function CorpoAboutText({idCorporation}){
+
+    const [texts, setTexts] = useState([]);
+    
+    
+    useEffect(() => {
+        async function fetchPublis() {
+            try {
+                const response = await api.get(`/company/informations/` + idCorporation); 
+                setTexts(response.data);
+                
+            } catch (error) {
+                console.error('Erro ao recuperar as informações da publi:', error);
+            }
+        }
+
+        fetchPublis();
+    }, [idCorporation]);
 
     return(
         <>
         <DivLeft>
+
             <TitleLeft>
                 Quem somos
             </TitleLeft>
-            <SubLeft>
-            Somos uma empresa bla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla
-            </SubLeft>
+            {texts.map((textos) => {
+                return (
+                    <SubLeft>
+                        {textos.somos_descricao}
+                    </SubLeft>
+                    )
+            
+            })}
             <ButtonLeft>
                 Saiba Mais
                 <img src={seta} alt=''/>
@@ -22,14 +47,21 @@ function CorpoAboutText(){
             <TitleRight>
                 O que fazemos
             </TitleRight>
-            <SubRight>
-            Somos uma empresa bla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla
-            </SubRight>
+            {texts.map((textos) => {
+                    return (
+                <SubRight>
+                 {textos.fazemos_descricao}
+                </SubRight>
+                )
+            
+            })}
             <ButtonRight>
                 Saiba Mais
                 <img src={seta} alt=''/>
             </ButtonRight>
+        
         </DivRight>
+    
         </>
     )
 }

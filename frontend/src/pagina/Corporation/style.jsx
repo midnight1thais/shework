@@ -60,3 +60,12 @@ export const DivOpportunities = styled.div`
     margin-top: 3vh;
     height: 120vh;
 `
+
+export const ButtonBack = styled.button`
+   
+`
+
+export const IconBack = styled.img`
+    height: 5vh;
+    width: 5vw;
+`

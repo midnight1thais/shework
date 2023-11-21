@@ -119,18 +119,6 @@ function CreatePubli() {
           };
 
         
-
-        // const formExperiencias = {
-        //     nome:nomeExperiencia,
-        //     dt_inicio:dt_inicioExperiencia,
-        //     dt_final:dt_finalExperiencia,
-        //     descricao:descricaoExperiencia
-        // }
-        // const formLinguas = {
-        //     nome:nomeLingua,
-        //     nivel_conhecimento: nivel_lingua,
-        // }
-        
         // post das informações da pessoa
         axios.post(`${api.defaults.baseURL}/publiperson/create`, formPessoa)
         .then(function (response) {
