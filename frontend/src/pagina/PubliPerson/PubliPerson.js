@@ -30,15 +30,13 @@ function PubliPerson(){
             </SectionLeft>
             <SectionRight>
                 <PubliHeader/>
-                <PubliInfo/>
-                <PubliCourse/>
-                <PubliCertificate 
-                    idPubliPerson={id}
-                />
-                <PubliExperience/>
+                <PubliInfo idPubliPerson={id}/>
+                <PubliCourse idPubliPerson={id}/>
+                <PubliCertificate idPubliPerson={id} />
+                <PubliExperience idPubliPerson={id} />
                 <DivBottom>
-                    <PubliAbility/>
-                    <PubliLanguage/>
+                    <PubliAbility idPubliPerson={id}/>
+                    <PubliLanguage idPubliPerson={id}/>
                 </DivBottom>
             </SectionRight>
         </SectionGlobal>
