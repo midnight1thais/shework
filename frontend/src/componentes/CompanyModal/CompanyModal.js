@@ -73,15 +73,17 @@ const handleSubmit = async (e) => {
   try {
     const response = await api.post('/company/create', formData);
 
-    console.log("essa é a resposta:", response)
-    console.log("essa é a resposta.data:", response.data)
-    console.log("essa é a resposta.data.data[0]:", response.data.data[0])
-    console.log("esse é o response.formData:", response.formData)
-    console.log("esse é o response.data.formData:", response.data.formData[0])
-    if (response.data.success === true){
-      // const publiId = response.data.data[0].id_publiEmpresa;
-      // const publiId = response.data.data.id_publiEmpresa;
-      // localStorage.setItem("@Auth:publi_id", publiId); 
+    // console.log("essa é a resposta:", response)
+    // console.log("essa é a resposta.data:", response.data)
+    // console.log("essa é a resposta.data.data[0]:", response.data.data[0])
+    // console.log("esse é o response.formData:", response.formData)
+    // console.log("esse é o response.data.formData:", response.data.formData[0])
+    
+    console.log("resposta success", response.data.success)
+    if (response.data.success){
+      const publiCompanyId = response.data.data.insertId;
+      localStorage.setItem("@Auth:publiCompany_id", publiCompanyId); 
+
       alert('Deu certo')
       } else {
       alert('Num deu!')
