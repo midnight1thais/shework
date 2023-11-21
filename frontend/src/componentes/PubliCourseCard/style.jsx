@@ -30,6 +30,7 @@ export const ContainerTop = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 0.5vw;
 `
 
 export const Date = styled.p`

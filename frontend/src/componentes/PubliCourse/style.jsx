@@ -14,10 +14,11 @@ export const HeaderCourse = styled.div`
 export const DivIcon = styled.div`
     display: flex;
     justify-content: center;
-    max-width: 5.5vw;
+    max-width: 4vw;
     max-height: 7vh;
-    width: 5.5vw;
+    width: 4vw;
     height: 7vh;
+    margin-left: 2vw;
     
     border-radius: 10px;
     background-color:#B8C4D2;

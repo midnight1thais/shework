@@ -30,8 +30,8 @@ export const ContainerAll = styled.div`
 
 export const ContainerTop = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
+    gap: 0.5vw;
 `
 
 export const Date = styled.p`
@@ -47,6 +47,8 @@ export const Title = styled.h1`
     font-style: normal;
     font-weight: 400;
     line-height: 36px;
+    
+    margin-bottom: -2vh;
 `
 
 export const Icon = styled.img`
