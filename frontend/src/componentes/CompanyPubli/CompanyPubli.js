@@ -18,7 +18,7 @@ function CompanyPubli(){
             <ButtonPubli><Link to='/exploreCompany'>Explore as publicações</Link></ButtonPubli>
             <ContainerLink>
                 <CompanyText>É uma empresa?</CompanyText>
-                <LinkA><Link to='/createJob'>Publique AQUI</Link></LinkA>
+                <LinkA><Link to='/createJob'>Publique uma VAGA</Link></LinkA>
             </ContainerLink>
         </ContainerLeft>
         <ContainerRight>
