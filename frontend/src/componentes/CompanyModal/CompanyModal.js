@@ -103,7 +103,9 @@ const handleSubmit = async (e) => {
     // Convertendo para JSON e, em seguida, analisando de volta
     setItem(response.data.data)
     navigate('/corporation/' + response.data.data.insertId)
-
+    
+    const publiCompanyId = response.data.data.insertId;
+    localStorage.setItem("@Auth:publiCompany_id", publiCompanyId); 
     })
     .catch(function (error) {
         alert("erro")
