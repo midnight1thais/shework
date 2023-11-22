@@ -7,8 +7,9 @@ const cors = require('cors');
 // Importar as rotas para serem executadas na aplicação
 const userRouter = require('./routes/userRouter');
 const loginRouter = require('./routes/loginRouter');
-const publipersonRouter = require('./routes/publipersonRouter'); // Importe o novo router
+const publipersonRouter = require('./routes/publipersonRouter'); 
 const companyRouter = require('./routes/companyRouter');
+const publivagaRouter = require('./routes/publivagaRouter');
 
 // Importar o pacote dotenv, gerenciador de variáveis de ambiente
 const dotenv = require('dotenv').config();
@@ -25,6 +26,7 @@ app.use('/api', userRouter);
 app.use('/api/auth', loginRouter);
 app.use('/api', publipersonRouter);
 app.use('/api/company', companyRouter);
+app.use('/api/publivaga', publivagaRouter);
 // Setar a porta do servidor, a parir do arquivo .env
 app.set('port', process.env.PORT || 1903);
 
