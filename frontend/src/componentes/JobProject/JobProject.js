@@ -1,44 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import JobProjectCard from "../JobProjectCard/JobProjectCard";
 import IconProject from "../../assets/JobProjectIcon.svg";
 import { ArrowBack, ArrowNext, ButtonBack, ButtonNext, ContainerCards, ContainerCarousel } from "./style";
 import seta from '../../assets/seta.svg'
+import { api } from "../../services/api";
 
-function JobProject() {
-  const divs = [
-    { altDes: "numero 1", text: "Breve Descrição 1" },
-    { altDes: "numero 2", text: "Breve Descrição 2" },
-    { altDes: "numero 3", text: "Breve Descrição 3" },
-    { altDes: "numero 4", text: "Breve Descrição 4" },
-    // Add more items as needed
-  ];
+function JobProject({idJobCompany}) {
+
+  const [projects, setProject] = useState([]);
+    
+  useEffect(() => {
+      async function fetchPublis() {
+          try {
+              const response = await api.get(`/publivaga/listProjetos/` + idJobCompany); 
+              setProject(response.data.data);
+              console.log("resposta do projetos:", response.data.data)
+              
+          } catch (error) {
+              console.error('Erro ao recuperar as informações da publi:', error);
+          }
+      }
+
+      fetchPublis();
+  }, [idJobCompany]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleClickNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === divs.length - 1 ? 0 : prevIndex + 1
+      prevIndex === projects.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const handleClickPrev = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? divs.length - 1 : prevIndex - 1
+      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
     );
   };
 
   return (
+    <>
+    {projects.length > 0 && (
     <ContainerCarousel>
       <ButtonBack onClick={handleClickPrev}>
         <ArrowBack src={seta} alt=''/>
       </ButtonBack>
       <ContainerCards>
-        {[currentIndex, (currentIndex + 1) % divs.length, (currentIndex + 2) % divs.length].map((cardIndex) => (
+        {[currentIndex, (currentIndex + 1) % projects.length, (currentIndex + 2) % projects.length].map((cardIndex) => (
           <JobProjectCard
             key={cardIndex}
-            altDes={divs[cardIndex].altDes}
+            altDes={projects[cardIndex].projeto_link}
             iconSrc={IconProject}
-            text={divs[cardIndex].text}
+            text={projects[cardIndex].descricao}
             isVisible={true}
           />
         ))}
@@ -47,6 +60,8 @@ function JobProject() {
         <ArrowNext src={seta} alt=''/>
       </ButtonNext>
     </ContainerCarousel>
+    )}
+    </>
   );
 }
 
