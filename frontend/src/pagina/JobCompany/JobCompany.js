@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import JobFooter from "../../componentes/JobFooter/JobFooter";
 import JobInfo from "../../componentes/JobInfo/JobInfo";
 import JobProgression from "../../componentes/JobProgression/JobProgression";
@@ -8,28 +9,30 @@ import { DivDetails, DivFooter, DivHeader, DivProgression, DivProject, DivRequis
 
 function JobCompany() {
 
+    const { id_job } = useParams();
+
     return(
         <SectionGlobal>
             <DivHeader>
                 <HeaderText> NOME DO CARGO DA EMPRESA </HeaderText>
             </DivHeader>
             <DivDetails>
-                <JobInfo/>
+                <JobInfo idJobCompany={id_job}/>
             </DivDetails>
             <DivRequisite>
-                <JobRequisite/>
+                <JobRequisite idJobCompany={id_job}/>
             </DivRequisite>
             <DivRespo>
-                <JobRespo/>
+                <JobRespo idJobCompany={id_job}/>
             </DivRespo>
             <DivProgression>
-                <JobProgression/>
+                <JobProgression idJobCompany={id_job}/>
             </DivProgression>
             <DivProject>
-                <JobProject/>
+                <JobProject idJobCompany={id_job}/>
             </DivProject>
             <DivFooter>
-                <JobFooter/>
+                <JobFooter idJobCompany={id_job}/>
             </DivFooter>
         </SectionGlobal>
     )
