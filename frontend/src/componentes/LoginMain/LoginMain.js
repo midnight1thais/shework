@@ -107,7 +107,7 @@ function LoginMain(){
                                 <p>Você não tem uma conta?</p>
                                 <LinkA><Link to='/register'>Cadastrar</Link></LinkA> 
                             </Entrar> 
-                            <Link to='/home'><ButtonBack src={ButtonBackIMG} alt=''/></Link>  
+                            <Link to='/'><ButtonBack src={ButtonBackIMG} alt=''/></Link>  
                         </ContactForm>
                     </Container>
                 </Main>
@@ -116,7 +116,7 @@ function LoginMain(){
         )
     } else {
         console.log('entrei no signed')
-        return <Navigate to="/home" />;
+        return <Navigate to="/" />;
     };
 };
 
