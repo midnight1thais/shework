@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CarouselCard from "../CompanyCard/CompanyCard"
 import Logo from "../../assets/LogoCompany.png";
 import { ArrowBack, ArrowNext, ButtonBack, ButtonNext, ContainerCards, ContainerCarousel } from "./style";
 import seta from '../../assets/seta.svg'
+import { api } from "../../services/api";
 
 function CompanyCarousel() {
   const divs = [
@@ -12,6 +13,26 @@ function CompanyCarousel() {
     { company: "numero 4", text: "Nome empresa 4" },
     // Add more items as needed
   ];
+
+    // // useState para publicacoes 
+    // const [infosPubliCompany, setInfosPubliCompany] = useState([]);
+
+    // //get das pessoas
+
+    // useEffect(() => {
+    //     async function fetchPublis() {
+    //         try {
+    //             const response = await api.get(`/company/listAll`); 
+    //             setInfosPubliCompany(response.data.data);
+    //             console.log("resposta do response.data :", response.data.data)
+                
+    //         } catch (error) {
+    //             console.error('Erro ao recuperar as informações da publi:', error);
+    //         }
+    //     }
+    
+    //     fetchPublis();
+    // }, []);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
