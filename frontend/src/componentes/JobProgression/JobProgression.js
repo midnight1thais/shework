@@ -2,8 +2,27 @@ import { ContainerRespo, ContainerText, DivIcon,HeaderInfo, IconProfile, ImgResp
 import JobRespoIcon from '../../assets/JobCourseIcon.png'
 import seta from '../../assets/JobSeta.svg'
 import JobImg2 from '../../assets/JobRespoIcon2.svg'
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 
-function JobProgression() {
+function JobProgression({idJobCompany}) {
+
+    const [progressaoJob, setProgressaoJob] = useState([]);
+    
+    useEffect(() => {
+        async function fetchPublis() {
+            try {
+                const response = await api.get(`/publivaga/listProgressao/` + idJobCompany); 
+                setProgressaoJob(response.data.data);
+                console.log("Informações da vaga", response.data.data)
+                
+            } catch (error) {
+                console.error('Erro ao recuperar as informações da vaga:', error);
+            }
+        }
+
+        fetchPublis();
+    }, [idJobCompany]);
 
     return(
         <>
@@ -17,9 +36,14 @@ function JobProgression() {
             <ContainerRespo>
                 <ImgRespo src={JobImg2} alt=""/>
                 <ContainerText>
+                {progressaoJob.map((infoJob) => {
+                
+                    return (
                     <TextRespo>
-                        Em uma empresa, a progressão de carreira geralmente começa em um cargo de nível inicial, onde as responsabilidades são mais limitadas e focadas em tarefas específicas. À medida que se ganha experiência e se demonstra comprometimento e habilidades, surgem oportunidades para avançar. Isso pode incluir promoções para cargos de nível .
+                        {infoJob.descricao}
                     </TextRespo>
+                            )
+                        })}
                     <ReadRespo>
                         Saiba Mais
                         <img src={seta} alt=""/>
