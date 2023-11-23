@@ -1,12 +1,35 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { BigTitle, ComboBox, ComboBoxContainer, ContainerCarousel, ContainerHeader, ContainerInput, ContainerSearch, IconSearch, InputSearch, LittleTitle, OptionSelected } from "./style"
 
 import IconBack from '../../assets/JobButtonBack.svg'
 import iconsearch from '../../assets/IconSearch.svg'
 import ExploreCompanyCard from "../../componentes/ExploreCompanyCard/ExploreCompanyCard";
 import { Link } from "react-router-dom";
+import { api } from "../../services/api";
 
-function PubliCompany(){
+function ExploreCompany(){
+
+    // useState para publicacoes 
+    const [infosPubliCompany, setInfosPubliCompany] = useState([]);
+
+    //get das pessoas
+
+    useEffect(() => {
+        async function fetchPublis() {
+            try {
+                const response = await api.get(`/company/listAll`); 
+                setInfosPubliCompany(response.data.data);
+                console.log("resposta do response.data :", response.data.data)
+                
+            } catch (error) {
+                console.error('Erro ao recuperar as informações da publi:', error);
+            }
+        }
+    
+        fetchPublis();
+    }, []);
+
+    console.log("informações setadas empresa :", infosPubliCompany);
 
     const [selectedOption, setSelectedOption] = useState('');
 
@@ -66,7 +89,14 @@ function PubliCompany(){
         </ComboBoxContainer>
         </ContainerSearch>
         <ContainerCarousel>
-            <ExploreCompanyCard/>
+        {infosPubliCompany.map((infos) => {  
+                return(
+            <ExploreCompanyCard
+            id_publiEmpresa={infos.id_publiEmpresa}
+            isVisible={true}
+            />
+                    )
+                })}
         </ContainerCarousel>
         
         
@@ -75,4 +105,4 @@ function PubliCompany(){
     )
 }
 
-export default PubliCompany
+export default ExploreCompany
