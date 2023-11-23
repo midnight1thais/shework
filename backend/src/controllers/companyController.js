@@ -18,6 +18,67 @@ function base64_decode(base64str, fileName){
   } );
 }
 
+// EMPRESA TODAS AS PUBLICACOES
+
+// Função para listar as informações de competência técnica
+async function listAllCompany(request, response) {
+    try {
+        const query = 'SELECT * FROM publicacao_empresa';
+        connection.query(query, (err, results) => {
+            if (err) {
+                response.status(500).json({
+                    success: false,
+                    message: 'Erro ao listar as publicações.',
+                    error: err
+                });
+            } else {
+                response.status(200).json({
+                    success: true,
+                    data: results
+                });
+            }
+        });
+    } catch (err) {
+        response.status(500).json({
+            success: false,
+            message: 'Erro ao listar as publicações.',
+            error: err
+        });
+    }
+  }
+
+// PUBLICACAO EMPRESA POR ID ESPECIFICO
+
+// Função para listar as informações das publicações das pessoas
+async function listCompany(request, response) {
+    try {
+        const id_publiEmpresa = request.params.id_publiEmpresa;
+
+        const query = 'SELECT * FROM publicacao_empresa WHERE id_publiEmpresa = ?;';
+        connection.query(query, [id_publiEmpresa], (err, results) => {
+            if (err) {
+                response.status(500).json({
+                    success: false,
+                    message: 'Erro ao listar as publicações.',
+                    error: err
+                });
+            } else {
+                response.status(200).json({
+                    success: true,
+                    data: results
+                });
+            }
+        });
+    } catch (err) {
+        response.status(500).json({
+            success: false,
+            message: 'Erro ao listar as publicações.',
+            error: err
+        });
+    }
+}
+
+  
 // Função que cria um novo usuário 
 async function storeCompany(request, response) {
     // Preparar o comando de execução no banco
@@ -132,35 +193,6 @@ async function getImgPubliCompany(request, response) {
   });
 }
 
-// EMPRESA PROJETOS
-
-// Função para listar as informações de competência técnica
-async function listEmpresaProjetos(request, response) {
-  try {
-      const query = 'SELECT * FROM empresa_projetos';
-      connection.query(query, (err, results) => {
-          if (err) {
-              response.status(500).json({
-                  success: false,
-                  message: 'Erro ao listar as publicações.',
-                  error: err
-              });
-          } else {
-              response.status(200).json({
-                  success: true,
-                  data: results
-              });
-          }
-      });
-  } catch (err) {
-      response.status(500).json({
-          success: false,
-          message: 'Erro ao listar as publicações.',
-          error: err
-      });
-  }
-}
-
 // Função que cria nova competencia Tecnica 
 async function storeEmpresaProjetos(request, response) {
   console.log(request)
@@ -210,10 +242,11 @@ async function storeEmpresaProjetos(request, response) {
 
 
 module.exports = {
+    listCompany,
+    listAllCompany,
     storeCompany,
     getPubliInformations,
     getImgPubliCompany,
 
-    storeEmpresaProjetos,
-    listEmpresaProjetos
+    storeEmpresaProjetos
 }
