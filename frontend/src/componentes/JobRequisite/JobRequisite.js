@@ -1,7 +1,42 @@
 import { DivContainer, DivIcon, DivRe, HeaderInfo, IconProfile, SectionInfo, SubRe, TextInfo, TitleRe } from "./style"
 import JobRequisiteIcon from '../../assets/JobCourseIcon.png'
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 
-function JobRequisite() {
+function JobRequisite({idJobCompany}) {
+
+    const [requisitosOBJob, setRequisitosOBJob] = useState([]);
+    const [requisitosDJJob, setRequisitosDJJob] = useState([]);
+    
+    useEffect(() => {
+        async function fetchPublis() {
+            try {
+                const response = await api.get(`/publivaga/listRequisitosOB/` + idJobCompany); 
+                setRequisitosOBJob(response.data.data);
+                console.log("Requisitos Obrigatórios da vaga", response.data.data)
+                
+            } catch (error) {
+                console.error('Erro ao recuperar as informações da vaga:', error);
+            }
+        }
+
+        fetchPublis();
+    }, [idJobCompany]);
+
+    useEffect(() => {
+        async function fetchPublis() {
+            try {
+                const response = await api.get(`/publivaga/listRequisitosDJ/` + idJobCompany); 
+                setRequisitosDJJob(response.data.data);
+                console.log("Requisitos Obrigatórios da vaga", response.data.data)
+                
+            } catch (error) {
+                console.error('Erro ao recuperar as informações da vaga:', error);
+            }
+        }
+
+        fetchPublis();
+    }, [idJobCompany]);
 
     return(
         <>
@@ -15,19 +50,20 @@ function JobRequisite() {
             <DivContainer>
                 <DivRe>
                     <TitleRe>OBRIGATÓRIOS</TitleRe>
-                    <SubRe>Domínio em desenvolvimento C/C++</SubRe>
-                    <SubRe> Foco em resultados e comprometimento com qualidade e datas de entrega;</SubRe>
-                    <SubRe>Formação ou experiência comprovada em ciência da computação, engenharia da computação, análise de sistemas, ou desenvolvimento de jogos;</SubRe>
-                    <SubRe>Boas habilidades de comunicação (oral e escrita);</SubRe>
-                    <SubRe>Esforço para atingir os objetivos, </SubRe>
+                    {requisitosOBJob.map((infoRequisitos) => {
+                        return (
+                    <SubRe>{infoRequisitos.descricao}</SubRe>
+                            )
+                        })}
                     
                 </DivRe>
                 <DivRe>
                     <TitleRe>DESEJÁVEIS</TitleRe>
-                    <SubRe>Codificação de software ,</SubRe>
-                    <SubRe>Testes de software (ex: teste de unidade, integração, sistema/funcional, aceitação/estória, carga, desempenho, vulnerabilidade, usabilidade, acessibilidade);</SubRe>
-                    <SubRe>Análise e projeto de software orientado a objetos;</SubRe>
-                    <SubRe>Levantamento e análise de requisitos funcionais e não-funcionais, incluindo requisitos de acessibilidade; </SubRe>
+                    {requisitosDJJob.map((infoRequisitos) => {
+                        return (
+                    <SubRe>{infoRequisitos.descricao}</SubRe>
+                            )
+                        })}
                 </DivRe>
             </DivContainer>
         </SectionInfo>
