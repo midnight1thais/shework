@@ -6,7 +6,7 @@ export const ContainerCard = styled.div`
     margin-top: 4vh;
     gap: 4vh;
 
-    width: 100%;
+    width: 45vw;
     height: 30vh;
     flex-shrink: 0;
 
@@ -28,7 +28,7 @@ export const ContainerTop = styled.div`
     justify-content: space-between;
 `
 
-export const Date = styled.p`
+export const Date2 = styled.p`
     
 `
 
