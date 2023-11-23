@@ -5,10 +5,10 @@ const connection = require('../config/db');
 async function listVaga(request, response) {
     try {
         // precisa modificar para ser o id da empresa
-        const id_user = request.params.id_user;
+        const id_publicacao_vaga = request.params.id_publicacao_vaga;
 
-        const query = 'SELECT * FROM publicacao_pessoa WHERE id_publicacao_pessoa = ?;';
-        connection.query(query, [id_user], (err, results) => {
+        const query = 'SELECT * FROM publicacao_vaga WHERE id_publicacao_vaga = ?;';
+        connection.query(query, [id_publicacao_vaga], (err, results) => {
             if (err) {
                 response.status(500).json({
                     success: false,
@@ -34,7 +34,7 @@ async function listVaga(request, response) {
 // Função que cria um novo usuário 
 async function storeVaga(request, response) {
     // Preparar o comando de execução no banco
-    const query = 'INSERT INTO publicacao_vaga(id_empresa_vaga, tipo_vaga, dt_anuncio, cidade_estado, media_salarial, nivel_conhecimento, area_atuacao) VALUES(?, ?, ?, ?, ?, ?, ?);';
+    const query = 'INSERT INTO publicacao_vaga(id_empresa_vaga, tipo_vaga, dt_anuncio, cidade_estado, media_salarial, nivel_conhecimento, area_atuacao, nome_vaga) VALUES(?, ?, ?, ?, ?, ?, ?, ?);';
 
     // Recuperar os dados enviados na requisição
     const params = Array(
@@ -44,7 +44,8 @@ async function storeVaga(request, response) {
         request.body.cidade_estado,
         request.body.media_salarial,
         request.body.nivel_conhecimento,
-        request.body.area_atuacao
+        request.body.area_atuacao,
+        request.body.nome_vaga
     );
 
     // Executa a ação no banco e valida os retornos para o client que realizou a solicitação
