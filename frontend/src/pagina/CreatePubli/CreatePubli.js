@@ -32,6 +32,7 @@ function CreatePubli() {
     const [linkedin, setLinkedin] = useState("");
     const [nacionalidade, setNacionalidade] = useState("");
     const [area_interesse, setAreaInteresse] = useState("");
+    const [descricaoPessoa, setDescricaoPessoa] = useState("");
     
     // da competência
     const [nomeCompetencia, setNomeCompetencia] = useState("");
@@ -115,7 +116,8 @@ function CreatePubli() {
             email:email,
             linkedin:linkedin,
             nacionalidade:nacionalidade,
-            area_interesse:area_interesse
+            area_interesse:area_interesse,
+            descricao:descricaoPessoa
           };
 
         
@@ -232,6 +234,9 @@ function CreatePubli() {
                         <SubTitle>Informações Pessoais</SubTitle>
                         <Label>Nome
                             <Input type="text" value={nomePessoa} onChange={(e) => setNomePessoa(e.target.value)} />
+                        </Label>
+                        <Label>Breve Descricao sobre Você
+                             <Input type="text" maxlength="72" value={descricaoPessoa} onChange={(e) => setDescricaoPessoa(e.target.value)}/>
                         </Label>
                         <Label>Data de Nascimento
                              <Input type="date"value={dt_nascimento} onChange={(e) => setNascimento(e.target.value)} />
