@@ -1,13 +1,42 @@
 // Importe o módulo de conexão com o banco de dados
 const connection = require('../config/db');
 
+
+// Função para listar todas as publicações das pessoas
+async function listAllPerson(request, response) {
+    try {
+        const query = 'SELECT * FROM publicacao_pessoa ';
+
+        connection.query(query, (err, results) => {
+            if (err) {
+                response.status(500).json({
+                    success: false,
+                    message: 'Erro ao listar as publicações.',
+                    error: err
+                });
+            } else {
+                response.status(200).json({
+                    success: true,
+                    data: results
+                });
+            }
+        });
+    } catch (err) {
+        response.status(500).json({
+            success: false,
+            message: 'Erro ao listar as publicações.',
+            error: err
+        });
+    }
+}
+
 // Função para listar as informações das publicações das pessoas
 async function listPerson(request, response) {
     try {
-        const id_user = request.params.id_user;
+        const id_publicacao_pessoa = request.params.id_publicacao_pessoa;
 
         const query = 'SELECT * FROM publicacao_pessoa WHERE id_publicacao_pessoa = ?;';
-        connection.query(query, [id_user], (err, results) => {
+        connection.query(query, [id_publicacao_pessoa], (err, results) => {
             if (err) {
                 response.status(500).json({
                     success: false,
@@ -33,7 +62,7 @@ async function listPerson(request, response) {
 // Função que cria um novo usuário 
 async function storePerson(request, response) {
     // Preparar o comando de execução no banco
-    const query = 'INSERT INTO publicacao_pessoa(id_usuario, nome, dt_nascimento, cidade_estado, email, linkedin, nacionalidade, area_interesse) VALUES(?, ?, ?, ?, ?, ?, ?, ?);';
+    const query = 'INSERT INTO publicacao_pessoa(id_usuario, nome, dt_nascimento, cidade_estado, email, linkedin, nacionalidade, area_interesse, descricao) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);';
 
     // Recuperar os dados enviados na requisição
     const params = Array(
@@ -44,7 +73,8 @@ async function storePerson(request, response) {
         request.body.email,
         request.body.linkedin,
         request.body.nacionalidade,
-        request.body.area_interesse
+        request.body.area_interesse,
+        request.body.descricao
     );
 
     // Executa a ação no banco e valida os retornos para o client que realizou a solicitação
@@ -391,11 +421,11 @@ async function storeLinguas(request, response) {
 // Função para listar as informações dos certificados
 async function listCertificados(request, response) {
     try {
-        const id_user = request.params.id_user;
+        const id_publicacao_pessoa = request.params.id_publicacao_pessoa;
 
         const query = 'SELECT * FROM pessoa_certificados where id_publicacao_pessoa = ?';
         
-        connection.query(query, [id_user], (err, results) => {
+        connection.query(query, [id_publicacao_pessoa], (err, results) => {
             if (err) {
                 response.status(500).json({
                     success: false,
@@ -468,10 +498,10 @@ async function storeCertificados(request, response) {
 // Função para listar as informações dos cursos
 async function listCursos(request, response) {
     try {
-        const id_user = request.params.id_user;
+        const id_publicacao_pessoa = request.params.id_publicacao_pessoa;
 
         const query = 'SELECT * FROM pessoa_curso WHERE id_publicacao_pessoa = ?;';
-        connection.query(query,[id_user], (err, results) => {
+        connection.query(query,[id_publicacao_pessoa], (err, results) => {
             if (err) {
                 response.status(500).json({
                     success: false,
@@ -540,8 +570,36 @@ async function storeCursos(request, response) {
     });
 }
 
+async function getPerson(request, response) {
+    const query = "SELECT * FROM publicacao_pessoa WHERE id_usuario = ?";
+
+    const params = request.params.id_usuario;
+
+    connection.query(query, params, (err, results) => {
+        console.log(results)
+
+        if (results.length > 0) {
+            response
+                .status(200)
+                .json({
+                    success: true,
+                    message: "Usuario tem publicação",
+                    data: results
+                })
+        } else {
+            response
+                .status(400)
+                .json({
+                    success: false,
+                    message: "Usuario nao tem publicação",
+                })
+        }
+    })
+}
 
 module.exports = {
+    listAllPerson,
+    getPerson,
     listPerson,
     storePerson,
 
