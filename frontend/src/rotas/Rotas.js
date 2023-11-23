@@ -18,7 +18,6 @@ function Rotas(){
         <BrowserRouter>
         <Routes>
             <Route index element={<Home/>}/>
-            <Route path="home" element={<Home/>}/>
             <Route path="login" element={<Login/>}/>
             <Route path="homeRegister" element={<HomeRegister/>}/>
             <Route path="register" element={<Register/>}/>
