@@ -31,6 +31,7 @@ function CreateJob() {
     const [nivel_conhecimento, setConhecimento] = useState("");
     const [escolhaExperiencia, setEscolhaExperiencia] = useState('')
     const [area_atuacao, setAreaAtuacao] = useState("");
+    const [nome_vaga, setNomeVaga] = useState("");
     
     // da progressao
     const [descricaoProgressao, setDescricaoProgressao] = useState("");
@@ -92,7 +93,8 @@ function CreateJob() {
             cidade_estado:cidade_estado,
             media_salarial:media_salarial,
             nivel_conhecimento:nivel_conhecimento,
-            area_atuacao:area_atuacao
+            area_atuacao:area_atuacao,
+            nome_vaga:nome_vaga
           };
 
         
@@ -189,8 +191,8 @@ function CreateJob() {
 
 
             setItem(response.data.data);
-            alert('Deu certo')
-            // navigate('/jobCompany/' + response.data.data.insertId);
+            alert('Vaga criada com sucesso!')
+            navigate('/jobCompany/' + response.data.data.insertId);
         })
         .catch(function (error) {
             alert("erro")
@@ -208,6 +210,9 @@ function CreateJob() {
                 <ContainerGlobalTop>
                     <ContainerRight>
                         <SubTitle>Detalhes da Vaga</SubTitle>
+                        <Label>Nome do Cargo
+                            <Input type="text"  value={nome_vaga} onChange={(e) => setNomeVaga(e.target.value)}/>
+                        </Label>
                         <Label>Tipo de Vaga
                             <Input type="text"  value={tipo_vaga} onChange={(e) => setTipoVaga(e.target.value)}/>
                         </Label>
@@ -318,7 +323,7 @@ function CreateJob() {
                             <CreateModal isOpen={openModalResponsabilidades} setModalOpen={() => setOpenModalResponsabilidades(!openModalResponsabilidades)}>
                                 <div>
                                         <ContainerTop>
-                                        <TitleDes> Adicionar Requisitos Desejaveis </TitleDes>
+                                        <TitleDes> Adicionar Responsabilidades</TitleDes>
                                         </ContainerTop>
                                         <Label>Descricao
                                             <Input type="text" value={descricaoResponsabilidades} onChange={(e) => setDescricaoResponsabilidades(e.target.value)}/>
@@ -376,7 +381,7 @@ function CreateJob() {
                 </ContainerGlobalTop>
                
                 <ContainerFooter>
-                    <ButtonBack><Link to='/homeRegister'><IconBack src={IconButtonBack}/></Link></ButtonBack>
+                    <ButtonBack><Link to='/homeRegisterCompany'><IconBack src={IconButtonBack}/></Link></ButtonBack>
                     <ButtonForward onClick={handleSubmit}>Avançar</ButtonForward>
                     <div></div>
                 </ContainerFooter>
