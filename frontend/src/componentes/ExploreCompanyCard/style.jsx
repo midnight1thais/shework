@@ -6,7 +6,7 @@ export const ContainerCard = styled.div`
     margin-top: 4vh;
     gap: 4vh;
 
-    width: 100%;
+    width: 84vw;
     height: 30vh;
     flex-shrink: 0;
 
