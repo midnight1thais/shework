@@ -4,23 +4,25 @@ const { Router } = require('express');
 const router = Router();
 
 // Importar as funções (processamento da requisição) do controller
-const { 
+const {
+    listCompany,
+    listAllCompany,
     storeCompany,
     getPubliInformations,
     getImgPubliCompany,
 
-    storeEmpresaProjetos,
-    listEmpresaProjetos
+    storeEmpresaProjetos
 } = require('../controllers/companyController')
 
 const upload = require('../config/multer')
 
 // Criar os endpoints (rotas) que serão acessados a partir dos métodos HTTP (get,post,put,delete)
+router.get('/listAll', listAllCompany);
+router.get('/list/:id_publiEmpresa', listCompany);
 router.post('/create', upload.single('file'), storeCompany);
 router.get('/informations/:id_publiEmpresa', getPubliInformations);
 router.get('/information/img_company/:id_publiEmpresa', getImgPubliCompany);
 
 router.get('/projects', storeEmpresaProjetos);
-router.get('/listprojects/:id_publiEmpresa', listEmpresaProjetos);
 
 module.exports = router;
