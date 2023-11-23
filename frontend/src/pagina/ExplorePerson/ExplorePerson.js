@@ -1,13 +1,44 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { BigTitle, ComboBox, ComboBoxContainer, ContainerCarousel, ContainerHeader, ContainerInput, ContainerSearch, IconSearch, InputSearch, LittleTitle, OptionSelected } from "./style"
 
 import IconBack from '../../assets/JobButtonBack.svg'
 import iconsearch from '../../assets/IconSearch.svg'
 import ExplorePersonCard from "../../componentes/ExplorePersonCard/ExplorePersonCard";
 import { Link } from "react-router-dom";
+import { api } from "../../services/api";
 
-function PubliPerson(){
+function ExplorePerson(){
 
+    // para a pesquisa
+    const [searched, setSearched] = useState([]);
+
+    const handleSearchChange = (value) =>{
+        setSearched(value);
+    }
+
+    // useState para publicacoes 
+    const [infosPubliPerson, setInfosPubliPerson] = useState([]);
+
+    //get das pessoas
+
+    useEffect(() => {
+        async function fetchPublis() {
+            try {
+                const response = await api.get(`/publiperson/list`); 
+                setInfosPubliPerson(response.data.data);
+                console.log("resposta do response.data :", response.data.data.id_publicacao_pessoa)
+                
+            } catch (error) {
+                console.error('Erro ao recuperar as informações da publi:', error);
+            }
+        }
+  
+        fetchPublis();
+    }, []);
+
+    console.log("informações setadas:", infosPubliPerson);
+
+    // para os filtros
     const [selectedOption, setSelectedOption] = useState('');
 
     const options1 = [
@@ -42,7 +73,10 @@ function PubliPerson(){
         <ContainerSearch>
             <ContainerInput>
                 <IconSearch src={iconsearch} alt=""/>
-                <InputSearch placeholder="Search"/>
+                <InputSearch placeholder="Search"
+                value={searched}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                />
             </ContainerInput>
             <ComboBoxContainer>
             <ComboBox value={selectedOption} onChange={handleOptionChange}>
@@ -66,7 +100,25 @@ function PubliPerson(){
         </ComboBoxContainer>
         </ContainerSearch>
         <ContainerCarousel>
-            <ExplorePersonCard/>
+            {infosPubliPerson.filter((infos) => 
+            infos.nome.includes(searched))
+            .map((infos, index) => (
+                <ExplorePersonCard
+                key={index}
+                id_publicacao_pessoa={infos.id_publicacao_pessoa}
+                isVisible={true}
+                />
+            ))
+            }
+        {/* {infosPubliPerson.map((infos) => {  
+            console.log('Infos Object:', infos); 
+                return(
+            <ExplorePersonCard
+            id_publicacao_pessoa={infos.id_publicacao_pessoa}
+            isVisible={true}
+            />
+                    )
+            })} */}
         </ContainerCarousel>
         
         
@@ -75,4 +127,4 @@ function PubliPerson(){
     )
 }
 
-export default PubliPerson
+export default ExplorePerson
