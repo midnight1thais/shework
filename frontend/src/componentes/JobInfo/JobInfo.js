@@ -1,7 +1,29 @@
 import { DivIcon, DivInfo, DivLeftA, DivRightA, DivTextA, HeaderInfo, IconProfile, SectionInfo, SubTextLeft, TextInfo, TextLeft } from "./style";
 import JobInfoIcon from '../../assets/JobInfoIcon.svg'
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
-function JobInfo () { 
+function JobInfo({idJobCompany}) { 
+
+    const [informacoesJob, setInfoJob] = useState([]);
+    
+    useEffect(() => {
+        async function fetchPublis() {
+            try {
+                const response = await api.get(`/publivaga/publiVagaList/` + idJobCompany); 
+                setInfoJob(response.data.data);
+                console.log("Informações da vaga", response.data.data)
+                
+            } catch (error) {
+                console.error('Erro ao recuperar as informações da vaga:', error);
+            }
+        }
+
+        fetchPublis();
+    }, [idJobCompany]);
+
 
     return(
         <>
@@ -12,6 +34,9 @@ function JobInfo () {
                 </DivIcon>
                 <TextInfo>Detalhes da Vaga</TextInfo>
             </HeaderInfo>
+            {informacoesJob.map((infoJob) => {
+                const formattedDate = format(new Date(infoJob.dt_anuncio), 'dd/MM/yyyy', { locale: ptBR });
+                return (
             <DivInfo>
                 <DivLeftA>
                     <DivTextA>
@@ -19,7 +44,7 @@ function JobInfo () {
                             Tipo de vaga
                         </TextLeft>
                         <SubTextLeft>
-                            Hibrido
+                            {infoJob.tipo_vaga}
                         </SubTextLeft>
                     </DivTextA>
                     <DivTextA>
@@ -27,7 +52,7 @@ function JobInfo () {
                             Cidade e Estado
                         </TextLeft>
                         <SubTextLeft>
-                            São Leopoldo, RS
+                            {infoJob.cidade_estado}
                         </SubTextLeft>
                     </DivTextA>
                 </DivLeftA>
@@ -37,7 +62,7 @@ function JobInfo () {
                             Média Salarial da Vaga
                         </TextLeft>
                         <SubTextLeft>
-                            2.000 
+                            {infoJob.media_salarial}
                         </SubTextLeft>
                     </DivTextA>
                     <DivTextA>
@@ -45,29 +70,31 @@ function JobInfo () {
                             Nível de Experiência
                         </TextLeft>
                         <SubTextLeft>
-                            Estágio
+                            {infoJob.nivel_conhecimento}
                         </SubTextLeft>
                     </DivTextA>
                 </DivRightA>
                 <DivRightA>
                     <DivTextA>
                         <TextLeft>
-                            Média Salarial da Vaga
+                            Área de Atuação
                         </TextLeft>
                         <SubTextLeft>
-                            2.000 
+                            {infoJob.area_atuacao}
                         </SubTextLeft>
                     </DivTextA>
                     <DivTextA>
                         <TextLeft>
-                            Nível de Experiência
+                            Data de Anuncio
                         </TextLeft>
                         <SubTextLeft>
-                            Estágio
+                            {formattedDate}
                         </SubTextLeft>
                     </DivTextA>
                 </DivRightA>
             </DivInfo>
+                    )
+                })}
 
         </SectionInfo>
         
