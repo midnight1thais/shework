@@ -9,23 +9,47 @@ import PubliExperience from "../../componentes/PubliExperience/PubliExperience";
 import PubliAbility from "../../componentes/PubliAbility/PubliAbility";
 import PubliLanguage from "../../componentes/PubliLanguage/PubliLanguage";
 import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 
 
 function PubliPerson(){
     const { id } = useParams();
 
+    const [infos, setInfos] = useState([]);
+    
+    
+    useEffect(() => {
+        async function fetchPublis() {
+            try {
+                const response = await api.get(`/publiperson/` + id); 
+                setInfos(response.data.data);
+                
+            } catch (error) {
+                console.error('Erro ao recuperar as informações da publi:', error);
+            }
+        }
+  
+        fetchPublis();
+    }, [id]);
+
     return(
         <SectionGlobal>
             <SectionLeft>
+                    {infos.map((item) => {
+                        return (
                 <DivLeftA>
                     <Link to='/homeRegister'><img src={IconBack} alt=""/></Link>
                     <ImgWoman src={ImgWomanIcon} alt=""/>
-                    <TextName> Maria da Silva </TextName>
+                    <TextName>{item.nome}</TextName>
                     <TextName> Cardoso </TextName>
                     <SimpleTag> 
-                            <SimpleTagText>Brasileira </SimpleTagText>
+                            <SimpleTagText>{item.nacionalidade} </SimpleTagText>
                     </SimpleTag>
                 </DivLeftA>
+                            )
+                    
+                        })}
 
             </SectionLeft>
             <SectionRight>
