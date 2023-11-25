@@ -1,7 +1,37 @@
 // Importe o módulo de conexão com o banco de dados
 const connection = require('../config/db');
 
-// Função para listar as informações das publicações das pessoas
+// Função para listar as informações das publicações das vagas pelas empresas
+async function listCompanyVaga(request, response) {
+    try {
+        // precisa modificar para ser o id da empresa
+        const id_empresa_vaga = request.params.id_empresa_vaga;
+
+        const query = 'SELECT * FROM publicacao_vaga WHERE id_empresa_vaga = ?;';
+        connection.query(query, [id_empresa_vaga], (err, results) => {
+            if (err) {
+                response.status(500).json({
+                    success: false,
+                    message: 'Erro ao listar as publicações.',
+                    error: err
+                });
+            } else {
+                response.status(200).json({
+                    success: true,
+                    data: results
+                });
+            }
+        });
+    } catch (err) {
+        response.status(500).json({
+            success: false,
+            message: 'Erro ao listar as publicações.',
+            error: err
+        });
+    }
+}
+
+// Função para listar as informações das publicações das vagas pelo id
 async function listVaga(request, response) {
     try {
         // precisa modificar para ser o id da empresa
@@ -459,6 +489,7 @@ async function storeProjetos(request, response) {
 
 
 module.exports = {
+    listCompanyVaga,
     listVaga,
     storeVaga,
 
