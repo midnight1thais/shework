@@ -12,17 +12,16 @@ import { api } from "../../services/api";
 
 function Corporation(){
     const { id_company } = useParams();
-    
-    const [publiImgs, setPubliImgs] = useState([]);
 
-    const [name, setName] = useState([]);
+
+    const [infos, setInfos] = useState([]);
     
     
     useEffect(() => {
         async function fetchPublis() {
             try {
                 const response = await api.get(`/company/informations/` + id_company); 
-                setName(response.data);
+                setInfos(response.data);
                 
             } catch (error) {
                 console.error('Erro ao recuperar as informações da publi:', error);
@@ -36,7 +35,7 @@ function Corporation(){
         <SectionGlobal>
             <DivHeader>
                 <HeaderLogo src={Logo} alt='' />
-                {name.map((item) => {
+                {infos.map((item) => {
                 return (
                     <HeaderText>  
                         {item.nome}
@@ -46,7 +45,7 @@ function Corporation(){
                 })}
             </DivHeader>
             <DivAboutImg>
-                <CorpoAboutImg idCorporation={id_company} publiImgs={publiImgs}/>
+                <CorpoAboutImg idCorporation={id_company}/>
             </DivAboutImg>
             <DivAboutText>
                 <CorpoAboutText idCorporation={id_company} />
