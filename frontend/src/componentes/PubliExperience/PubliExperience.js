@@ -25,27 +25,6 @@ function PubliExperience({idPubliPerson}) {
         fetchPublis();
     }, [idPubliPerson]);
 
-
-    const divs = [
-        { date: "2021-2023", 
-        title:"Trabalho Exemplo", 
-        descricao: "DESCRIÇÃO REDUZIDA" 
-        },
-        { date: "2021-2023", 
-        title:"Trabalho Exemplo", 
-        descricao: "DESCRIÇÃO REDUZIDA" 
-        },
-        { date: "2021-2023", 
-        title:"Trabalho Exemplo", 
-        descricao: "DESCRIÇÃO REDUZIDA" 
-        },
-        { date: "2021-2023", 
-        title:"Trabalho Exemplo", 
-        descricao: "DESCRIÇÃO REDUZIDA"
-        },
-        // Add more items as needed
-      ];
-
     return(
         <>
         <SectionCourse>
