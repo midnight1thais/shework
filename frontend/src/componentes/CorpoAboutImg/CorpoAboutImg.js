@@ -27,7 +27,6 @@ function CorpoAboutImg({ idCorporation }) {
             <ContainerImgs>
                 {publiImg && publiImg.length > 0 && publiImg.map((item) => (
                     <div key={item.id}>
-                        <p>imagem</p>
                         {item.img && <img src={images + item.img} alt="oi" />}
                     </div>
                 ))}
