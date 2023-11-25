@@ -199,9 +199,12 @@ async function deleteUser(request, response) {
 
 // Função para listar as informações de competência técnica
 async function listCompetenciaTec(request, response) {
-    try {
-        const query = 'SELECT * FROM pessoa_competencia_tecnica';
-        connection.query(query, (err, results) => {
+    try { 
+        const id_publicacao_pessoa = request.params.id_publicacao_pessoa;
+
+        const query = 'SELECT * FROM pessoa_competencia_tecnica WHERE id_publicacao_pessoa = ?';
+
+        connection.query(query,[id_publicacao_pessoa], (err, results) => {
             if (err) {
                 response.status(500).json({
                     success: false,
@@ -273,12 +276,15 @@ async function storeCompetenciaTec(request, response) {
 // Função para listar as informações das experiencias
 async function listExperiencias(request, response) {
     try {
-        const query = 'SELECT * FROM pessoa_experiencia';
-        connection.query(query, (err, results) => {
+        const id_publicacao_pessoa = request.params.id_publicacao_pessoa;
+
+        const query = 'SELECT * FROM pessoa_experiencia WHERE id_publicacao_pessoa = ?';
+        
+        connection.query(query, [id_publicacao_pessoa], (err, results) => {
             if (err) {
                 response.status(500).json({
                     success: false,
-                    message: 'Erro ao listar as publicações.',
+                    message: 'Erro ao listar os certificados.',
                     error: err
                 });
             } else {
@@ -291,7 +297,7 @@ async function listExperiencias(request, response) {
     } catch (err) {
         response.status(500).json({
             success: false,
-            message: 'Erro ao listar as publicações.',
+            message: 'Erro ao listar os certificados.',
             error: err
         });
     }
@@ -348,8 +354,11 @@ async function storeExperiencias(request, response) {
 // Função para listar as informações das linguas
 async function listLinguas(request, response) {
     try {
-        const query = 'SELECT * FROM pessoa_linguas';
-        connection.query(query, (err, results) => {
+        const id_publicacao_pessoa = request.params.id_publicacao_pessoa;
+
+        const query = 'SELECT * FROM pessoa_linguas WHERE id_publicacao_pessoa = ?';
+
+        connection.query(query,[id_publicacao_pessoa], (err, results) => {
             if (err) {
                 response.status(500).json({
                     success: false,
