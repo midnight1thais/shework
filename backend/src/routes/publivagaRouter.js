@@ -6,6 +6,7 @@ const router = Router();
 // Importar as funções (processamento da requisição) do controller
 const { 
     // da publicação pessoa
+    listCompanyVaga,
     listVaga,
     storeVaga,
 
@@ -27,7 +28,8 @@ const {
 
 // Criar os endpoints (rotas) que serão acessados a partir dos métodos HTTP (get,post,put,delete)
 
-// Da pessoa
+// Da vaga
+router.get('/publiCompanyVaga/:id_empresa_vaga', listCompanyVaga);
 router.get('/publiVagaList/:id_publicacao_vaga', listVaga);
 router.post('/create', storeVaga);
 
