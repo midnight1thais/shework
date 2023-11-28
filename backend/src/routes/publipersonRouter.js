@@ -9,8 +9,6 @@ const {
     listAllPerson,
     listPerson,
     storePerson,
-    updatePerson,
-    deletePerson,
 
     // das competencias tecnicas
     listCompetenciaTec,
@@ -41,7 +39,6 @@ router.get('/publipersonGet/:id_usuario', getPerson);
 router.get('/publiperson/:id_publicacao_pessoa', listPerson);
 router.post('/publiperson/create', storePerson);
 // router.put('/publiperson/:id_publiPessoa', updatePerson);
-// router.delete('/publiperson/:id', deletePerson);
 
 // Das competencias técnicas
 router.get('/competenciaTec/:id_publicacao_pessoa', listCompetenciaTec);
