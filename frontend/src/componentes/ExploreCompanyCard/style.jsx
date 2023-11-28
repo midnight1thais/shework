@@ -8,11 +8,14 @@ export const ContainerCard = styled.div`
 
     width: 84vw;
     height: 30vh;
+    max-height: 30vh;
     flex-shrink: 0;
 
     border-radius: 16px;
     background: #FFF;
     box-shadow: 0px 4px 10px 0px #000;
+
+    overflow: auto; /* Adicione uma barra de rolagem quando necessário */
     
 `
 
