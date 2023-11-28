@@ -6,67 +6,66 @@ import seta from '../../assets/seta.svg'
 import { api } from "../../services/api";
 
 function CompanyCarousel() {
-  const divs = [
-    { company: "numero 1", text: "Nome empresa 1" },
-    { company: "numero 2", text: "Nome empresa 2" },
-    { company: "numero 3", text: "Nome empresa 3" },
-    { company: "numero 4", text: "Nome empresa 4" },
-    // Add more items as needed
-  ];
 
-    // // useState para publicacoes 
-    // const [infosPubliCompany, setInfosPubliCompany] = useState([]);
+    // useState para publicacoes 
+    const [infosPubliCompany, setInfosPubliCompany] = useState([]);
 
-    // //get das pessoas
+    //get das pessoas
 
-    // useEffect(() => {
-    //     async function fetchPublis() {
-    //         try {
-    //             const response = await api.get(`/company/listAll`); 
-    //             setInfosPubliCompany(response.data.data);
-    //             console.log("resposta do response.data :", response.data.data)
+    useEffect(() => {
+        async function fetchPublis() {
+            try {
+                const response = await api.get(`/company/listAll`); 
+                setInfosPubliCompany(response.data.data);
+                console.log("resposta do response.data da empresa :", response.data.data)
                 
-    //         } catch (error) {
-    //             console.error('Erro ao recuperar as informações da publi:', error);
-    //         }
-    //     }
+            } catch (error) {
+                console.error('Erro ao recuperar as informações da publi:', error);
+            }
+        }
     
-    //     fetchPublis();
-    // }, []);
+        fetchPublis();
+    }, []);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleClickNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === divs.length - 1 ? 0 : prevIndex + 1
+      prevIndex === infosPubliCompany.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const handleClickPrev = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? divs.length - 1 : prevIndex - 1
+      prevIndex === 0 ? infosPubliCompany.length - 1 : prevIndex - 1
     );
   };
 
   return (
     <ContainerCarousel>
+        {infosPubliCompany.length > 1 && (
       <ButtonBack onClick={handleClickPrev}>
         <ArrowBack src={seta} alt=''/>
       </ButtonBack>
+      )}
       <ContainerCards>
-        {[currentIndex, (currentIndex + 1) % divs.length, (currentIndex + 2) % divs.length].map((cardIndex) => (
+      {infosPubliCompany && infosPubliCompany.length > 0 &&
+        [currentIndex, (currentIndex + 1) % infosPubliCompany.length, (currentIndex + 2) % infosPubliCompany.length].map((cardIndex) => (
+          infosPubliCompany[cardIndex] && (
           <CarouselCard
-            key={cardIndex}
-            company={divs[cardIndex].company}
+            key={infosPubliCompany[cardIndex].id_publiEmpresa}
+            id={infosPubliCompany[cardIndex].id_publiEmpresa}
             iconSrc={Logo}
-            text={divs[cardIndex].text}
             isvisiblecard={true}
           />
+          )
         ))}
       </ContainerCards>
+      {infosPubliCompany.length > 1 && (
       <ButtonNext onClick={handleClickNext}>
         <ArrowNext src={seta} alt=''/>
       </ButtonNext>
+        )}
     </ContainerCarousel>
   );
 }
