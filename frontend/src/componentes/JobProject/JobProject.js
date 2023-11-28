@@ -9,7 +9,6 @@ import { DivIcon, HeaderInfo, IconProfile, TextInfo } from "../JobProgression/st
 
 function JobProject({idJobCompany}) {
   const [projects, setProjects] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     async function fetchProjects() {
@@ -25,16 +24,19 @@ function JobProject({idJobCompany}) {
     fetchProjects();
   }, [idJobCompany]);
 
-  const showNavigationButtons = projects.length > 3; // Se houver mais de 3 projetos, mostra os botões.
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleClickNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === projects.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   const handleClickPrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? projects.length - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+    );
   };
-
   return (
     <>
       <HeaderInfo>
@@ -45,27 +47,23 @@ function JobProject({idJobCompany}) {
       </HeaderInfo>
       {projects.length > 0 && (
         <ContainerCarousel>
-          {showNavigationButtons && (
             <ButtonBack onClick={handleClickPrev}>
               <ArrowBack src={seta} alt='' />
             </ButtonBack>
-          )}
           <ContainerCards>
-            {projects.map((project, index) => (
+          {[currentIndex, (currentIndex + 1) % projects.length, (currentIndex + 2) % projects.length].map((cardIndex) => (
               <JobProjectCard
-                key={index}
-                altDes={project.projeto_link}
+                key={cardIndex}
+                altDes={projects[cardIndex].projeto_link}
                 iconSrc={IconProject}
-                text={project.descricao}
-                isVisible={index === currentIndex}
+                text={projects[cardIndex].descricao}
+                isVisible={true}
               />
             ))}
           </ContainerCards>
-          {showNavigationButtons && (
             <ButtonNext onClick={handleClickNext}>
               <ArrowNext src={seta} alt='' />
             </ButtonNext>
-          )}
         </ContainerCarousel>
       )}
     </>
