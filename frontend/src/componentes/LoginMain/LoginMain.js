@@ -9,6 +9,7 @@ function LoginMain(){
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [user, setUser] = useState(null);
+
     const signed = false;
   
     const navigate = useNavigate();
@@ -38,6 +39,7 @@ function LoginMain(){
         };
         console.log(data);
         
+        try{ 
             const response = await api.post('auth/login', data)
             console.log(response.data);
 
@@ -62,6 +64,7 @@ function LoginMain(){
                 //signed = true;
                 
                 if (userCategoria === 'Empresa') {
+
                     goToHomeCompany();
                 } else {
                     goToHome();
@@ -70,7 +73,11 @@ function LoginMain(){
             } else {
                 alert('Num deu!')
 
-            }       
+            }  
+        } catch(error){
+            console.error("Erro ao fazer login:", error);
+            alert('Algo deu errado. Tente novamente')
+        }  
       
     };
   
