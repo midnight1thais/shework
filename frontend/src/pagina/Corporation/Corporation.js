@@ -6,15 +6,21 @@ import CorpoValues from "../../componentes/CorpoValues/CorpoValues";
 import CorpoProject from "../../componentes/CorpoProject/CorpoProject";
 import CorpoOpportunities from "../../componentes/CorpoOpportunities/CorpoOpportunities";
 import IconButtonBack from '../../assets/JobButtonBack.svg'
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
 function Corporation(){
     const { id_company } = useParams();
 
-
     const [infos, setInfos] = useState([]);
+
+    const navigate = useNavigate();
+
+    const goBack = () =>{
+      navigate(-1)
+    }
+  
     
     
     useEffect(() => {
@@ -59,7 +65,8 @@ function Corporation(){
             <DivOpportunities>
                 <CorpoOpportunities idCorporation={id_company}/>
             </DivOpportunities>
-            <ButtonBack><Link to='/homeRegisterCompany'><IconBack src={IconButtonBack}/></Link></ButtonBack>
+            <ButtonBack onClick={goBack}><IconBack src={IconButtonBack}/></ButtonBack>
+                    
         </SectionGlobal>
     )
 }
