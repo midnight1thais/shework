@@ -40,6 +40,7 @@ function CorpoOpportunities({idCorporation}){
                 return(
                 <CorpoOpportunitesCard 
                 idCompany={idCorporation}
+                idVaga={infos.id_publicacao_vaga}
                 nomeVaga={infos.nome_vaga}
                 tipoVaga={infos.tipo_vaga}
                 areaVaga={infos.area_atuacao}
