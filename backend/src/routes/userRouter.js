@@ -8,13 +8,13 @@ const {
     listUsers,
     storeUser,
     updateUser,
-    deleteUser
+    deleteUser,
 } = require('../controllers/userController')
 
 // Criar os endpoints (rotas) que serão acessados a partir dos métodos HTTP (get,post,put,delete)
 router.get('/users', listUsers);
 router.post('/user/create', storeUser);
 router.put('/user/:id_usuario', updateUser);
-router.delete('/user/:delete', deleteUser);
+router.delete('/user/delete/:id_usuario', deleteUser);
 
 module.exports = router;
