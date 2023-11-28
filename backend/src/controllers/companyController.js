@@ -47,7 +47,7 @@ async function listAllCompany(request, response) {
     }
   }
 
-// PUBLICACAO EMPRESA POR ID ESPECIFICO
+// PUBLICACAO EMPRESA POR ID ESPECIFICO DA PUBLICACAO
 
 // Função para listar as informações das publicações das pessoas
 async function listCompany(request, response) {
@@ -76,6 +76,34 @@ async function listCompany(request, response) {
             error: err
         });
     }
+}
+
+// PUBLICACAO EMPRESA POR ID ESPECIFICO DA PESSOA
+
+async function getCompany(request, response) {
+    const query = "SELECT * FROM publicacao_empresa WHERE id_usuarioEmpresa = ?";
+
+    const params = request.params.id_usuarioEmpresa;
+
+    connection.query(query, params, (err, results) => {
+
+        if (results.length > 0) {
+            response
+                .status(200)
+                .json({
+                    success: true,
+                    message: "Usuario tem publicação",
+                    data: results
+                })
+        } else {
+            response
+                .status(500)
+                .json({
+                    success: false,
+                    message: "Usuario nao tem publicação",
+                })
+        }
+    })
 }
 
   
@@ -128,6 +156,8 @@ async function storeCompany(request, response) {
     });
 }
 
+
+
 async function getPubliInformations(request, response) {
     const publiId = request.params.id_publiEmpresa;
     
@@ -142,14 +172,14 @@ async function getPubliInformations(request, response) {
         return response.status(500).json({ error: 'Erro ao recuperar as informações da publicação' });
       }
 
-      results.forEach((publi) => {
-        if (publi.img) {
-          const base64Data = publi.img;
-          // Define o nome do arquivo.
-          const publiImg = `publi_${publi.id_publiEmpresa}.jpeg`; 
-          base64_decode(base64Data, publiImg);
-        }
-      });
+    //   results.forEach((publi) => {
+    //     if (publi.img) {
+    //       const base64Data = publi.img;
+    //       // Define o nome do arquivo.
+    //       const publiImg = `publi_${publi.id_publiEmpresa}.jpeg`; 
+    //       base64_decode(base64Data, publiImg);
+    //     }
+    //   });
   
       response.json(results);
     });
@@ -244,6 +274,7 @@ async function storeEmpresaProjetos(request, response) {
 module.exports = {
     listCompany,
     listAllCompany,
+    getCompany,
     storeCompany,
     getPubliInformations,
     getImgPubliCompany,
