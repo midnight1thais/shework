@@ -71,7 +71,7 @@ export const ContainerInput = styled.div`
     display: flex;
     flex-direction: row;
     height: 6vh;
-    width: 30vw;
+    width: 60vw;
 
     gap: 2vw;
     margin-left: 2vw;
