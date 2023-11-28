@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Background, ButtonHere, ContainerButtons, ContainerMid, ContainerModal, ContainerTop, Input, Label, TitleDes} from './style'
+import { Background, ButtonDelete, ButtonHere, ContainerButtons, ContainerButtonsDelete, ContainerMid, ContainerModal, ContainerTop, Input, Label, TitleDes} from './style'
 import { useNavigate } from 'react-router-dom'
 import { api } from "../../services/api";
 import axios from 'axios';
@@ -76,6 +76,28 @@ function PersonModal({ isOpen, setModalOpen}){
               
     };
 
+    const deletePerson = async (e) => {
+      e.preventDefault();
+
+      try {
+        const response = await api.delete(`/user/delete/${userId}`);
+        localStorage.removeItem("@Auth:user_id")
+        localStorage.removeItem("@Auth:user")
+        localStorage.removeItem("@Auth:token")
+        localStorage.removeItem("@Auth:user_categoria");
+        localStorage.removeItem("@Auth:user_name");
+        alert('Usuário Deletado com Sucesso')
+        console.log('Recurso deletado com sucesso:', response.data);
+        navigate('/')
+        window.location.reload();
+      } catch (error) {
+        alert('infelizmente o usuario tem publicações e não pode ser deletado')
+        console.log('Erro ao deletar recurso:', error);
+      }
+    };
+
+    
+
 
 
 
@@ -114,6 +136,7 @@ function PersonModal({ isOpen, setModalOpen}){
             <ButtonHere onClick={setModalOpen}>Fechar</ButtonHere>
             <ButtonHere onClick={handleSubmit}>Salvar</ButtonHere>
             <ButtonHere onClick={handleLogout}>Sair</ButtonHere>
+            <ButtonDelete onClick={deletePerson}>Deletar Conta</ButtonDelete>
           </ContainerButtons>
         </ContainerModal>
       </Background>
