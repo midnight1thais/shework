@@ -5,6 +5,7 @@ import CompanyPubli from "../CompanyPubli/CompanyPubli";
 function HomeCompany(){ 
 
     
+    
     return(
         <ContainerCompany>
             <Title>Faça parte da nossa rede de</Title>
