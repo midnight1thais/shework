@@ -215,7 +215,7 @@ function CreatePubli() {
             navigate('/publiPerson/' + response.data.data.insertId)
         })
         .catch(function (error) {
-            alert("erro")
+            alert("Algo deu errado, talvez tenha esquecido de completar alguma informacao")
         });    
 
 
