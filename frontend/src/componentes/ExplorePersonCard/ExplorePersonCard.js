@@ -1,14 +1,27 @@
 import { useEffect, useState } from 'react';
 import ImgPersonCard from '../../assets/ImgPersonCard.png'
 import ImgShare from '../../assets/compartilhar.svg'
-import ImgContract from '../../assets/contratar.svg'
 import { api } from '../../services/api';
 import { ButtonRight, ContainerAll, ContainerCard, ContainerImg, ContainerTop, Date2, Description, Icon, IconRight, Service, Title } from "./style";
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { useNavigate } from 'react-router-dom';
 
 
-function ExplorePersonCard({id_publicacao_pessoa}){
+function ExplorePersonCard({publiNome, publiArea, publiDescricao ,id_publicacao_pessoa}){
+
+    const navigate = useNavigate();
+
+    const goToPerson = () => {
+        const currentPath = window.location.pathname; // Pega o caminho atual
+  
+        // método replace (função do JavaScript) para remover tanto /homeRegister quanto /homeRegisterCompany
+        const newPath = currentPath.replace(/\/(homeRegister(Company)?|explorePerson)/, '');
+        
+        // A adição do ? torna a parte (Company) opcional
+        navigate(`${newPath}/publiPerson/${id_publicacao_pessoa}`); // Adiciona a nova parte
+          
+        };
 
     const isVisible = true;
 
@@ -31,30 +44,34 @@ function ExplorePersonCard({id_publicacao_pessoa}){
         }
     
         fetchPublis();
-    }, []);
+    }, [id_publicacao_pessoa]);
 
+    const ContactPerson = () =>{
+        alert(`Se conecte com essa pessoa pelo email: ${infos[0].email}`,  )
+    }
+// onClick={goToPerson}
     return(
         <>
         <div>
-        {infos.map((item) => {  
-                const formattedDate = format(new Date(item.dt_nascimento), 'dd/MM/yyyy', { locale: ptBR });
-                return(
-        <ContainerCard isVisible={isVisible}>
+        <ContainerCard onClick={goToPerson} isVisible={isVisible}>
             <Icon src={ImgPersonCard} alt=''/>
             <ContainerAll>
                 <ContainerTop>
+                {infos.map((item) => {  
+                const formattedDate = format(new Date(item.dt_nascimento), 'dd/MM/yyyy', { locale: ptBR });
+                return(
                 <Date2>{formattedDate}</Date2>
-                <Service>{item.area_interesse}</Service>
+                )})}
+                <Service>{publiArea}</Service>
                 </ContainerTop>
-                <Title>{item.nome}</Title>
-                <Description>{item.descricao}</Description>
+                <Title>{publiNome}</Title>
+                <Description>{publiDescricao}</Description>
             </ContainerAll>
             <ContainerImg>
-                <ButtonRight><IconRight src={ImgShare} alt=''/></ButtonRight>
-                <ButtonRight><IconRight src={ImgContract} alt=''/></ButtonRight>
+                <ButtonRight onClick={ContactPerson}><IconRight src={ImgShare} alt=''/></ButtonRight>
             </ContainerImg>
         </ContainerCard>
-      )})}
+
         </div>
         </>
     )
