@@ -2,14 +2,13 @@ import { useEffect, useState } from 'react';
 import ImgCompany from '../../assets/LogoCompany.png'
 import ImgShare from '../../assets/compartilhar.svg'
 import ImgContract from '../../assets/contratar.svg'
-import { ButtonRight, ContainerAll, ContainerCard, ContainerImg, ContainerTop, Date, Description, Icon, IconRight, Service, Title } from "./style";
+import { ButtonRight, ContainerAll, ContainerCard, ContainerImg, ContainerTop, Date, Description, Icon, IconRight, Title } from "./style";
 import { api } from '../../services/api';
 
-function ExploreCompanyCard({id_publiEmpresa}){
+function ExploreCompanyCard({id_publiEmpresa, publiNome, publiSomos}){
 
     const isVisible = true;
 
-    const cardArray = new Array(5).fill(null);
 
     // useState para publicacoes 
     const [infos, setInfos] = useState([]);
@@ -30,8 +29,12 @@ function ExploreCompanyCard({id_publiEmpresa}){
         }
     
         fetchPublis();
-    }, []);
+    }, [id_publiEmpresa]);
     
+
+    const ContactPerson = () =>{
+        alert(`Se conecte com essa empresa pelo nome: ${infos[0].nome}`,  )
+    }
 
     return(
         <>
@@ -44,12 +47,11 @@ function ExploreCompanyCard({id_publiEmpresa}){
                 <ContainerTop>
                 <Date>2023</Date>
                 </ContainerTop>
-                <Title>{item.nome}</Title>
-                <Description>{item.somos_descricao}</Description>
+                <Title>{publiNome}</Title>
+                <Description>{publiSomos}</Description>
             </ContainerAll>
             <ContainerImg>
-                <ButtonRight><IconRight src={ImgShare} alt=''/></ButtonRight>
-                <ButtonRight><IconRight src={ImgContract} alt=''/></ButtonRight>
+                <ButtonRight onClick={ContactPerson}><IconRight src={ImgShare} alt=''/></ButtonRight>
             </ContainerImg>
         </ContainerCard>
       )})}
