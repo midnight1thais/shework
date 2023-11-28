@@ -129,19 +129,21 @@ async function updateUser(request, response) {
     });
 }
 
+
 // Função que remove usuário no banco
 async function deleteUser(request, response) {
     // Preparar o comando de execução no banco
-    const query = "DELETE FROM usuarios WHERE `id` = ?";
+    const query = "DELETE FROM usuarios WHERE `id_usuario` = ?";
 
     // Recebimento de parametro da rota
     const params = Array(
-        request.params.id_usuario 
+        request.params.id_usuario
     );
 
     // Executa a ação no banco e valida os retornos para o client que realizou a solicitação
     connection.query(query, params, (err, results) => {
         try {
+            console.log('usuario nao deleta:', err)
             if (results) {
                 response
                     .status(200)
@@ -171,9 +173,10 @@ async function deleteUser(request, response) {
     });
 }
 
+
 module.exports = {
     listUsers,
     storeUser,
     updateUser,
-    deleteUser
+    deleteUser,
 }
