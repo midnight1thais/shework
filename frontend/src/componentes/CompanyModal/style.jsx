@@ -128,6 +128,17 @@ export const ButtonAdd = styled.button`
 
 `
 
+export const ButtonDelete = styled.button`
+    border-radius: 10px;
+    background-color: #b32020;
+    color: white;
+    width: 14vw;
+    
+    opacity: 1;
+    margin-top: 4vh;
+    margin-bottom: 3vh;
+`
+
 
 
 // botão de adicionar imagem
