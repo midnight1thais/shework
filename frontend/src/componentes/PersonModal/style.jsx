@@ -17,11 +17,11 @@ export const ContainerModal = styled.div`
     display: flex;
     flex-direction: column;
    
-    width: 50vw;
+    width: 55vw;
     height: 55vh;
     position: fixed;
     margin-top: 15vh;
-    margin-left: 30vw;
+    margin-left: 25vw;
     padding: 60px;
     background-color: #9d9ea0;
     border-radius: 10px;
@@ -57,6 +57,18 @@ export const ButtonHere = styled.button`
     border-radius: 10px;
     background-color: #C6C5C5;
     width: 10vw;
+    
+    opacity: 1;
+    margin-top: 4vh;
+    margin-bottom: 3vh;
+`
+
+
+export const ButtonDelete = styled.button`
+    border-radius: 10px;
+    background-color: #b32020;
+    color: white;
+    width: 14vw;
     
     opacity: 1;
     margin-top: 4vh;
