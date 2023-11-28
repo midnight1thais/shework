@@ -22,6 +22,7 @@ export const DivLeftA = styled.div`
 `
 
 export const ImgWoman = styled.img`
+    border-radius: 12px;
     margin-bottom: 3vh;
     margin-left: 2.3vw;
     width: 20vw;
