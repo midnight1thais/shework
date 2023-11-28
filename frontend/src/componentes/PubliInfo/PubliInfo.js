@@ -76,6 +76,24 @@ function PubliInfo({idPubliPerson}){
                         </SubTextLeft>
                     </DivTextA>
                 </DivRightA>
+                <DivRightA>
+                    <DivTextA>
+                        <TextLeft>
+                            Area Interesse
+                        </TextLeft>
+                        <SubTextLeft>
+                            {infoPerson.area_interesse}
+                        </SubTextLeft>
+                    </DivTextA>
+                    <DivTextA>
+                        <TextLeft>
+                            Descricao
+                        </TextLeft>
+                        <SubTextLeft>
+                            {infoPerson.descricao}
+                        </SubTextLeft>
+                    </DivTextA>
+                </DivRightA>
             </DivInfo>
                     )
                 })}
