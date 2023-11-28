@@ -7,6 +7,7 @@ const router = Router();
 const {
     listCompany,
     listAllCompany,
+    getCompany,
     storeCompany,
     getPubliInformations,
     getImgPubliCompany,
@@ -19,6 +20,7 @@ const upload = require('../config/multer')
 // Criar os endpoints (rotas) que serão acessados a partir dos métodos HTTP (get,post,put,delete)
 router.get('/listAll', listAllCompany);
 router.get('/list/:id_publiEmpresa', listCompany);
+router.get('/companyGet/:id_usuarioEmpresa', getCompany);
 router.post('/create', upload.single('file'), storeCompany);
 router.get('/informations/:id_publiEmpresa', getPubliInformations);
 router.get('/information/img_company/:id_publiEmpresa', getImgPubliCompany);
