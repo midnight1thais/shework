@@ -15,7 +15,7 @@ function HomeRegisterCompanyCover() {
                     Aqui buscamos auxiliar na busca por 
                 </Description>
                 <Description>
-                    empregos tercerizados e dentro da TI
+                    empregos gerais e dentro da TI
                 </Description>
             </TitleDiv>
 
